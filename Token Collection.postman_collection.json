@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "b33ea2de-3609-4e9f-a3d3-6f1606dd8993",
+		"name": "Token Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Выпуск JWT (JWS) токена",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Set Environment variable Token\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });\r",
+							"\r",
+							"pm.test(\"Token include correct start\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"1\", \"password\":\"111\"}"
+				},
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Валидация JWS токена",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 20x\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains username\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.subject).to.eql(\"1\");\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth/validate?token={{token}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						"validate"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение сертификата подписи токена сервера аутентификации",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie JSESSIONID is present\", () => {\r",
+							"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Westeros\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cert compare\", function () {\r",
+							"    pm.expect(pm.response.text()).to.eql(pm.environment.get('cert3'));\r",
+							"\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth/certificate",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						"certificate"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Получение сертификата подписи токена сервера аутентификации",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth/certificate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth",
+								"certificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "raw",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Payara Server  5.201 #badassfish"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/4.0 JSP/2.3 (Payara Server  5.201 #badassfish Java/GraalVM Community/11)"
+						},
+						{
+							"key": "content-disposition",
+							"value": "attachment; filename = public_cert.der"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/octet-stream"
+						},
+						{
+							"key": "Content-Length",
+							"value": "342"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						}
+					],
+					"cookie": [],
+					"body": "0�\u0001R0���\u0003\u0002\u0001\u0002\u0002\b��\u001eǈ��0\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u00000\u00141\u00120\u0010\u0006\u0003U\u0004\u0003\f\tlocalhost0\u001e\u0017\r210304193051Z\u0017\r210401193141Z0I1\u000e0\f\u0006\u0003U\u0004\b\f\u0005Essos1\u00100\u000e\u0006\u0003U\u0004\u0007\f\u0007Valyria1\u00110\u000f\u0006\u0003U\u0004\u0006\u0013\bWesteros1\u00120\u0010\u0006\u0003U\u0004\n\f\tTargaryen0\\0\r\u0006\t*�H��\r\u0001\u0001\u0001\u0005\u0000\u0003K\u00000H\u0002A\u0000�\nC���\u0001� �r֢�\u001d��G8 �3LY\u000fHd�}>q\u001cEb�q\b�T7��\u0017�K_q�D��i3��\t����;�\u0002\u0003\u0001\u0000\u00010\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u0000\u0003A\u0000]`�\u0007��0��c\\gl\r-\u001cu�i\u001a�N\u0015m�\u0005�\u001b`�Z�/\b�V \n\u001f��T��O���si� ̛m���9�w"
+				},
+				{
+					"name": "Получение сертификата подписи токена сервера аутентификации",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Charset",
+								"value": "UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth/certificate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth",
+								"certificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "raw",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Payara Server  5.201 #badassfish"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/4.0 JSP/2.3 (Payara Server  5.201 #badassfish Java/GraalVM Community/11)"
+						},
+						{
+							"key": "content-disposition",
+							"value": "attachment; filename = public_cert.der"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/octet-stream"
+						},
+						{
+							"key": "Content-Length",
+							"value": "342"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						}
+					],
+					"cookie": [],
+					"body": "0�\u0001R0���\u0003\u0002\u0001\u0002\u0002\b��\u001eǈ��0\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u00000\u00141\u00120\u0010\u0006\u0003U\u0004\u0003\f\tlocalhost0\u001e\u0017\r210304193051Z\u0017\r210401193141Z0I1\u000e0\f\u0006\u0003U\u0004\b\f\u0005Essos1\u00100\u000e\u0006\u0003U\u0004\u0007\f\u0007Valyria1\u00110\u000f\u0006\u0003U\u0004\u0006\u0013\bWesteros1\u00120\u0010\u0006\u0003U\u0004\n\f\tTargaryen0\\0\r\u0006\t*�H��\r\u0001\u0001\u0001\u0005\u0000\u0003K\u00000H\u0002A\u0000�\nC���\u0001� �r֢�\u001d��G8 �3LY\u000fHd�}>q\u001cEb�q\b�T7��\u0017�K_q�D��i3��\t����;�\u0002\u0003\u0001\u0000\u00010\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u0000\u0003A\u0000]`�\u0007��0��c\\gl\r-\u001cu�i\u001a�N\u0015m�\u0005�\u001b`�Z�/\b�V \n\u001f��T��O���si� ̛m���9�w"
+				},
+				{
+					"name": "Получение сертификата подписи токена сервера аутентификации",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept-Charset",
+								"value": "UTF-8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth/certificate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth",
+								"certificate"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "raw",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Payara Server  5.201 #badassfish"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Servlet/4.0 JSP/2.3 (Payara Server  5.201 #badassfish Java/GraalVM Community/11)"
+						},
+						{
+							"key": "content-disposition",
+							"value": "attachment; filename = public_cert.der"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "OPTIONS, GET, POST, PUT, DELETE"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/octet-stream"
+						},
+						{
+							"key": "Content-Length",
+							"value": "363"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						}
+					],
+					"cookie": [],
+					"body": "0�\u0001g0�\u0001\u0011�\u0003\u0002\u0001\u0002\u0002\b��>\u000f��t�0\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u00000\u001a1\u00180\u0016\u0006\u0003U\u0004\u0003\f\u000fSome Trusted CA0\u001e\u0017\r210204190234Z\u0017\r210304190324Z0W1\f0\n\u0006\u0003U\u0004\u000b\f\u0003IT21\u000e0\f\u0006\u0003U\u0004\b\f\u0005Essos1\u00100\u000e\u0006\u0003U\u0004\u0007\f\u0007Valyria1\u00110\u000f\u0006\u0003U\u0004\u0006\u0013\bWesteros1\u00120\u0010\u0006\u0003U\u0004\n\f\tTargaryen0\\0\r\u0006\t*�H��\r\u0001\u0001\u0001\u0005\u0000\u0003K\u00000H\u0002A\u0000����&\u0014Z�,6�\"��E���sd�$����\u001a-?�w�^��y\u0017ůM\u0006��m_Ųz\u001b��M�5��(^�qQ�)\u0002\u0003\u0001\u0000\u00010\r\u0006\t*�H��\r\u0001\u0001\u000b\u0005\u0000\u0003A\u0000\u0012�����\u001b\r����Ae͎\u0013�Xs˶�XϬ_\u0016�/`.��J�{�M�Z\u0004�H\f\u001d��{I���_|�B�ʅ�"
+				}
+			]
+		},
+		{
+			"name": "Пролонгация токина",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"postman.setEnvironmentVariable(\"token2\", pm.response.text());\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Завершить сеанс токена",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 600ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code No Content\", function () {\r",
+							"    pm.response.to.have.status(\"No Content\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"if (pm.environment.get(\"token\")){\r",
+							"    pm.environment.set(\"token\", null);\r",
+							"    postman.setNextRequest(\"Завершить сеанс токена\");\r",
+							"}else {\r",
+							"    postman.setNextRequest(null);\r",
+							"} \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"if (pm.environment.get(\"token\")){\r",
+							"    pm.request.headers.add({\r",
+							"    key: \"authorization\",\r",
+							"    value: \"Bearer {{token}}\"\r",
+							"    });\r",
+							"}else {\r",
+							"    pm.request.headers.add({\r",
+							"    key: \"authorization\",\r",
+							"    value: \"Bearer {{token2}}\"\r",
+							"    });\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
