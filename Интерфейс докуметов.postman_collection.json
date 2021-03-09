@@ -33,7 +33,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in1\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/rest/document",
