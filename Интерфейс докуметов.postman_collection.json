@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "370250c0-89b3-4b40-9bef-6e2dc41b14a8",
+		"name": "Интерфейс докуметов",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание документа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/document",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение списка документов",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение документа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение документа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приходы\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"date\": \"22.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/document/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление документа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

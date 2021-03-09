@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "0d6c5771-cd48-4794-adc2-a34ceb734cb5",
+		"name": "Интерфейс констант",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание константы",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate2\",\r\n\"value\" : \"Склад производства 1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/constant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание константы с датой",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"новый\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/constant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение списка констант",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/constant/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Чтение константы",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/constant/buh.calendar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Чтение константы с датой",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:14:40",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "01.12.2020T13:14:40"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Изменение константы",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\": \"01.12.2020T13:14:40\",\r\n\"value\" : \"второй\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/constant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление константы",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rest/constant/propiszv.calendar?periodicalDate=01.12.2020T13:14:51",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"constant",
+						"propiszv.calendar"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "01.12.2020T13:14:51"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
