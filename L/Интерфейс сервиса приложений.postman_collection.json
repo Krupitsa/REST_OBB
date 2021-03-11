@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "8c410d48-7c3c-4a31-a70b-bd3653dbbcdf",
+		"name": "Интерфейс сервиса приложений",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Получение списка приложений",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "accept-charset",
+						"value": "utf-8",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/app/list",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"app",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение приложения со всеми зависимостями",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"\r",
+							"//pm.test(\"blobId is true\", function () {\r",
+							"//    var jsonData = pm.response.json();\r",
+							"//    pm.expect(jsonData.blobId).to.eql(\"app.TAP:1.1.146\");\r",
+							"//});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "accept-charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/app/app.TAP/1.1.148",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"app",
+						"app.TAP",
+						"1.1.148"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "!Получение актуальной версии приложения",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/app/version?mnemo=app.TAP",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"app",
+						"version"
+					],
+					"query": [
+						{
+							"key": "mnemo",
+							"value": "app.TAP"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

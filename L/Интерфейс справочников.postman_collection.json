@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "c54bd6c3-4347-4dd2-8687-23d3d83c5080",
+		"name": "Интерфейс справочников",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание записи справочника",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"name\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/rest/catalog",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание записи справочника with-parent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"name\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/rest/catalog",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Чтение записи справочника",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Постраничное чтение записей справочника",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"\r",
+							"pm.test(\"Id is true\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.records[0].id).to.eql(\"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"list",
+						"catalog.goods.1"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Обновление записи",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rest/catalog",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Чтение записи справочника после изменения",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is true\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds9\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.3",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление записи",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Удаление записи with-parent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.3",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Чтение записи справочника после удаления",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
