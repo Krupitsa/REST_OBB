@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "724b1d85-98ec-48cd-8e22-1752eef27fd1",
+		"_postman_id": "5bb35506-1af9-472d-adef-3124afd1dfaa",
 		"name": "Auth",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -14,56 +14,18 @@
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);\r",
 							"postman.setEnvironmentVariable (\"token\", jsonData.token);\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"username\":\"admin\", \"password\":\"admin\"\r\n}"
-				},
-				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"authentication-web",
-						"api",
-						"auth"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "-Выпуск JWT (JWS) токена автоизация -",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 401\", function () {\r",
-							"    pm.response.to.have.status(401);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Token include correct string\", function () {\r",
+							"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+							"\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -89,19 +51,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"11\", \"password\":\"11\"\r\n}"
+					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"\r\n}"
 				},
-				"url": {
-					"raw": "{{host}}/authentication-web/api/auth",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"authentication-web",
-						"api",
-						"auth"
-					]
-				}
+				"url": "{{host}}/authentication-web/api/auth"
 			},
 			"response": []
 		},
@@ -125,13 +77,9 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{token}}"
+					}
 				},
 				"method": "POST",
 				"header": [
@@ -148,19 +96,9 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"\r\n}"
+					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
 				},
-				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"authentication-web",
-						"api",
-						"auth"
-					]
-				}
+				"url": "{{hostTest}}/authentication-web/api/auth"
 			},
 			"response": []
 		},
@@ -171,6 +109,17 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Status code is 20x\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Username is true\", function () {\r",
+							"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
+							"});\r",
+							"pm.test(\"Role is true\", function () {\r",
+							"    pm.expect(jsonData.roles).to.eql([\"User\"]);\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
@@ -181,12 +130,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth/validate?token={{token}}",
-					"protocol": "http",
+					"raw": "{{host}}/authentication-web/api/auth/validate?token={{token}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"authentication-web",
 						"api",
@@ -205,6 +152,27 @@
 		},
 		{
 			"name": "Получение сертификата подписи ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Cookie JSESSIONID is true\", () => {\r",
+							"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Westeros\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -215,20 +183,7 @@
 						"disabled": true
 					}
 				],
-				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth/certificate",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"authentication-web",
-						"api",
-						"auth",
-						"certificate"
-					]
-				}
+				"url": "{{host}}/authentication-web/api/auth/certificate"
 			},
 			"response": []
 		},
@@ -239,8 +194,13 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);\r",
-							"postman.updEnvironmentVariable(\"token\", jsonData.newContractNb);"
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+							"}); "
 						],
 						"type": "text/javascript"
 					}
@@ -249,66 +209,45 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{token}}"
+					}
 				},
 				"method": "GET",
-				"header": [
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"authentication-web",
-						"api",
-						"auth"
-					]
-				}
+				"header": [],
+				"url": "{{host}}/authentication-web/api/auth"
 			},
 			"response": []
 		},
 		{
-			"name": "Завершить сеанс токена",
+			"name": "!Завершить сеанс токена",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
+					"bearer": {
+						"token": "{{token}}"
+					}
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"authentication-web",
-						"api",
-						"auth"
-					]
-				}
+				"url": "{{host}}/authentication-web/api/auth"
 			},
 			"response": []
 		},
@@ -334,12 +273,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth/validate?token={{tokenWrong}}",
-					"protocol": "http",
+					"raw": "{{host}}/authentication-web/api/auth/validate?token={{tokenWrong}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"authentication-web",
 						"api",
@@ -357,7 +294,7 @@
 			"response": []
 		},
 		{
-			"name": "test Валидаци \"истекшего\" токена",
+			"name": "test Валидация \"истекшего\" токена",
 			"event": [
 				{
 					"listen": "test",
@@ -367,30 +304,21 @@
 							"    pm.response.to.have.status(401);\r",
 							"});\r",
 							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"JWT expired\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"JWT validity cannot be asserted and should not be trusted\");\r",
 							"}); "
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:8080/authentication-web/api/auth/validate?token={{tokenExp}}",
-					"protocol": "http",
+					"raw": "{{host}}/authentication-web/api/auth/validate?token={{tokenExp}}",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"authentication-web",
 						"api",
