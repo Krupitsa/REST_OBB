@@ -1,12 +1,12 @@
 {
 	"info": {
 		"_postman_id": "ca14fada-daf7-4ed7-939f-2f2612dd11e1",
-		"name": "Интерфейс констант",
+		"name": "Constants",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Создание константы",
+			"name": "Creating a constant",
 			"event": [
 				{
 					"listen": "test",
@@ -85,7 +85,7 @@
 			"response": []
 		},
 		{
-			"name": "Создание константы с датой",
+			"name": "Creating a constant with date dd.MM.yyyy'T'HH:mm:ss",
 			"event": [
 				{
 					"listen": "test",
@@ -153,7 +153,75 @@
 			"response": []
 		},
 		{
-			"name": "Получение списка констант",
+			"name": "Creating a constant with date  UTC+0 milliseconds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"buh.calendar2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PeriodicalDat is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"periodicalDate\", \"Wed Nov 21 07:38:20 MSK 2001\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar \"\r\n}"
+				},
+				"url": {
+					"raw": "{{host}}/rest/constant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of constants",
 			"event": [
 				{
 					"listen": "test",
@@ -165,7 +233,7 @@
 							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
-							"tests[\"Validate service retuns 2 records\"] = list === 2\r",
+							"tests[\"Validate service retuns 3 records\"] = list === 3\r",
 							"\r",
 							""
 						],
@@ -212,7 +280,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение константы",
+			"name": "Reading the constant",
 			"event": [
 				{
 					"listen": "test",
@@ -272,7 +340,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение константы с датой",
+			"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss",
 			"event": [
 				{
 					"listen": "test",
@@ -341,7 +409,76 @@
 			"response": []
 		},
 		{
-			"name": "Изменение константы",
+			"name": "Reading the constant with date UTC+0 milliseconds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PeriodicalDate is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar2"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "1006317500000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating the constant",
 			"event": [
 				{
 					"listen": "test",
@@ -407,7 +544,7 @@
 			"response": []
 		},
 		{
-			"name": "Изменение константы с датой",
+			"name": "Updating the constant with date dd.MM.yyyy'T'HH:mm:ss",
 			"event": [
 				{
 					"listen": "test",
@@ -474,7 +611,74 @@
 			"response": []
 		},
 		{
-			"name": "Чтение константы после изменения",
+			"name": "Updating the constant with date UTC+0 milliseconds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/rest/constant",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the constant after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -539,7 +743,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение константы с датой после изменений",
+			"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -593,7 +797,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=1606817500000",
+					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
 					"host": [
 						"{{host}}"
 					],
@@ -605,7 +809,7 @@
 					"query": [
 						{
 							"key": "periodicalDate",
-							"value": "1606817500000"
+							"value": "01.12.2020T13:11:40"
 						}
 					]
 				}
@@ -613,7 +817,81 @@
 			"response": []
 		},
 		{
-			"name": "Удаление константы",
+			"name": "Reading the constant with date UTC+0 milliseconds after updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"PeriodicalDate is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Value is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(\"sklad calendar2\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar2"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "1006317500000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the constant",
 			"event": [
 				{
 					"listen": "test",
@@ -659,7 +937,7 @@
 			"response": []
 		},
 		{
-			"name": "Удаление константы с датой",
+			"name": "Delete the constant with date date dd.MM.yyyy'T'HH:mm:ss",
 			"event": [
 				{
 					"listen": "test",
@@ -713,18 +991,68 @@
 			"response": []
 		},
 		{
-			"name": "Получение пустого списка констант",
+			"name": "Delete the constant with date UTC+0 milliseconds",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(204);\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is empty\", function () {\r",
-							"    pm.response.to.have.body(\"\");\r",
+							"    pm.response.to.have.body(\"\"); \r",
+							"});\r",
+							"  \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar2"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "1006317500000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the constant after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
 							"});\r",
 							"\r",
 							""
@@ -758,14 +1086,132 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/list",
+					"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"list"
+						"sklad.proizvodstva.noDate1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "01.12.2020T13:11:40"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the constant with date UTC+0 milliseconds after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "accept-charset",
+						"type": "text",
+						"value": "utf-8"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"constant",
+						"buh.calendar2"
+					],
+					"query": [
+						{
+							"key": "periodicalDate",
+							"value": "1006317500000"
+						}
 					]
 				}
 			},

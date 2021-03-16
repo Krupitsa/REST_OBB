@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Выпуск JWT (JWS) токена",
+			"name": "Token issue",
 			"event": [
 				{
 					"listen": "test",
@@ -50,7 +50,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"\r\n}"
+					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
 				},
 				"url": {
 					"raw": "{{host}}/authentication-web/api/auth",
@@ -67,7 +67,7 @@
 			"response": []
 		},
 		{
-			"name": "Валидация JWS токена",
+			"name": "Token validation",
 			"event": [
 				{
 					"listen": "test",
@@ -115,7 +115,7 @@
 			"response": []
 		},
 		{
-			"name": "Получение сертификата подписи ",
+			"name": "Signature certificate",
 			"event": [
 				{
 					"listen": "test",
@@ -163,7 +163,7 @@
 			"response": []
 		},
 		{
-			"name": "Пролонгация токена",
+			"name": "Token renewal",
 			"event": [
 				{
 					"listen": "test",
@@ -209,7 +209,7 @@
 			"response": []
 		},
 		{
-			"name": "!Завершить сеанс токена",
+			"name": "!Token session termination",
 			"event": [
 				{
 					"listen": "test",

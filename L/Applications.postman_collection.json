@@ -1,12 +1,12 @@
 {
 	"info": {
 		"_postman_id": "8c410d48-7c3c-4a31-a70b-bd3653dbbcdf",
-		"name": "Интерфейс сервиса приложений",
+		"name": "Applications",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Получение списка приложений",
+			"name": "Getting a list of applications",
 			"event": [
 				{
 					"listen": "test",
@@ -18,7 +18,7 @@
 							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
-							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"tests[\"Validate service retuns 3 records\"] = list === 3\r",
 							"\r",
 							""
 						],
@@ -71,7 +71,7 @@
 			"response": []
 		},
 		{
-			"name": "Получение приложения со всеми зависимостями",
+			"name": "Getting the application with all dependencies",
 			"event": [
 				{
 					"listen": "test",
@@ -84,11 +84,6 @@
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
 							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
-							"\r",
-							"//pm.test(\"blobId is true\", function () {\r",
-							"//    var jsonData = pm.response.json();\r",
-							"//    pm.expect(jsonData.blobId).to.eql(\"app.TAP:1.1.146\");\r",
-							"//});\r",
 							"\r",
 							""
 						],
@@ -136,7 +131,20 @@
 			"response": []
 		},
 		{
-			"name": "!Получение актуальной версии приложения",
+			"name": "!Getting the latest version of the application",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",

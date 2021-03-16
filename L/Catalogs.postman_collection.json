@@ -1,12 +1,12 @@
 {
 	"info": {
 		"_postman_id": "c54bd6c3-4347-4dd2-8687-23d3d83c5080",
-		"name": "Интерфейс справочников",
+		"name": "Catalogs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Создание записи справочника",
+			"name": "Creating a catalog's record",
 			"event": [
 				{
 					"listen": "test",
@@ -70,7 +70,7 @@
 			"response": []
 		},
 		{
-			"name": "Создание записи справочника with-parent",
+			"name": "Creating a  catalog's record with-parent",
 			"event": [
 				{
 					"listen": "test",
@@ -134,7 +134,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение записи справочника",
+			"name": "Reading  the catalog's record",
 			"event": [
 				{
 					"listen": "test",
@@ -196,7 +196,69 @@
 			"response": []
 		},
 		{
-			"name": "Постраничное чтение записей справочника",
+			"name": "Reading the catalog's record with-parent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.3",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Page reading catalog's records",
 			"event": [
 				{
 					"listen": "test",
@@ -265,7 +327,7 @@
 			"response": []
 		},
 		{
-			"name": "Обновление записи",
+			"name": "Updating  the catalog's record",
 			"event": [
 				{
 					"listen": "test",
@@ -325,7 +387,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение записи справочника после изменения",
+			"name": "Reading the catalog's record after update",
 			"event": [
 				{
 					"listen": "test",
@@ -392,7 +454,7 @@
 			"response": []
 		},
 		{
-			"name": "Удаление записи",
+			"name": "Delete the catalog's record",
 			"event": [
 				{
 					"listen": "test",
@@ -439,7 +501,7 @@
 			"response": []
 		},
 		{
-			"name": "Удаление записи with-parent",
+			"name": "Delete the catalog's record with-parent",
 			"event": [
 				{
 					"listen": "test",
@@ -486,7 +548,7 @@
 			"response": []
 		},
 		{
-			"name": "Чтение записи справочника после удаления",
+			"name": "Reading the catalog's record after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -535,6 +597,61 @@
 						"catalog",
 						"catalog.goods.1",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the catalog's record with parent after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.3",
+						"2"
 					]
 				}
 			},

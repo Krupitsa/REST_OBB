@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "db8f671e-25c7-4c89-a47a-4d2b925a300f",
-		"name": "Интерфейс проводок",
+		"_postman_id": "5f603a42-4467-485f-97b9-2c86458cb3f3",
+		"name": "Documents",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Создание проводки",
+			"name": "Creating a document",
 			"event": [
 				{
 					"listen": "test",
@@ -39,34 +39,36 @@
 				"header": [
 					{
 						"key": "accept",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"number\": \"123456\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/posting",
+					"raw": "http://localhost:8080/rest/document",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting"
+						"document"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Получение проводки",
+			"name": "Getting the document",
 			"event": [
 				{
 					"listen": "test",
@@ -78,6 +80,10 @@
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -99,23 +105,20 @@
 				"header": [
 					{
 						"key": "accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting",
+						"document",
 						"1"
 					]
 				}
@@ -123,26 +126,24 @@
 			"response": []
 		},
 		{
-			"name": "Получение списка проводок",
+			"name": "Getting a list of documents",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.records.length;\r",
-							"tests[\"Validate service retuns 2 records\"] = list === 2\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].id).to.eql(\"223\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[1].id).to.eql(\"1\");\r",
-							"});\r",
-							""
+							"//pm.test(\"Id is true\", function () {\r",
+							"//    var jsonData = pm.response.json();\r",
+							" //   pm.expect(jsonData.records[1].id).to.eql(\"1\");\r",
+							"//});"
 						],
 						"type": "text/javascript"
 					}
@@ -163,23 +164,26 @@
 				"header": [
 					{
 						"key": "accept",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					},
 					{
-						"key": "content-type",
+						"key": "",
+						"value": "",
 						"type": "text",
-						"value": "application/json"
+						"disabled": true
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/list",
+					"raw": "http://localhost:8080/rest/document/list",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting",
+						"document",
 						"list"
 					]
 				}
@@ -187,7 +191,7 @@
 			"response": []
 		},
 		{
-			"name": "Изменение проводки",
+			"name": "Updating the document",
 			"event": [
 				{
 					"listen": "test",
@@ -219,35 +223,38 @@
 				"method": "PUT",
 				"header": [
 					{
-						"key": "accept",
-						"type": "text",
-						"value": "application/json"
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
 					},
 					{
 						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приходы\",\r\n\"mnemo\": \"doc.goods.in1\",\r\n\"date\": \"22.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/posting",
+					"raw": "http://localhost:8080/rest/document/",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting"
+						"document",
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Получение проводки после изменения",
+			"name": "Getting the document after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -261,8 +268,8 @@
 							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Value is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"value\", \"2.00\");\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -284,23 +291,20 @@
 				"header": [
 					{
 						"key": "accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting",
+						"document",
 						"1"
 					]
 				}
@@ -308,7 +312,7 @@
 			"response": []
 		},
 		{
-			"name": "Удаление проводки",
+			"name": "Delete the document",
 			"event": [
 				{
 					"listen": "test",
@@ -338,15 +342,23 @@
 					]
 				},
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting",
+						"document",
 						"1"
 					]
 				}
@@ -354,7 +366,7 @@
 			"response": []
 		},
 		{
-			"name": "Получение проводки после удаления",
+			"name": "Getting the document after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -362,8 +374,7 @@
 						"exec": [
 							"pm.test(\"Status code is 404\", function () {\r",
 							"    pm.response.to.have.status(404);\r",
-							"});\r",
-							""
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -384,83 +395,21 @@
 				"header": [
 					{
 						"key": "accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+						"value": "application/json",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
 					"host": [
-						"{{host}}"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
 						"rest",
-						"posting",
+						"document",
 						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Получение списка проводок Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"responseJson = JSON.parse(responseBody);\r",
-							"var list = responseJson.records.length;\r",
-							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
-							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].id).to.eql(\"223\");\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "{{host}}/rest/posting/list",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"rest",
-						"posting",
-						"list"
 					]
 				}
 			},
