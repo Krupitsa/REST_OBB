@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5f603a42-4467-485f-97b9-2c86458cb3f3",
+		"_postman_id": "072162b1-ed07-4f2a-a45a-9421082371ab",
 		"name": "Documents",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"11\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -50,7 +50,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"number\": \"123456\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+					"raw": "{\r\n  \"id\": \"11\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/rest/document",
@@ -79,7 +79,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"11\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
@@ -110,7 +110,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/document/1",
+					"raw": "http://localhost:8080/rest/document/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,7 +119,7 @@
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"11"
 					]
 				}
 			},
@@ -235,7 +235,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приходы\",\r\n\"mnemo\": \"doc.goods.in1\",\r\n\"date\": \"22.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+					"raw": "{\r\n  \"id\": \"11\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1-2\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1-2\"},\r\n        {\"name\":\"name2\",\"value\":\"value2-2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"11.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/rest/document/",
@@ -265,11 +265,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"11\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -296,7 +296,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/document/1",
+					"raw": "http://localhost:8080/rest/document/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -305,7 +305,7 @@
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"11"
 					]
 				}
 			},
@@ -350,7 +350,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/document/1",
+					"raw": "http://localhost:8080/rest/document/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -359,7 +359,7 @@
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"11"
 					]
 				}
 			},
@@ -400,7 +400,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/document/1",
+					"raw": "http://localhost:8080/rest/document/11",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -409,7 +409,7 @@
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"11"
 					]
 				}
 			},
