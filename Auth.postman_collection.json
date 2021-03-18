@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "5bb35506-1af9-472d-adef-3124afd1dfaa",
+		"_postman_id": "0545982e-b25f-4407-97b4-d45a471877ef",
 		"name": "Auth",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Выпуск JWT (JWS) токена",
+			"name": "Token issue",
 			"event": [
 				{
 					"listen": "test",
@@ -25,7 +25,6 @@
 							"\r",
 							"pm.test(\"Token include correct string\", function () {\r",
 							"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
-							"\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -51,66 +50,31 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"\r\n}"
-				},
-				"url": "{{host}}/authentication-web/api/auth"
-			},
-			"response": []
-		},
-		{
-			"name": "Выпуск токена на стенде",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"//var jsonData = JSON.parse(responseBody);\r",
-							"//postman.setEnvironmentVariable (\"token\", jsonData.token);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": {
-						"token": "{{token}}"
-					}
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
 					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
 				},
-				"url": "{{hostTest}}/authentication-web/api/auth"
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Валидация JWS токена",
+			"name": "Token validation",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 20x\", function () {\r",
-							"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
 							"var jsonData = pm.response.json();\r",
@@ -151,7 +115,7 @@
 			"response": []
 		},
 		{
-			"name": "Получение сертификата подписи ",
+			"name": "Signature certificate",
 			"event": [
 				{
 					"listen": "test",
@@ -183,12 +147,23 @@
 						"disabled": true
 					}
 				],
-				"url": "{{host}}/authentication-web/api/auth/certificate"
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth/certificate",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						"certificate"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Пролонгация токена",
+			"name": "Token renewal",
 			"event": [
 				{
 					"listen": "test",
@@ -198,7 +173,7 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body matches string\", function () {\r",
+							"pm.test(\"Body include correct string\", function () {\r",
 							"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
 							"}); "
 						],
@@ -209,18 +184,32 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": {
-						"token": "{{token}}"
-					}
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
-				"url": "{{host}}/authentication-web/api/auth"
+				"url": {
+					"raw": "{{host}}/authentication-web/api/auth",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth"
+					]
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "!Завершить сеанс токена",
+			"name": "!Token session termination",
 			"event": [
 				{
 					"listen": "test",
@@ -241,95 +230,25 @@
 			"request": {
 				"auth": {
 					"type": "bearer",
-					"bearer": {
-						"token": "{{token}}"
-					}
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
 				},
 				"method": "DELETE",
 				"header": [],
-				"url": "{{host}}/authentication-web/api/auth"
-			},
-			"response": []
-		},
-		{
-			"name": "test Валидация \"левого\" токена",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 401\", function () {\r",
-							"    pm.response.to.have.status(401);\r",
-							"});\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"JWT validity cannot be asserted and should not be trusted.\");\r",
-							"}); "
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth/validate?token={{tokenWrong}}",
+					"raw": "{{host}}/authentication-web/api/auth",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"authentication-web",
 						"api",
-						"auth",
-						"validate"
-					],
-					"query": [
-						{
-							"key": "token",
-							"value": "{{tokenWrong}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "test Валидация \"истекшего\" токена",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 401\", function () {\r",
-							"    pm.response.to.have.status(401);\r",
-							"});\r",
-							"pm.test(\"Body matches string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"JWT validity cannot be asserted and should not be trusted\");\r",
-							"}); "
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{host}}/authentication-web/api/auth/validate?token={{tokenExp}}",
-					"host": [
-						"{{host}}"
-					],
-					"path": [
-						"authentication-web",
-						"api",
-						"auth",
-						"validate"
-					],
-					"query": [
-						{
-							"key": "token",
-							"value": "{{tokenExp}}"
-						}
+						"auth"
 					]
 				}
 			},
