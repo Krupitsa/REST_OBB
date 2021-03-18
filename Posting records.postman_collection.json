@@ -1,12 +1,29 @@
 {
 	"info": {
-		"_postman_id": "7c3f8017-5632-418c-bade-b3a375ce2e3f",
-		"name": "Интерфейс проводок",
+		"_postman_id": "db8f671e-25c7-4c89-a47a-4d2b925a300f",
+		"name": "Posting records",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Создание проводки",
+			"name": "Creating a posting record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -33,15 +50,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"222\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/rest/posting",
-					"protocol": "http",
+					"raw": "{{host}}/rest/posting",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"rest",
 						"posting"
@@ -51,7 +66,24 @@
 			"response": []
 		},
 		{
-			"name": "Получение списка проводок",
+			"name": "Getting the posting record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -77,12 +109,69 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/posting/list",
-					"protocol": "http",
+					"raw": "{{host}}/rest/posting/1",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
+					"path": [
+						"rest",
+						"posting",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of posting records",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"\r",
+							"//pm.test(\"Id is correct\", function () {\r",
+							"//    var jsonData = pm.response.json();\r",
+							"//    pm.expect(jsonData.records[1].id).to.eql(\"1\");\r",
+							"//});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/posting/list",
+					"host": [
+						"{{host}}"
+					],
 					"path": [
 						"rest",
 						"posting",
@@ -93,49 +182,24 @@
 			"response": []
 		},
 		{
-			"name": "Получение проводки",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "content-type",
-						"type": "text",
-						"value": "application/json"
+			"name": "Updating the posting record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
 					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/rest/posting/2",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"rest",
-						"posting",
-						"2"
-					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Изменение проводки",
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -162,15 +226,13 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/rest/posting",
-					"protocol": "http",
+					"raw": "{{host}}/rest/posting",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"rest",
 						"posting"
@@ -180,7 +242,85 @@
 			"response": []
 		},
 		{
-			"name": "Удаление проводки",
+			"name": "Getting the posting record after updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Value is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"value\", \"2.00\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/posting/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"posting",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the posting record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -195,16 +335,68 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/rest/posting/2",
-					"protocol": "http",
+					"raw": "{{host}}/rest/posting/1",
 					"host": [
-						"localhost"
+						"{{host}}"
 					],
-					"port": "8080",
 					"path": [
 						"rest",
 						"posting",
-						"2"
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the posting record after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/rest/posting/1",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"rest",
+						"posting",
+						"1"
 					]
 				}
 			},

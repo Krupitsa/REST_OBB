@@ -1,12 +1,29 @@
 {
 	"info": {
-		"_postman_id": "370250c0-89b3-4b40-9bef-6e2dc41b14a8",
-		"name": "Интерфейс докуметов",
+		"_postman_id": "5f603a42-4467-485f-97b9-2c86458cb3f3",
+		"name": "Documents",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Создание документа",
+			"name": "Creating a document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -33,7 +50,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in1\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приход\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"number\": \"123456\",\r\n\"date\": \"19.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/rest/document",
@@ -51,7 +68,87 @@
 			"response": []
 		},
 		{
-			"name": "Получение списка документов",
+			"name": "Getting the document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of documents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"\r",
+							"//pm.test(\"Id is true\", function () {\r",
+							"//    var jsonData = pm.response.json();\r",
+							" //   pm.expect(jsonData.records[1].id).to.eql(\"1\");\r",
+							"//});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -94,44 +191,24 @@
 			"response": []
 		},
 		{
-			"name": "Получение документа",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
+			"name": "Updating the document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
 					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/rest/document/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"rest",
-						"document",
-						"3"
-					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "Изменение документа",
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -158,7 +235,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\": \"33\",\r\n\"title\": \"Приходы\",\r\n\"mnemo\": \"doc.goods.in\",\r\n\"date\": \"22.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
+					"raw": "{\r\n\"id\": \"1\",\r\n\"title\": \"Приходы\",\r\n\"mnemo\": \"doc.goods.in1\",\r\n\"date\": \"22.01.2021T11:59:22\",\r\n\"executedDate\": \"18.01.2021T11:59:22\",\r\n\"executed\": false,\r\n\"operation\": false,\r\n\"comment\": \"comment\",\r\n\"parentId\": \"\",\r\n\"body\": \"a29udHVyLm9iYg==\",\r\n\"childDocsCollections\": [],\r\n\"documentPropsCollection\": [\r\n],\r\n\"documentHeadDetailsCollection\": [\r\n],\r\n\"documentTableDetailsCollection\": [\r\n],\r\n\"postingCollection\": [\r\n]\r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/rest/document/",
@@ -177,7 +254,82 @@
 			"response": []
 		},
 		{
-			"name": "Удаление документа",
+			"name": "Getting the document after updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -198,7 +350,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/rest/document/3",
+					"raw": "http://localhost:8080/rest/document/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -207,7 +359,57 @@
 					"path": [
 						"rest",
 						"document",
-						"3"
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the document after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/rest/document/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"document",
+						"1"
 					]
 				}
 			},
