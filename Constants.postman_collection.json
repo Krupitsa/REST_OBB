@@ -99,7 +99,7 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"buh.calendar\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"PeriodicalDat is correct\", function () {\r",
+							"pm.test(\"PeriodicalDate is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"periodicalDate\", \"Tue Dec 01 13:11:40 MSK 2020\");\r",
 							"});\r",
 							"\r",
@@ -233,7 +233,7 @@
 							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
-							"tests[\"Validate service retuns 3 records\"] = list === 3\r",
+							"tests[\"Validate service retuns 3 records\"] = list >= 3\r",
 							"\r",
 							""
 						],
