@@ -266,7 +266,7 @@
 						"exec": [
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.records.length;\r",
-							"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+							"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
 							"\r",
 							"pm.test(\"Id is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
