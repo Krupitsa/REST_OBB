@@ -308,15 +308,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/app/app.TAP/1.1.148",
+							"raw": "{{host}}/rest/app/tap/1.1.163",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"app",
-								"app.TAP",
-								"1.1.148"
+								"tap",
+								"1.1.163"
 							]
 						}
 					},
@@ -422,7 +422,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/app/version?mnemo=app.TAP",
+							"raw": "{{host}}/rest/app/version?mnemo=tap",
 							"host": [
 								"{{host}}"
 							],
@@ -434,7 +434,7 @@
 							"query": [
 								{
 									"key": "mnemo",
-									"value": "app.TAP"
+									"value": "tap"
 								}
 							]
 						}
