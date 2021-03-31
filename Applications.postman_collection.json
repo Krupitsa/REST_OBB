@@ -18,7 +18,7 @@
 							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
-							"tests[\"Validate service retuns 3 records\"] = list === 3\r",
+							"tests[\"Validate service retuns 3 records\"] = list >= 1\r",
 							"\r",
 							""
 						],
@@ -57,9 +57,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/app/list",
+					"raw": "{{hostTest}}/rest/app/list",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -116,15 +116,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/app/app.TAP/1.1.148",
+					"raw": "{{hostTest}}/rest/app/Restapp/1.1.3",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"app",
-						"app.TAP",
-						"1.1.148"
+						"Restapp",
+						"1.1.3"
 					]
 				}
 			},
@@ -165,9 +165,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/app/version?mnemo=app.TAP",
+					"raw": "{{hostTest}}/rest/app/version?mnemo=Restapp",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -177,7 +177,7 @@
 					"query": [
 						{
 							"key": "mnemo",
-							"value": "app.TAP"
+							"value": "Restapp"
 						}
 					]
 				}

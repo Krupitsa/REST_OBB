@@ -53,9 +53,9 @@
 					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
 				},
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth",
+					"raw": "{{hostTest}}/authentication-web/api/auth",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"authentication-web",
@@ -94,9 +94,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth/validate?token={{token}}",
+					"raw": "{{hostTest}}/authentication-web/api/auth/validate?token={{token}}",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"authentication-web",
@@ -148,9 +148,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth/certificate",
+					"raw": "{{hostTest}}/authentication-web/api/auth/certificate",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"authentication-web",
@@ -195,9 +195,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth",
+					"raw": "{{hostTest}}/authentication-web/api/auth",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"authentication-web",
@@ -241,9 +241,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/authentication-web/api/auth",
+					"raw": "{{hostTest}}/authentication-web/api/auth",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"authentication-web",

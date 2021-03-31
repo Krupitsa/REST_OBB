@@ -72,9 +72,9 @@
 					"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 1\"\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -140,9 +140,9 @@
 					"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"sklad calendar \"\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -208,9 +208,9 @@
 					"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar \"\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -266,9 +266,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/list",
+					"raw": "{{hostTest}}/rest/constant/list",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -326,9 +326,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -389,9 +389,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -458,9 +458,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -531,9 +531,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -598,9 +598,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -665,9 +665,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/rest/constant",
+					"raw": "{{hostTest}}/rest/constant",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -729,9 +729,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -797,9 +797,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -871,9 +871,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -923,9 +923,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -971,9 +971,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -1025,9 +1025,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -1086,9 +1086,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -1139,9 +1139,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -1198,9 +1198,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",

@@ -53,9 +53,9 @@
 					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/posting",
+					"raw": "{{hostTest}}/rest/posting",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -109,9 +109,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "{{hostTest}}/rest/posting/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -168,9 +168,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/list",
+					"raw": "{{hostTest}}/rest/posting/list",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -229,9 +229,9 @@
 					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/posting",
+					"raw": "{{hostTest}}/rest/posting",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -289,9 +289,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "{{hostTest}}/rest/posting/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -335,9 +335,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "{{hostTest}}/rest/posting/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -389,9 +389,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/posting/1",
+					"raw": "{{hostTest}}/rest/posting/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",

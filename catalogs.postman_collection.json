@@ -57,9 +57,9 @@
 					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"name\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/catalog",
+					"raw": "{{hostTest}}/rest/catalog",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -121,9 +121,9 @@
 					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"name\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
 				},
 				"url": {
-					"raw": "{{host}}/rest/catalog",
+					"raw": "{{hostTest}}/rest/catalog",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -181,9 +181,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -212,7 +212,12 @@
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"name\", \"Панель 100\");\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -243,9 +248,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -302,9 +307,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
+					"raw": "{{hostTest}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -366,7 +371,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+					"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -374,9 +379,69 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/rest/catalog",
+					"raw": "{{hostTest}}/rest/catalog",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating  the catalog's record with parent",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/catalog",
+					"host": [
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -398,17 +463,23 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Mnemo is true\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds9\");\r",
-							"});"
+							"pm.test(\"Name is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"name\", \"Гвоздь 1000-1\");\r",
+							"});\r",
+							"\r",
+							"//pm.test(\"Mnemo is true\", function () {\r",
+							"   // var jsonData = pm.response.json();\r",
+							"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
+							"//});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -439,9 +510,82 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"catalog.goods.1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading the catalog's record with parent after update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"name\", \"Гвоздь 1000-2\");\r",
+							"});\r",
+							"\r",
+							"//pm.test(\"Mnemo is true\", function () {\r",
+							"   // var jsonData = pm.response.json();\r",
+							"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
+							"//});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Charset",
+						"value": "utf-8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
+					"host": [
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -486,9 +630,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -533,9 +677,9 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -588,9 +732,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -643,9 +787,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
 					"host": [
-						"{{host}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
