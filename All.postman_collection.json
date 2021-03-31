@@ -768,7 +768,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating  the catalog's record",
+					"name": "Updating  the catalog's record Copy",
 					"event": [
 						{
 							"listen": "test",
@@ -807,7 +807,67 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating  the catalog's record with parent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -829,6 +889,79 @@
 				},
 				{
 					"name": "Reading the catalog's record after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"name\", \"Гвоздь 1000-1\");\r",
+									"});\r",
+									"\r",
+									"//pm.test(\"Mnemo is true\", function () {\r",
+									"   // var jsonData = pm.response.json();\r",
+									"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
+									"//});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record with parent after update",
 					"event": [
 						{
 							"listen": "test",
@@ -2538,7 +2671,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.2\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document/",
@@ -2571,6 +2704,11 @@
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.documentHeadDetailsCollection[0].name).to.eql(\"head.2\");\r",
 									"});"
 								],
 								"type": "text/javascript"
