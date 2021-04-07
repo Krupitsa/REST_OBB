@@ -388,7 +388,7 @@
 					"response": []
 				},
 				{
-					"name": "!Getting the latest version of the application",
+					"name": "Getting the latest version of the application",
 					"event": [
 						{
 							"listen": "test",
@@ -396,6 +396,14 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"name\", \"Restapp\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Version is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"version\", \"1.1.3\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -422,7 +430,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/app/version?mnemo=tap",
+							"raw": "{{host}}/rest/app/version?mnemo=Restapp",
 							"host": [
 								"{{host}}"
 							],
@@ -434,7 +442,7 @@
 							"query": [
 								{
 									"key": "mnemo",
-									"value": "tap"
+									"value": "Restapp"
 								}
 							]
 						}
