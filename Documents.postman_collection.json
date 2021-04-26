@@ -263,11 +263,7 @@
 							"pm.test(\"Mnemo is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
 							"});\r",
-							"\r",
-							"pm.test(\"Name is true\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.documentHeadDetailsCollection[0].name).to.eql(\"head.2\");\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}

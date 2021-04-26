@@ -210,118 +210,12 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "!Token session termination",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {\r",
-									"    pm.response.to.have.status(204);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.body(\"\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/authentication-web/api/auth",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"authentication-web",
-								"api",
-								"auth"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
 		{
 			"name": "Applications",
 			"item": [
-				{
-					"name": "Getting the application with all dependencies",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"responseJson = JSON.parse(responseBody);\r",
-									"var list = responseJson.length;\r",
-									"tests[\"Validate service retuns 1 records\"] = list === 1\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "accept-charset",
-								"value": "utf-8",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}/rest/app/Restapp/1.1.3",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"app",
-								"Restapp",
-								"1.1.3"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Getting a list of applications",
 					"event": [
@@ -382,6 +276,66 @@
 								"rest",
 								"app",
 								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the application with all dependencies Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept-charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/Restapp/1.1.3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"Restapp",
+								"1.1.3"
 							]
 						}
 					},
@@ -2712,11 +2666,6 @@
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Name is true\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.documentHeadDetailsCollection[0].name).to.eql(\"head.2\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3249,6 +3198,117 @@
 								"rest",
 								"posting",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token session",
+			"item": [
+				{
+					"name": "!Token session termination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the application with all dependencies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 419\", function () {\r",
+									"    pm.response.to.have.status(419);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Version is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"error\", \"The JWS token is not up to date.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept-charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/Restapp/1.1.3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"Restapp",
+								"1.1.3"
 							]
 						}
 					},
