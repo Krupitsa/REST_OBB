@@ -457,7 +457,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"name\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"title\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -521,7 +521,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"name\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"title\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -618,7 +618,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"name\", \"Панель 100\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Панель 100\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -769,7 +769,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -829,7 +829,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"name\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -869,7 +869,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"name\", \"Гвоздь 1000-1\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-1\");\r",
 									"});\r",
 									"\r",
 									"//pm.test(\"Mnemo is true\", function () {\r",
@@ -942,7 +942,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"name\", \"Гвоздь 1000-2\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-2\");\r",
 									"});"
 								],
 								"type": "text/javascript"
