@@ -2626,7 +2626,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template",
+					"name": "Reading the template",
 					"event": [
 						{
 							"listen": "test",
@@ -2693,7 +2693,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template's group",
+					"name": "Reading the template's group",
 					"event": [
 						{
 							"listen": "test",
@@ -2760,7 +2760,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating a template",
+					"name": "Updating the template",
 					"event": [
 						{
 							"listen": "test",
@@ -2830,7 +2830,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating a template's group",
+					"name": "Updating the template's group",
 					"event": [
 						{
 							"listen": "test",
@@ -2901,7 +2901,7 @@
 					"response": []
 				},
 				{
-					"name": "Moving a template",
+					"name": "Moving the template",
 					"event": [
 						{
 							"listen": "test",
@@ -2975,7 +2975,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template",
+					"name": "Reading the template after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -3050,7 +3050,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template's group",
+					"name": "Reading the template's group after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -3121,7 +3121,7 @@
 					"response": []
 				},
 				{
-					"name": "Getting a list of template",
+					"name": "Getting the list of template",
 					"event": [
 						{
 							"listen": "test",
@@ -3188,7 +3188,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a template",
+					"name": "Delete the template",
 					"event": [
 						{
 							"listen": "test",
@@ -3256,7 +3256,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete a template's group",
+					"name": "Delete the template's group",
 					"event": [
 						{
 							"listen": "test",
@@ -3323,7 +3323,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template",
+					"name": "Reading the template after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -3386,7 +3386,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template's group",
+					"name": "Reading the template's group after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -3449,7 +3449,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading a template 1",
+					"name": "Reading the template 1 after delete",
 					"event": [
 						{
 							"listen": "test",

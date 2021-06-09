@@ -566,7 +566,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template after update",
+			"name": "Reading the template after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -641,7 +641,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template's group after update",
+			"name": "Reading the template's group after updating",
 			"event": [
 				{
 					"listen": "test",
