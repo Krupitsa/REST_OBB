@@ -2412,6 +2412,1108 @@
 			]
 		},
 		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Creating a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test\",\r\n    \"title\": \"test\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a template 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test1, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test1\",\r\n    \"title\": \"test1\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=testgroup, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"testgroup\",\r\n    \"title\": \"testgroup\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": [\r\n        \"test1\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"testgroup\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test\",\r\n    \"title\": \"test2\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": \r\n    [ ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"testgroup\",\r\n    \"title\": \"testgroup1\",\r\n    \"templateGroup\": true,\r\n    \"body\": null,\r\n    \"parentId\": \"test\",\r\n    \"childIdsCollection\": []\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template/rename",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Moving a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/move/test?parentId=testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"move",
+								"test"
+							],
+							"query": [
+								{
+									"key": "parentId",
+									"value": "testgroup"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"test\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"test2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ParentId is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"parentId\", \"testgroup\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"testgroup\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"testgroup1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading a template 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Documents",
 			"item": [
 				{
