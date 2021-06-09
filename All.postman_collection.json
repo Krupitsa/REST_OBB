@@ -2626,7 +2626,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template",
+					"name": "Getting the template",
 					"event": [
 						{
 							"listen": "test",
@@ -2693,7 +2693,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template's group",
+					"name": "Getting the template's group",
 					"event": [
 						{
 							"listen": "test",
@@ -2975,7 +2975,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template after updating",
+					"name": "Getting the template after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -3050,7 +3050,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template's group after updating",
+					"name": "Getting the template's group after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -3323,7 +3323,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template after delete",
+					"name": "Getting the template after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -3386,7 +3386,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template's group after delete",
+					"name": "Getting the template's group after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -3449,7 +3449,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the template 1 after delete",
+					"name": "Getting  the template 1 after delete",
 					"event": [
 						{
 							"listen": "test",
