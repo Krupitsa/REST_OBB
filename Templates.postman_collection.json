@@ -566,7 +566,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template",
+			"name": "Reading the template after update",
 			"event": [
 				{
 					"listen": "test",
@@ -641,7 +641,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template's group",
+			"name": "Reading the template's group after update",
 			"event": [
 				{
 					"listen": "test",
@@ -914,7 +914,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template",
+			"name": "Reading the template after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -977,7 +977,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template's group",
+			"name": "Reading the template's group after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -1040,7 +1040,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the template 1",
+			"name": "Reading the template 1 after delete",
 			"event": [
 				{
 					"listen": "test",
