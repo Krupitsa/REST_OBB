@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dacab4e4-2368-4544-a1f3-dd79235be1fa",
+		"_postman_id": "6abef984-c745-492f-8466-85523fbb9115",
 		"name": "All",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -537,6 +537,134 @@
 					"response": []
 				},
 				{
+					"name": "Creating a catalog's record(ForFilter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.Kaznacheiistva\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"11\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"11\",\"mnemo\":\"tap.Kaznacheiistva\",\"code\":\"123\",\"title\":\"Казначейство\",\"requisites\":[]}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a catalog's record(Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BankovskieIKaznacheiiskieScheta\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"10\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n    {\"id\":\"10\",\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta\",\"code\":\"0123\",\"title\":\"Счет в банке\",\"requisites\":[{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.FilialBanka\",\"value\":\" Филиал банка\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.INN\",\"value\":\"7812012312\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"value\":\"111\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.V\",\"value\":\"другом банке\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Naimenovanie\",\"value\":\"ООО РОМАШКА\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.KPP\",\"value\":\"0121345678\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"value\":\"В кредитной организации\"}]}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Reading  the catalog's record",
 					"event": [
 						{
@@ -723,6 +851,77 @@
 								{
 									"key": "limit",
 									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Page reading catalog's records(Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog/list/tap.BankovskieIKaznacheiiskieScheta?filter=[{\"mnemo\":\"code\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0123\"],\"type\":0}},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"restriction\":{\"valueType\":\"enums\",\"kindOf\":1,\"values\":[\"В кредитной организации\"],\"type\":0}}, {\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"111\"],\"type\":0}}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"list",
+								"tap.BankovskieIKaznacheiiskieScheta"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "[{\"mnemo\":\"code\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0123\"],\"type\":0}},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"restriction\":{\"valueType\":\"enums\",\"kindOf\":1,\"values\":[\"В кредитной организации\"],\"type\":0}}, {\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"111\"],\"type\":0}}]"
 								}
 							]
 						}
@@ -1077,6 +1276,100 @@
 								"catalog",
 								"catalog.goods.3",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the catalog's record(ForFilter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/catalog/tap.BankovskieIKaznacheiiskieScheta/10",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"tap.BankovskieIKaznacheiiskieScheta",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the catalog's record(ForFilter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/catalog/tap.Kaznacheiistva/11",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"tap.Kaznacheiistva",
+								"11"
 							]
 						}
 					},
@@ -3577,6 +3870,126 @@
 					"response": []
 				},
 				{
+					"name": "Creating a document (Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1234\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Executing document (Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.1024\",\"operationTitle\":\"activate\",\"operationParameters\":{\"entityId\":\"tap.BuhgalterskayaSpravka\",\"documentDbId\":\"1234\"}}"
+						},
+						"url": {
+							"raw": "{{host}}/script/execute",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"script",
+								"execute"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Getting the document",
 					"event": [
 						{
@@ -3685,6 +4098,71 @@
 								"rest",
 								"document",
 								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of documents (Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/list/tap.BuhgalterskayaSpravka?filter=[{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[true],\"type\":0}},{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"1234\"],\"type\":0}}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"list",
+								"tap.BuhgalterskayaSpravka"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "[{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[true],\"type\":0}},{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"1234\"],\"type\":0}}]"
+								}
 							]
 						}
 					},
@@ -3854,6 +4332,58 @@
 								"rest",
 								"document",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the document (Filter)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1234",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1234"
 							]
 						}
 					},
