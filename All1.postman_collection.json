@@ -1,0 +1,4832 @@
+{
+	"info": {
+		"_postman_id": "dacab4e4-2368-4544-a1f3-dd79235be1fa",
+		"name": "All",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Token issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable (\"token\", jsonData.token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Token include correct string\", function () {\r",
+									"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
+						},
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token validation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 202\", function () {\r",
+									"    pm.response.to.have.status(202);\r",
+									"});\r",
+									"\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.test(\"Username is true\", function () {\r",
+									"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
+									"});\r",
+									"pm.test(\"Role is true\", function () {\r",
+									"    pm.expect(jsonData.roles).to.eql([\"User\"]);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth/validate?token={{token}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "{{token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signature certificate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Cookie JSESSIONID is true\", () => {\r",
+									"    pm.expect(pm.cookies.has('JSESSIONID')).to.be.true;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains string\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"Westeros\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth/certificate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth",
+								"certificate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Token renewal",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body include correct string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+									"}); "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "Getting a list of applications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept-charset",
+								"value": "utf-8",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the application with all dependencies Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list === 1\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept-charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/Restapp/1.1.3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"Restapp",
+								"1.1.3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the latest version of the application",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"name\", \"Restapp\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Version is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"version\", \"1.1.3\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/version?mnemo=Restapp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"version"
+							],
+							"query": [
+								{
+									"key": "mnemo",
+									"value": "Restapp"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalogs",
+			"item": [
+				{
+					"name": "Creating a catalog's record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"title\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a  catalog's record with-parent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"title\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading  the catalog's record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record with-parent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Панель 100\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.3",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Page reading catalog's records",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"list",
+								"catalog.goods.1"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating  the catalog's record Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating  the catalog's record with parent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-1\");\r",
+									"});\r",
+									"\r",
+									"//pm.test(\"Mnemo is true\", function () {\r",
+									"   // var jsonData = pm.response.json();\r",
+									"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
+									"//});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record with parent after update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Name is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-2\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.3",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the catalog's record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the catalog's record with-parent",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.3",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record with parent after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"catalog.goods.3",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Constants",
+			"item": [
+				{
+					"name": "Creating a constant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"sklad.proizvodstva.noDate1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDat is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"periodicalDate\", \"null\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"//pm.test(\"Mnemo is true\", function () {\r",
+									"//    var jsonData = pm.response.json();\r",
+									"//    pm.expect(jsonData.mnemo).to.include(\"sklad.proizvodstva\");\r",
+									"//});\r",
+									"\r",
+									"//pm.test(\"periodicalDate is null\", function () {\r",
+									"//    var jsonData = pm.response.json();\r",
+									"//    pm.expect(jsonData.periodicalDate).to.eql(\"null\");\r",
+									"//});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a constant with date dd.MM.yyyy'T'HH:mm:ss",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"buh.calendar\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDate is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"periodicalDate\", \"Tue Dec 01 13:11:40 MSK 2020\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"sklad calendar \"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a constant with date  UTC+0 milliseconds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"buh.calendar2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDat is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"periodicalDate\", \"Wed Nov 21 07:38:20 MSK 2001\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar \"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of constants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 3 records\"] = list >= 3\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is true\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"sklad.proizvodstva.noDate1\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"sklad.proizvodstva.noDate1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "01.12.2020T13:11:40"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date UTC+0 milliseconds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar2"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "1006317500000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the constant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the constant with date dd.MM.yyyy'T'HH:mm:ss",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"sklad calendar1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the constant with date UTC+0 milliseconds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"sklad.proizvodstva.noDate1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva 2\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"sklad.proizvodstva.noDate1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad calendar1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "01.12.2020T13:11:40"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date UTC+0 milliseconds after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"PeriodicalDate is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad calendar2\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar2"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "1006317500000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the constant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"sklad.proizvodstva.noDate1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the constant with date date dd.MM.yyyy'T'HH:mm:ss",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\"); \r",
+									"});\r",
+									"  \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "01.12.2020T13:11:40"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the constant with date UTC+0 milliseconds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\"); \r",
+									"});\r",
+									"  \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar2"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "1006317500000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"sklad.proizvodstva.noDate1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "01.12.2020T13:11:40"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the constant with date UTC+0 milliseconds after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "accept-charset",
+								"type": "text",
+								"value": "utf-8"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant",
+								"buh.calendar2"
+							],
+							"query": [
+								{
+									"key": "periodicalDate",
+									"value": "1006317500000"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Creating a template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test\",\r\n    \"title\": \"test\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a template 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test1, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test1\",\r\n    \"title\": \"test1\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": null\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=testgroup, appMnemo=Restapp}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"testgroup\",\r\n    \"title\": \"testgroup\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": [\r\n        \"test1\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"test\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"testgroup\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"test\",\r\n    \"title\": \"test2\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": \r\n    [ ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"templateId\": \"testgroup\",\r\n    \"title\": \"testgroup1\",\r\n    \"templateGroup\": true,\r\n    \"body\": null,\r\n    \"parentId\": \"test\",\r\n    \"childIdsCollection\": []\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/template/rename",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"rename"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Moving the template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/move/test?parentId=testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"move",
+								"test"
+							],
+							"query": [
+								{
+									"key": "parentId",
+									"value": "testgroup"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"test\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"test2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ParentId is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"parentId\", \"testgroup\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template's group after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"templateId\", \"testgroup\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"testgroup1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the list of template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the template",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the template's group",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the template's group after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/testgroup",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"testgroup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting  the template 1 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/template/test",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"template",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Creating a document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of documents",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.2\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the document after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the document after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operations",
+			"item": [
+				{
+					"name": "Creating an operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": true,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"summa\": \"22\";\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Operation is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"operation\", true);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of operations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+									"\r",
+									"//pm.test(\"Id is true\", function () {\r",
+									"//    var jsonData = pm.response.json();\r",
+									" //   pm.expect(jsonData.records[1].id).to.eql(\"1\");\r",
+									"//});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": true,\r\n  \"comment\": \"comment1\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"summa\": null;\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1-2\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1-2\"},\r\n        {\"name\":\"name2\",\"value\":\"value2-2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"11.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the operation after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Operation is true\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"operation\", true);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the operation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the operation after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posting records",
+			"item": [
+				{
+					"name": "Creating a posting record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/posting",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a list of posting records",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"responseJson = JSON.parse(responseBody);\r",
+									"var list = responseJson.records.length;\r",
+									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the posting record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/posting",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record after updating",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"value\", \"2.00\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the posting record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/rest/posting/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Token session",
+			"item": [
+				{
+					"name": "!Token session termination",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/authentication-web/api/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authentication-web",
+								"api",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the application with all dependencies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 419\", function () {\r",
+									"    pm.response.to.have.status(419);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Version is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"error\", \"The JWS token is not up to date.\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "accept-charset",
+								"value": "utf-8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/app/Restapp/1.1.3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"app",
+								"Restapp",
+								"1.1.3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
