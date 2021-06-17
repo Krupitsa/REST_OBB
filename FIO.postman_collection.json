@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "47fb5f23-a986-434c-abc4-4872b77e417f",
+		"name": "FIO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FIO user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"userName is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"userName\", \"Тушканова Людмила Валерьевна\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostTest}}/users-database-web/users/tushkanova",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"users-database-web",
+						"users",
+						"tushkanova"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

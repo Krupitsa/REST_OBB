@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6abef984-c745-492f-8466-85523fbb9115",
+		"_postman_id": "ca063705-a4e0-47bc-8743-63884efac679",
 		"name": "All",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -929,7 +929,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating  the catalog's record Copy",
+					"name": "Updating  the catalog's record",
 					"event": [
 						{
 							"listen": "test",
@@ -5240,6 +5240,57 @@
 								"rest",
 								"posting",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FIO",
+			"item": [
+				{
+					"name": "FIO user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"userName is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"userName\", \"Тушканова Людмила Валерьевна\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users-database-web/users/tushkanova",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users-database-web",
+								"users",
+								"tushkanova"
 							]
 						}
 					},
