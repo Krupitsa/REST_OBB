@@ -195,8 +195,7 @@
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"body": {
@@ -828,8 +827,7 @@
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					}
 				],
 				"url": {

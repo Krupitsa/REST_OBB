@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "4f7cc4a9-04c6-4e2c-9f43-96487f790eb3",
+		"_postman_id": "9a3dbfeb-8f31-4739-9b9d-e25efb276064",
 		"name": "Documents",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Creating a document",
+			"name": "Creating a document 0002 (Filter)",
 			"event": [
 				{
 					"listen": "test",
@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=0002\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -46,11 +46,43 @@
 						"key": "content-type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+					"raw": "/*{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}*/\r\n{\"id\":\"0002\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0011\",\"date\":\"1624366626622\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"описание\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"001100\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":\"500\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu_analytics_0\",\"value\":\"ed6249ae-77b1-43b6-a63a-cadfecf2856a\"}]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu_analytics_0\",\"value\":\"e9a14a1d-ff4a-4433-88e2-6c0d24237822\"}]}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/document",
@@ -66,7 +98,7 @@
 			"response": []
 		},
 		{
-			"name": "Creating a document (Filter)",
+			"name": "Creating a document 0003 (Filter)",
 			"event": [
 				{
 					"listen": "test",
@@ -77,7 +109,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1234\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=0003\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -106,11 +138,43 @@
 						"key": "content-type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}"
+					"raw": "/*{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}*/\r\n{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0011\",\"date\":\"1624366626622\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"описание\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"001100\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":\"500\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu_analytics_0\",\"value\":\"ed6249ae-77b1-43b6-a63a-cadfecf2856a\"}]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu_analytics_0\",\"value\":\"e9a14a1d-ff4a-4433-88e2-6c0d24237822\"}]}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/document",
@@ -120,66 +184,6 @@
 					"path": [
 						"rest",
 						"document"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Executing document (Filter)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.1024\",\"operationTitle\":\"activate\",\"operationParameters\":{\"entityId\":\"tap.BuhgalterskayaSpravka\",\"documentDbId\":\"1234\"}}"
-				},
-				"url": {
-					"raw": "{{hostTest}}/script/execute",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"script",
-						"execute"
 					]
 				}
 			},
@@ -197,11 +201,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"0002\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskayaSpravka\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -225,17 +229,27 @@
 						"key": "accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/1",
+					"raw": "{{hostTest}}/rest/document/0002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"0002"
 					]
 				}
 			},
@@ -284,10 +298,14 @@
 						"type": "text"
 					},
 					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -299,71 +317,6 @@
 						"rest",
 						"document",
 						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Getting a list of documents (Filter)",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"responseJson = JSON.parse(responseBody);\r",
-							"var list = responseJson.records.length;\r",
-							"tests[\"Validate service retuns 1 records\"] = list >= 1"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "{{hostTest}}/rest/document/list/tap.BuhgalterskayaSpravka?filter=[{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[true],\"type\":0}},{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"1234\"],\"type\":0}}]",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"rest",
-						"document",
-						"list",
-						"tap.BuhgalterskayaSpravka"
-					],
-					"query": [
-						{
-							"key": "filter",
-							"value": "[{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[true],\"type\":0}},{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"1234\"],\"type\":0}}]"
-						}
 					]
 				}
 			},
@@ -410,11 +363,21 @@
 						"key": "content-type",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": false,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1-2\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1-2\"},\r\n        {\"name\":\"name2\",\"value\":\"value2-2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"11.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+					"raw": "{\"id\":\"0002\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0011\",\"date\":\"1624366626622\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"описание\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"001100\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":\"600\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu_analytics_0\",\"value\":\"ed6249ae-77b1-43b6-a63a-cadfecf2856a\"}]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu_analytics_0\",\"value\":\"e9a14a1d-ff4a-4433-88e2-6c0d24237822\"}]}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/document/",
@@ -442,11 +405,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"0002\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskayaSpravka\");\r",
 							"});\r",
 							""
 						],
@@ -471,24 +434,209 @@
 						"key": "accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/1",
+					"raw": "{{hostTest}}/rest/document/0002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"0002"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete the document",
+			"name": "Executing document (Filter)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.1122\",\"operationTitle\":\"activate\",\"operationParameters\":{\"entityId\":\"tap.BuhgalterskayaSpravka\",\"documentDbId\":\"0003\"}}"
+				},
+				"url": {
+					"raw": "{{hostTest}}/script/execute",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"script",
+						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of documents (Filter)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list >= 1"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/document/list/tap.BuhgalterskayaSpravka?filter=[{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0011\"],\"type\":0}},{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[false],\"type\":0}}]",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"document",
+						"list",
+						"tap.BuhgalterskayaSpravka"
+					],
+					"query": [
+						{
+							"key": "DFE-APP-MNEMO",
+							"value": "Restapp",
+							"disabled": true
+						},
+						{
+							"key": "DFE-APP-VER",
+							"value": "1.1.3",
+							"disabled": true
+						},
+						{
+							"key": "filter",
+							"value": "[{\"mnemo\":\"number\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0011\"],\"type\":0}},{\"mnemo\":\"executed\",\"restriction\":{\"valueType\":\"primitive.boolean\",\"kindOf\":0,\"values\":[false],\"type\":0}}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the document 0002 (Filter)",
 			"event": [
 				{
 					"listen": "test",
@@ -523,24 +671,46 @@
 						"key": "Accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/1",
+					"raw": "{{hostTest}}/rest/document/0002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"1"
+						"0002"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete the document (Filter)",
+			"name": "Delete the document 0003 (Filter)",
 			"event": [
 				{
 					"listen": "test",
@@ -575,17 +745,39 @@
 						"key": "Accept",
 						"value": "application/json",
 						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.1122",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/1234",
+					"raw": "{{hostTest}}/rest/document/0003",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"1234"
+						"0003"
 					]
 				}
 			},
@@ -622,6 +814,16 @@
 					{
 						"key": "accept",
 						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
 						"type": "text"
 					}
 				],

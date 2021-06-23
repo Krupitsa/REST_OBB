@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=1\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -46,6 +46,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -106,6 +116,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -165,6 +185,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.13",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -222,6 +252,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -286,6 +326,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -333,7 +383,18 @@
 					]
 				},
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "{{hostTest}}/rest/posting/1",
 					"host": [
@@ -386,6 +447,16 @@
 						"key": "content-type",
 						"type": "text",
 						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text"
 					}
 				],
 				"url": {
