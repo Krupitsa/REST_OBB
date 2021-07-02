@@ -17,7 +17,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=0002\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"0002\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"appMnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"appMnemo\", \"Restapp\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -109,7 +113,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=0003\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"0003\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"appMnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"appMnemo\", \"Restapp\");\r",
 							"});"
 						],
 						"type": "text/javascript"
