@@ -2461,7 +2461,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=testgroup, appMnemo=Restapp}\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=testgroup\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2531,7 +2531,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test, appMnemo=Restapp}\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=test\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2601,7 +2601,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"TransactionTemplatePK{Id=test1, appMnemo=Restapp}\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=test1\");\r",
 									"});"
 								],
 								"type": "text/javascript"
