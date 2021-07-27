@@ -1,0 +1,495 @@
+{
+	"info": {
+		"_postman_id": "60bb9799-7630-4ca4-99d5-7998cc1d6ffd",
+		"name": "Algorithm",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Creating a algorithm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=algorithm\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"templateId\": \"algorithm\",\r\n    \"title\": \"algorithm\",\r\n    \"body\": null,\r\n    \"docMnemo\": \"tap.BuhgalterskayaSpravka1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/template",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the algorithm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"templateId\", \"algorithm\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/template/algorithm",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template",
+						"algorithm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating the algoriyhm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"templateId\": \"algorithm\",\r\n    \"title\": \"algorithm1\",\r\n    \"body\": null,\r\n    \"docMnemo\": \"tap.BuhgalterskayaSpravka1\"\r\n}"
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/template",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the algorithm after updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"templateId\", \"algorithm\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Title is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"algorithm1\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/template/algorithm",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template",
+						"algorithm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of atgorithm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.length;\r",
+							"tests[\"Validate service retuns >=2 records\"] = list >= 2"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/template/listAlgorithms?docMnemo=tap.BuhgalterskayaSpravka1",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template",
+						"listAlgorithms"
+					],
+					"query": [
+						{
+							"key": "docMnemo",
+							"value": "tap.BuhgalterskayaSpravka1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete the algorithm",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/template/algorithm",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template",
+						"algorithm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the algorithm after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/template/test",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"template",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
