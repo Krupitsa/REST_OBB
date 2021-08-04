@@ -86,7 +86,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "/*{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}*/\r\n{\"id\":\"0002\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0011\",\"date\":\"1624366626622\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"описание\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"001100\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":\"500\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu_analytics_0\",\"value\":\"ed6249ae-77b1-43b6-a63a-cadfecf2856a\"}]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu_analytics_0\",\"value\":\"e9a14a1d-ff4a-4433-88e2-6c0d24237822\"}]}]}"
+					"raw": "{\"id\":\"0002\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0003\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/document",
@@ -117,7 +117,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"appMnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"appMnemo\", \"Restapp\");\r",
+							"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -166,23 +166,13 @@
 					},
 					{
 						"key": "DFE-APP-VER",
-						"value": "1.1.1122",
-						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
+						"value": "1.1.1906",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "/*{\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"1234\", \"id\": \"1234\",\"date\":\"1623762355500\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"Проводка для фильтра\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"операция\",\"documentTableRequisiteProps\":[]},\r\n{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000000100000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0a8dc596-2e97-4ebb-8279-809734e1&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":100,\"documentTableRequisiteProps\":[]}]}*/\r\n{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0011\",\"date\":\"1624366626622\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"описание\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"001100\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":\"500\",\"documentTableRequisiteProps\":[]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu_analytics_0\",\"value\":\"ed6249ae-77b1-43b6-a63a-cadfecf2856a\"}]},{\"recId\":\"0b38fc14-0ee6-4974-8a4d-948c61a4&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu_analytics_0\",\"value\":\"e9a14a1d-ff4a-4433-88e2-6c0d24237822\"}]}]}"
+					"raw": "{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0003\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/document",
@@ -537,7 +527,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.1122\",\"operationTitle\":\"activate\",\"operationParameters\":{\"entityId\":\"tap.BuhgalterskayaSpravka\",\"documentDbId\":\"0003\"}}"
+					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.1906\",\"operationTitle\":\"activate\",\"operationParameters\":{\"entityId\":\"tap.BuhgalterskayaSpravka\",\"documentDbId\":\"0003\"}}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/script/execute",
