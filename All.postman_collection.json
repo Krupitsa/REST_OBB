@@ -420,11 +420,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -457,17 +457,24 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"title\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+							"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -494,11 +501,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -531,165 +538,24 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"title\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
-						},
-						"url": {
-							"raw": "{{host}}/rest/catalog",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Creating a catalog's record(ForFilter)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.Kaznacheiistva\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"11\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-MNEMO",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-VER",
-								"value": "1.1.3",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"11\",\"mnemo\":\"tap.Kaznacheiistva\",\"code\":\"123\",\"title\":\"Казначейство\",\"requisites\":[]}"
-						},
-						"url": {
-							"raw": "{{host}}/rest/catalog",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"catalog"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Creating a catalog's record(Filter)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(201);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BankovskieIKaznacheiiskieScheta\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"10\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-MNEMO",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-VER",
-								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n    {\"id\":\"10\",\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta\",\"code\":\"0123\",\"title\":\"Счет в банке\",\"requisites\":[{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.FilialBanka\",\"value\":\" Филиал банка\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.INN\",\"value\":\"7812012312\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"value\":\"111\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.V\",\"value\":\"другом банке\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Naimenovanie\",\"value\":\"ООО РОМАШКА\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.KPP\",\"value\":\"0121345678\"},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"value\":\"В кредитной организации\"}]}"
+							"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -716,11 +582,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -753,24 +619,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.1",
-								"1"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"001"
 							]
 						}
 					},
@@ -788,16 +661,13 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 									"});\r",
-									"\r",
-									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"Панель 100\");\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -829,24 +699,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.3",
-								"2"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"002"
 							]
 						}
 					},
@@ -894,16 +771,23 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
+							"raw": "{{host}}/rest/catalog/list/tap.BlankiStrogoiiOtchetnosti?start=0&limit=3",
 							"host": [
 								"{{host}}"
 							],
@@ -911,7 +795,7 @@
 								"rest",
 								"catalog",
 								"list",
-								"catalog.goods.1"
+								"tap.BlankiStrogoiiOtchetnosti"
 							],
 							"query": [
 								{
@@ -921,87 +805,6 @@
 								{
 									"key": "limit",
 									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Page reading catalog's records(Filter)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 201\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"responseJson = JSON.parse(responseBody);\r",
-									"var list = responseJson.records.length;\r",
-									"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-MNEMO",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-VER",
-								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{host}}/rest/catalog/list/tap.BankovskieIKaznacheiiskieScheta?filter=[{\"mnemo\":\"code\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0123\"],\"type\":0}},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"restriction\":{\"valueType\":\"enums\",\"kindOf\":1,\"values\":[\"В кредитной организации\"],\"type\":0}}, {\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"111\"],\"type\":0}}]",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"catalog",
-								"list",
-								"tap.BankovskieIKaznacheiiskieScheta"
-							],
-							"query": [
-								{
-									"key": "filter",
-									"value": "[{\"mnemo\":\"code\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0123\"],\"type\":0}},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"restriction\":{\"valueType\":\"enums\",\"kindOf\":1,\"values\":[\"В кредитной организации\"],\"type\":0}}, {\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"111\"],\"type\":0}}]"
 								}
 							]
 						}
@@ -1048,17 +851,24 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция1\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1118,17 +928,24 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+							"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция2\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1160,21 +977,20 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-1\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Квитанция1\");\r",
 									"});\r",
 									"\r",
-									"//pm.test(\"Mnemo is true\", function () {\r",
-									"   // var jsonData = pm.response.json();\r",
-									"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
-									"//});\r",
+									" pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
+									"});\r",
 									"\r",
 									""
 								],
@@ -1208,24 +1024,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.1",
-								"1"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"001"
 							]
 						}
 					},
@@ -1243,15 +1066,15 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-2\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Квитанция2\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1284,24 +1107,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.3",
-								"2"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"002"
 							]
 						}
 					},
@@ -1342,24 +1172,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.1",
-								"1"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"001"
 							]
 						}
 					},
@@ -1400,140 +1237,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"catalog",
-								"catalog.goods.3",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete the catalog's record(ForFilter)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.body(\"\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
+								"type": "text",
+								"disabled": true
+							},
 							{
 								"key": "DFE-APP-MNEMO",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-VER",
-								"value": "1.1.3",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BankovskieIKaznacheiiskieScheta/10",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BankovskieIKaznacheiiskieScheta",
-								"10"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete the catalog's record(ForFilter)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.body(\"\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "DFE-APP-MNEMO",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE-APP-VER",
-								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}/rest/catalog/tap.Kaznacheiistva/11",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"catalog",
-								"tap.Kaznacheiistva",
-								"11"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"002"
 							]
 						}
 					},
@@ -1581,24 +1309,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.1/1",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.1",
-								"1"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"001"
 							]
 						}
 					},
@@ -1646,24 +1381,31 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/catalog.goods.3/2",
+							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"catalog.goods.3",
-								"2"
+								"tap.BlankiStrogoiiOtchetnosti",
+								"002"
 							]
 						}
 					},
@@ -1721,11 +1463,18 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -1759,6 +1508,12 @@
 									"    pm.expect(jsonData.mnemo).to.eql(\"sklad.proizvodstva.noDate1\");\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva\");\r",
+									"});\r",
+									"\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -1791,109 +1546,38 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"constant",
-								"sklad.proizvodstva.noDate1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"PeriodicalDate is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
 								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "accept-charset",
-								"type": "text",
-								"value": "utf-8"
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Mnemo",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE_APP_VER",
-								"value": "1.1.3",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1/82a200dc-b5fc-46e2-8625-48d30e5cafec",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"constant",
-								"buh.calendar"
-							],
-							"query": [
-								{
-									"key": "periodicalDate",
-									"value": "01.12.2020T13:11:40"
-								}
+								"sklad.proizvodstva.noDate1",
+								"82a200dc-b5fc-46e2-8625-48d30e5cafec"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Reading the constant with date UTC+0 milliseconds",
+					"name": "Reading the constant with date",
 					"event": [
 						{
 							"listen": "test",
@@ -1911,6 +1595,11 @@
 									"pm.test(\"PeriodicalDate is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Value is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad calendar\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1943,29 +1632,31 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"raw": "{{host}}/rest/constant/buh.calendar2/98bdea99-8cac-4a7f-ba09-96db054dcc7b",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"constant",
-								"buh.calendar2"
-							],
-							"query": [
-								{
-									"key": "periodicalDate",
-									"value": "1006317500000"
-								}
+								"buh.calendar2",
+								"98bdea99-8cac-4a7f-ba09-96db054dcc7b"
 							]
 						}
 					},
@@ -2017,17 +1708,24 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 2\"\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"sklad.proizvodstva.noDate1\",\r\n    \"id\": \"82a200dc-b5fc-46e2-8625-48d30e5cafec\",\r\n    \"periodicalDate\": null,\r\n    \"value\": \"sklad proizvodstva 1\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2048,7 +1746,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating the constant with date dd.MM.yyyy'T'HH:mm:ss",
+					"name": "Updating the constant with date",
 					"event": [
 						{
 							"listen": "test",
@@ -2094,94 +1792,24 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"sklad calendar1\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/rest/constant",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"constant"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Updating the constant with date UTC+0 milliseconds",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Body is empty\", function () {\r",
-									"    pm.response.to.have.body(\"\");\r",
-									"});\r",
-									"\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [
-							{
-								"key": "accept",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "content-type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Mnemo",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE_APP_VER",
-								"value": "1.1.3",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar2\"\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"buh.calendar2\",\r\n    \"id\": \"98bdea99-8cac-4a7f-ba09-96db054dcc7b\",\r\n    \"periodicalDate\": \"01.07.2020T13:11:40\",\r\n    \"value\": \"sklad calendar 1\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2219,8 +1847,13 @@
 									"\r",
 									"pm.test(\"Value is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva 2\");\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva 1\");\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
+									"});\r",
+									"\r",
 									"\r",
 									""
 								],
@@ -2254,114 +1887,38 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"rest",
-								"constant",
-								"sklad.proizvodstva.noDate1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after updating",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"PeriodicalDate is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
-									"});\r",
-									"\r",
-									"pm.test(\"Value is correct\", function () {\r",
-									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.value).to.eql(\"sklad calendar1\");\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "accept",
 								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "accept-charset",
-								"type": "text",
-								"value": "utf-8"
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Mnemo",
-								"value": "Restapp",
-								"type": "text"
-							},
-							{
-								"key": "DFE_APP_VER",
-								"value": "1.1.3",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+							"raw": "{{host}}/rest/constant/sklad.proizvodstva.noDate1/82a200dc-b5fc-46e2-8625-48d30e5cafec",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"constant",
-								"buh.calendar"
-							],
-							"query": [
-								{
-									"key": "periodicalDate",
-									"value": "01.12.2020T13:11:40"
-								}
+								"sklad.proizvodstva.noDate1",
+								"82a200dc-b5fc-46e2-8625-48d30e5cafec"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Reading the constant with date UTC+0 milliseconds after updating",
+					"name": "Reading the constant with date  after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -2383,7 +1940,7 @@
 									"\r",
 									"pm.test(\"Value is correct\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.value).to.eql(\"sklad calendar2\");\r",
+									"    pm.expect(jsonData.value).to.eql(\"sklad calendar 1\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2416,29 +1973,200 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE_APP_VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+							"raw": "{{host}}/rest/constant/buh.calendar2/98bdea99-8cac-4a7f-ba09-96db054dcc7b",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"constant",
-								"buh.calendar2"
-							],
-							"query": [
+								"buh.calendar2",
+								"98bdea99-8cac-4a7f-ba09-96db054dcc7b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the constant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
 								{
-									"key": "periodicalDate",
-									"value": "1006317500000"
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
 								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE_APP_VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mnemo\": \"sklad.proizvodstva.noDate1\",\r\n    \"id\": \"82a200dc-b5fc-46e2-8625-48d30e5cafec\",\r\n    \"periodicalDate\": null,\r\n    \"value\": \"sklad proizvodstva\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Updating the constant with date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE_APP_VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mnemo\": \"buh.calendar2\",\r\n    \"id\": \"98bdea99-8cac-4a7f-ba09-96db054dcc7b\",\r\n    \"periodicalDate\": \"01.07.2020T13:11:40\",\r\n    \"value\": \"sklad calendar\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/rest/constant",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"constant"
 							]
 						}
 					},
@@ -2461,7 +2189,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=testgroup\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=testgroup\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2494,11 +2222,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2531,7 +2266,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=test\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=test\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2564,11 +2299,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2601,7 +2343,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=test1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=test1\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2634,11 +2376,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2704,11 +2453,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2771,11 +2527,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2838,11 +2601,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2908,11 +2678,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -2987,11 +2764,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3058,11 +2842,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3125,11 +2916,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3192,13 +2990,19 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -3260,11 +3064,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3323,11 +3134,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3386,11 +3204,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3449,23 +3274,30 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/template/test",
+							"raw": "{{host}}/rest/template/test1",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"template",
-								"test"
+								"test1"
 							]
 						}
 					},
@@ -3488,7 +3320,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=algorithm\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=algorithm\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3521,11 +3353,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3596,11 +3435,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3663,11 +3509,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3737,11 +3590,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3772,7 +3632,7 @@
 									"\r",
 									"responseJson = JSON.parse(responseBody);\r",
 									"var list = responseJson.length;\r",
-									"tests[\"Validate service retuns >=2 records\"] = list >= 2"
+									"tests[\"Validate service retuns >=1 records\"] = list >= 1"
 								],
 								"type": "text/javascript"
 							}
@@ -3804,11 +3664,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3877,11 +3744,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3940,11 +3814,18 @@
 							{
 								"key": "DFE-APP-MNEMO",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
 								"type": "text"
 							}
 						],
@@ -3979,7 +3860,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"appMnemo is correct\", function () {\r",
@@ -4033,7 +3914,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": true,\r\n  \"comment\": \"comment\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"summa\": \"22\";\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1\"},\r\n        {\"name\":\"name2\",\"value\":\"value2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"10.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"00000000000000000030241000\",\"creditAccount\":\"00000000000000000030241000\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -4058,13 +3939,12 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"Operation\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Operation is true\", function () {\r",
@@ -4112,14 +3992,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/1",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"1"
+								"001"
 							]
 						}
 					},
@@ -4261,7 +4141,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"id\": \"1\",\r\n  \"title\": \"Приход\",\r\n  \"mnemo\": \"doc.goods.in1\",\r\n  \"date\": \"18.01.2021T11:59:22\",\r\n  \"number\":\"123456\",\r\n  \"executedDate\": \"18.01.2021T11:59:22\",\r\n  \"executed\": false,\r\n  \"operation\": true,\r\n  \"comment\": \"comment1\",\r\n  \"body\": \"a29udHVyLm9iYg==\",\r\n  \"childDocsCollections\": [],\r\n  \"documentPropsCollection\": [\r\n    {\"name\":\"prop.1\", \"value\":\"p1\"},\r\n    {\"name\":\"prop.2\", \"value\":\"p2\"}\r\n  ],\r\n  \"documentHeadDetailsCollection\": [\r\n    {\r\n      \"name\":\"head.1\", \r\n      \"value\":\"h1\",\r\n      \"documentHeadRequisiteProps\": [\r\n\t{\"name\":\"name1\",\"value\":\"value1-2\"}\r\n      ]\r\n    },\r\n    {\"name\":\"head.2\", \"value\":\"h2\"}\r\n  ],\r\n  \"documentTableDetailsCollection\": [\r\n    {\r\n      \"recId\": \"11.1\", \r\n      \"name\":\"rec.1\", \r\n      \"value\":\"r1\",\r\n      \"documentTableRequisiteProps\": [\r\n        {\"name\":\"name1\",\"value\":\"value1-2\"},\r\n        {\"name\":\"name2\",\"value\":\"value2-2\"}\r\n      ]\r\n    },\r\n    {\"recId\": \"11.2\", \"name\":\"rec.2\", \"value\":\"r2\"}\r\n  ],\r\n  \"postingCollection\": [\r\n    {\r\n      \"id\":\"11.1\",\r\n      \"debitAccount\":\"d1\",\r\n      \"creditAccount\":\"c1\",\r\n      \"value\":\"1.00\",\r\n      \"date\":\"18.01.2021T11:59:22\",\r\n      \"comment\": \"comment1\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.11\", \"value\":\"p11\"},\r\n        {\"name\":\"prop.12\", \"value\":\"p12\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n        {\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n      ]\r\n    },\r\n    {\r\n      \"id\":\"11.2\",\r\n      \"debitAccount\":\"d2\",\r\n      \"creditAccount\":\"c2\",\r\n      \"value\":\"2.00\",\r\n      \"date\":\"19.01.2021T11:59:22\",\r\n      \"comment\": \"comment2\",\r\n      \"postingPropsCollection\": [\r\n        {\"name\":\"prop.21\", \"value\":\"p21\"},\r\n        {\"name\":\"prop.22\", \"value\":\"p22\"}\r\n      ],\r\n      \"postingAnalyticsCollection\": [\r\n        {\"account\":\"account.21\", \"analyticsNumber\":\"an21\", \"analyticsValue\": \"av21\"},\r\n        {\"account\":\"account.22\", \"analyticsNumber\":\"an22\", \"analyticsValue\": \"av22\"}\r\n      ]\r\n    }\r\n  ]\r\n}"
+							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"Test1\",\"number\":\"5555\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"00000000000000000030241000\",\"creditAccount\":\"00000000000000000030241000\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document/",
@@ -4289,15 +4169,19 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"doc.goods.in1\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"Operation\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Operation is true\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"operation\", true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Test1\");\r",
 									"});\r",
 									""
 								],
@@ -4342,14 +4226,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/1",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"1"
+								"001"
 							]
 						}
 					},
@@ -4411,14 +4295,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/1",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"1"
+								"001"
 							]
 						}
 					},
@@ -4476,14 +4360,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/1",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"1"
+								"001"
 							]
 						}
 					},
@@ -4566,7 +4450,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0003\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
+							"raw": "{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0003\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\", \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -4790,7 +4674,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"00033\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
+							"raw": "{ \"id\": \"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"00022\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\", \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\", \"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document/",
@@ -4826,7 +4710,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Number is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"number\", \"00033\");\r",
+									"    pm.response.to.have.jsonBody(\"number\", \"00022\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
 									"});\r",
 									""
 								],
@@ -5175,7 +5063,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/posting",
@@ -5398,7 +5286,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment2\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+							"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment2\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/posting",
@@ -5430,6 +5318,10 @@
 									"\r",
 									"pm.test(\"Comment is correct\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"comment\", \"comment2\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5694,11 +5586,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5721,17 +5613,24 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org\",\r\n    \"accountsPlan\": \"cool plan\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+							"raw": "{\"id\":\"001\", \"mnemo\":\"tap.organization\",\"code\":\"003\",\"title\":\"Test\",\"accountsPlan\":\"\",\"requisites\":[{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"Test\"},{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5763,12 +5662,23 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
-									"});"
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.accountsPlan).to.include(\"{\\\"type\\\":{\\\"plantype\\\":\\\"BUDGET\\\",\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Title is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Test\");\r",
+									"});\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -5793,13 +5703,19 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5807,15 +5723,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/rest/organization/testOrg/org_db_id",
+							"raw": "{{host}}/rest/organization/tap.organization/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"organization",
-								"testOrg",
-								"org_db_id"
+								"tap.organization",
+								"001"
 							]
 						}
 					},
@@ -5856,17 +5772,24 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org1\",\r\n    \"accountsPlan\": \"cool plan\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods1\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+							"raw": "{\"id\":\"001\",\"mnemo\":\"tap.organization\",\"code\":\"002\",\"title\":\"Тест\",\"accountsPlan\":\"\",\"requisites\":[{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"},{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"ТестТест\"},{\"mnemo\":\"tap.organization.INN\",\"value\":\"34343334\"},{\"mnemo\":\"tap.organization.Biudzhet\",\"value\":\"07008a5d-e45e-4eb3-9013-f3f35adabae2\"},{\"mnemo\":\"tap.organization.KodGlavy\",\"value\":\"3ad146e1-2616-4ea9-b9cb-c8b9b783f65f\"},{\"mnemo\":\"tap.organization.Rukovoditel\",\"value\":\"7c4293e4-951b-4593-8bf5-093604a3903b\"},{\"mnemo\":\"tap.organization.Kassir\",\"value\":\"48b99f6f-2ea2-4a6e-9155-d192af53f051\"},{\"mnemo\":\"tap.organization.OKOPF\",\"value\":\"e57ccd0a-d9eb-455d-a256-9fda08114c9f\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5898,15 +5821,15 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Title is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"cool org1\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Тест\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -5932,13 +5855,19 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5946,15 +5875,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/rest/organization/testOrg/org_db_id",
+							"raw": "{{host}}/rest/organization/tap.organization/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"organization",
-								"testOrg",
-								"org_db_id"
+								"tap.organization",
+								"001"
 							]
 						}
 					},
@@ -5995,17 +5924,23 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org\",\r\n    \"accountsPlan\": \"cool plan1\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods11\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+							"raw": "{\"id\":\"001\",\"mnemo\":\"tap.organization\",\"code\":\"002\",\"title\":\"Тест\",\"accountsPlan\":\"cool plan\",\"requisites\":[{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"},{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"ТестТест\"},{\"mnemo\":\"tap.organization.INN\",\"value\":\"34343334\"},{\"mnemo\":\"tap.organization.Biudzhet\",\"value\":\"07008a5d-e45e-4eb3-9013-f3f35adabae2\"},{\"mnemo\":\"tap.organization.KodGlavy\",\"value\":\"3ad146e1-2616-4ea9-b9cb-c8b9b783f65f\"},{\"mnemo\":\"tap.organization.Rukovoditel\",\"value\":\"7c4293e4-951b-4593-8bf5-093604a3903b\"},{\"mnemo\":\"tap.organization.Kassir\",\"value\":\"48b99f6f-2ea2-4a6e-9155-d192af53f051\"},{\"mnemo\":\"tap.organization.OKOPF\",\"value\":\"e57ccd0a-d9eb-455d-a256-9fda08114c9f\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6038,15 +5973,15 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Title is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"accountsPlan\", \"cool plan1\");\r",
+									"    pm.response.to.have.jsonBody(\"accountsPlan\", \"cool plan\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -6072,13 +6007,19 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6086,15 +6027,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/rest/organization/testOrg/org_db_id",
+							"raw": "{{host}}/rest/organization/tap.organization/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"organization",
-								"testOrg",
-								"org_db_id"
+								"tap.organization",
+								"001"
 							]
 						}
 					},
@@ -6135,13 +6076,19 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6149,15 +6096,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/rest/organization/testOrg/org_db_id",
+							"raw": "{{host}}/rest/organization/tap.organization/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"organization",
-								"testOrg",
-								"org_db_id"
+								"tap.organization",
+								"001"
 							]
 						}
 					},
@@ -6197,13 +6144,19 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							},
 							{
 								"key": "DFE-APP-Ver",
 								"value": "1.1.3",
 								"type": "text",
 								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -6211,15 +6164,15 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/rest/organization/testOrg/org_db_id",
+							"raw": "{{host}}/rest/organization/tap.organization/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"organization",
-								"testOrg",
-								"org_db_id"
+								"tap.organization",
+								"001"
 							]
 						}
 					},

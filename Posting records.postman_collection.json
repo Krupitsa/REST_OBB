@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=Restapp, id=1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=1\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -50,17 +50,24 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/posting",
@@ -120,11 +127,18 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -189,11 +203,18 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.13",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -256,17 +277,24 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment2\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/posting",
@@ -298,6 +326,10 @@
 							"\r",
 							"pm.test(\"Value is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"value\", \"2.00\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Organization is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -330,11 +362,18 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -387,11 +426,18 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -451,23 +497,30 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/1",
+					"raw": "{{hostTest}}/rest/posting/2",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"posting",
-						"1"
+						"2"
 					]
 				}
 			},

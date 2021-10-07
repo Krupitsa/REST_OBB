@@ -69,17 +69,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 1\"\r\n}"
+					"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 1\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}\r\n\r\n"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/constant",
@@ -147,11 +154,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -225,11 +239,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -297,11 +318,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -335,6 +363,10 @@
 							"    pm.expect(jsonData.mnemo).to.eql(\"sklad.proizvodstva.noDate1\");\r",
 							"});\r",
 							"\r",
+							"pm.test(\"Value is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva\");\r",
+							"});\r",
 							""
 						],
 						"type": "text/javascript"
@@ -367,109 +399,38 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"rest",
-						"constant",
-						"sklad.proizvodstva.noDate1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"PeriodicalDate is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
 						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "accept-charset",
-						"type": "text",
-						"value": "utf-8"
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-MNEMO",
-						"value": "Restapp",
-						"type": "text"
-					},
-					{
-						"key": "DFE-APP-VER",
-						"value": "1.1.3",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1/82a200dc-b5fc-46e2-8625-48d30e5cafec",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"buh.calendar"
-					],
-					"query": [
-						{
-							"key": "periodicalDate",
-							"value": "01.12.2020T13:11:40"
-						}
+						"sklad.proizvodstva.noDate1",
+						"82a200dc-b5fc-46e2-8625-48d30e5cafec"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the constant with date UTC+0 milliseconds",
+			"name": "Reading the constant with date",
 			"event": [
 				{
 					"listen": "test",
@@ -487,6 +448,11 @@
 							"pm.test(\"PeriodicalDate is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.periodicalDate).to.eql(\"1006317500000\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Value is correct\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql(\"sklad calendar\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -519,29 +485,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2/98bdea99-8cac-4a7f-ba09-96db054dcc7b",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"buh.calendar2"
-					],
-					"query": [
-						{
-							"key": "periodicalDate",
-							"value": "1006317500000"
-						}
+						"buh.calendar2",
+						"98bdea99-8cac-4a7f-ba09-96db054dcc7b"
 					]
 				}
 			},
@@ -593,17 +561,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"mnemo\" : \"sklad.proizvodstva.noDate1\",\r\n\"value\" : \"sklad proizvodstva 2\"\r\n}",
+					"raw": "{\r\n    \"mnemo\": \"sklad.proizvodstva.noDate1\",\r\n    \"id\": \"82a200dc-b5fc-46e2-8625-48d30e5cafec\",\r\n    \"periodicalDate\": null,\r\n    \"value\": \"sklad proizvodstva 1\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -624,7 +599,7 @@
 			"response": []
 		},
 		{
-			"name": "Updating the constant with date dd.MM.yyyy'T'HH:mm:ss",
+			"name": "Updating the constant with date",
 			"event": [
 				{
 					"listen": "test",
@@ -670,94 +645,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\"mnemo\" : \"buh.calendar\",\r\n\"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n\"value\" : \"sklad calendar1\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{hostTest}}/rest/constant",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"rest",
-						"constant"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Updating the constant with date UTC+0 milliseconds",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body is empty\", function () {\r",
-							"    pm.response.to.have.body(\"\");\r",
-							"});\r",
-							"\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "PUT",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-MNEMO",
-						"value": "Restapp",
-						"type": "text"
-					},
-					{
-						"key": "DFE-APP-VER",
-						"value": "1.1.3",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"mnemo\" : \"buh.calendar2\",\r\n\"periodicalDate\" : \"1006317500000\",\r\n\"value\" : \"sklad calendar2\"\r\n}",
+					"raw": "{\r\n    \"mnemo\": \"buh.calendar2\",\r\n    \"id\": \"98bdea99-8cac-4a7f-ba09-96db054dcc7b\",\r\n    \"periodicalDate\": \"01.07.2020T13:11:40\",\r\n    \"value\": \"sklad calendar 1\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -795,7 +700,11 @@
 							"\r",
 							"pm.test(\"Value is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva 2\");\r",
+							"    pm.expect(jsonData.value).to.eql(\"sklad proizvodstva 1\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Organization is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
 							"});\r",
 							"\r",
 							""
@@ -830,114 +739,38 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"rest",
-						"constant",
-						"sklad.proizvodstva.noDate1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reading the constant with date dd.MM.yyyy'T'HH:mm:ss after updating",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.mnemo).to.eql(\"buh.calendar\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"PeriodicalDate is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.periodicalDate).to.eql(\"1606817500000\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Value is correct\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.value).to.eql(\"sklad calendar1\");\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{token}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
 						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "accept-charset",
-						"type": "text",
-						"value": "utf-8"
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-MNEMO",
-						"value": "Restapp",
-						"type": "text"
-					},
-					{
-						"key": "DFE-APP-VER",
-						"value": "1.1.3",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/buh.calendar?periodicalDate=01.12.2020T13:11:40",
+					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1/82a200dc-b5fc-46e2-8625-48d30e5cafec",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"buh.calendar"
-					],
-					"query": [
-						{
-							"key": "periodicalDate",
-							"value": "01.12.2020T13:11:40"
-						}
+						"sklad.proizvodstva.noDate1",
+						"82a200dc-b5fc-46e2-8625-48d30e5cafec"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the constant with date UTC+0 milliseconds after updating",
+			"name": "Reading the constant with date  after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -959,7 +792,7 @@
 							"\r",
 							"pm.test(\"Value is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.value).to.eql(\"sklad calendar2\");\r",
+							"    pm.expect(jsonData.value).to.eql(\"sklad calendar 1\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -992,29 +825,198 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/buh.calendar2?periodicalDate=1006317500000",
+					"raw": "{{hostTest}}/rest/constant/buh.calendar2/98bdea99-8cac-4a7f-ba09-96db054dcc7b",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"buh.calendar2"
-					],
-					"query": [
+						"buh.calendar2",
+						"98bdea99-8cac-4a7f-ba09-96db054dcc7b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating the constant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
 						{
-							"key": "periodicalDate",
-							"value": "1006317500000"
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
 						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mnemo\": \"sklad.proizvodstva.noDate1\",\r\n    \"id\": \"82a200dc-b5fc-46e2-8625-48d30e5cafec\",\r\n    \"periodicalDate\": null,\r\n    \"value\": \"sklad proizvodstva\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/constant",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"constant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Updating the constant with date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mnemo\": \"buh.calendar2\",\r\n    \"id\": \"98bdea99-8cac-4a7f-ba09-96db054dcc7b\",\r\n    \"periodicalDate\": \"01.07.2020T13:11:40\",\r\n    \"value\": \"sklad calendar\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/constant",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"constant"
 					]
 				}
 			},
@@ -1055,11 +1057,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -1122,6 +1131,11 @@
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -1189,6 +1203,11 @@
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -1254,11 +1273,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -1317,11 +1343,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -1386,11 +1419,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],

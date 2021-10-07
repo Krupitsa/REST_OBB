@@ -17,11 +17,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -54,23 +54,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
-					},
-					{
-						"key": "",
-						"value": "",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.1\",\r\n         \"id\" : \"1\",\r\n         \"code\" : \"000002\",\r\n         \"title\" : \"Гвоздь 100-2\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"100.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+					"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/catalog",
@@ -97,11 +98,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -134,17 +135,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n         \"mnemo\" : \"catalog.goods.3\",\r\n         \"id\" : \"2\",\r\n         \"code\" : \"000003\",\r\n         \"title\" : \"Панель 100\",\r\n         \"parentMnemo\" : \"catalog.goods.1\",\r\n         \"parentId\" : \"1\",\r\n         \"requisites\" : [\r\n             {\r\n                  \"mnemo\" : \"goods.price\",\r\n                  \"value\" : \"200.00\"\r\n             },\r\n             {\r\n                  \"mnemo\" : \"goods.nds\",\r\n                  \"value\" : \"25\"\r\n             }\r\n         ]\r\n}"
+					"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/catalog",
@@ -208,11 +216,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -282,11 +297,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -319,11 +341,15 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Organization is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"organizationRecId\", \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -356,24 +382,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.1",
-						"1"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"001"
 					]
 				}
 			},
@@ -391,15 +424,15 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Панель 100\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция\");\r",
 							"});\r",
 							""
 						],
@@ -433,24 +466,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.3",
-						"2"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"002"
 					]
 				}
 			},
@@ -469,7 +509,7 @@
 							"\r",
 							"pm.test(\"Id is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].id).to.eql(\"1\");\r",
+							"    pm.expect(jsonData.records[0].id).to.eql(\"002\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -502,16 +542,23 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/catalog.goods.1?start=0&limit=3",
+					"raw": "{{hostTest}}/rest/catalog/list/tap.BlankiStrogoiiOtchetnosti?start=0&limit=3",
 					"host": [
 						"{{hostTest}}"
 					],
@@ -519,7 +566,7 @@
 						"rest",
 						"catalog",
 						"list",
-						"catalog.goods.1"
+						"tap.BlankiStrogoiiOtchetnosti"
 					],
 					"query": [
 						{
@@ -588,7 +635,14 @@
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -656,17 +710,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"catalog.goods.1\",\r\n    \"id\": \"1\",\r\n    \"parentMnemo\": null,\r\n    \"parentId\": null,\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+					"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция1\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -726,17 +787,24 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"catalog.goods.3\",\r\n    \"id\": \"2\",\r\n    \"parentMnemo\": \"catalog.goods.1\",\r\n    \"parentId\": \"1\",\r\n    \"code\": \"000002\",\r\n    \"title\": \"Гвоздь 1000-2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"goods.nds9\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds8\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds7\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds6\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds5\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },{\r\n            \"mnemo\": \"goods.nds4\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds3\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds2\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        },\r\n        {\r\n            \"mnemo\": \"goods.nds1\",\r\n            \"periodicalDate\": null,\r\n            \"value\": \"25\",\r\n            \"lebel\": \"5773b854-7a16-4d5a-8af4-7aed1b2651b3\"\r\n        }\r\n\r\n    ]\r\n}",
+					"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция2\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -768,21 +836,22 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.1\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Organization is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Name is true\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-1\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция1\");\r",
 							"});\r",
 							"\r",
-							"//pm.test(\"Mnemo is true\", function () {\r",
-							"   // var jsonData = pm.response.json();\r",
-							"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
-							"//});\r",
+							"\r",
 							"\r",
 							""
 						],
@@ -816,24 +885,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.1",
-						"1"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"001"
 					]
 				}
 			},
@@ -851,21 +927,18 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"catalog.goods.3\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"2\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Name is true\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Гвоздь 1000-2\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция2\");\r",
 							"});\r",
 							"\r",
-							"//pm.test(\"Mnemo is true\", function () {\r",
-							"   // var jsonData = pm.response.json();\r",
-							"   // pm.expect(jsonData.requisites[0].mnemo).to.eql(\"goods.nds1\");\r",
-							"//});\r",
+							"\r",
 							"\r",
 							""
 						],
@@ -899,24 +972,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.3",
-						"2"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"002"
 					]
 				}
 			},
@@ -957,29 +1037,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
-						"key": "",
-						"value": "",
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.1",
-						"1"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"001"
 					]
 				}
 			},
@@ -1020,24 +1102,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.3",
-						"2"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"002"
 					]
 				}
 			},
@@ -1078,16 +1167,23 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.BankovskieIKaznacheiiskieScheta/10",
+					"raw": "{{hostTest}}/rest/catalog/tap.BankovskieIKaznacheiiskieScheta/11",
 					"host": [
 						"{{hostTest}}"
 					],
@@ -1095,7 +1191,7 @@
 						"rest",
 						"catalog",
 						"tap.BankovskieIKaznacheiiskieScheta",
-						"10"
+						"11"
 					]
 				}
 			},
@@ -1136,11 +1232,18 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
@@ -1201,24 +1304,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.1/1",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.1",
-						"1"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"001"
 					]
 				}
 			},
@@ -1266,24 +1376,31 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/catalog.goods.3/2",
+					"raw": "{{hostTest}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"catalog.goods.3",
-						"2"
+						"tap.BlankiStrogoiiOtchetnosti",
+						"002"
 					]
 				}
 			},

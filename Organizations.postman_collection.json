@@ -17,11 +17,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -44,17 +44,24 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org\",\r\n    \"accountsPlan\": \"cool plan\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+					"raw": "{\"id\":\"001\", \"mnemo\":\"tap.organization\",\"code\":\"003\",\"title\":\"Test\",\"accountsPlan\":\"\",\"requisites\":[{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"Test\"},{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"}]}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -86,12 +93,23 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
-							"});"
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.accountsPlan).to.include(\"{\\\"type\\\":{\\\"plantype\\\":\\\"BUDGET\\\",\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Title is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Test\");\r",
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -116,13 +134,19 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -130,15 +154,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/organization/testOrg/org_db_id",
+					"raw": "{{hostTest}}/rest/organization/tap.organization/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"organization",
-						"testOrg",
-						"org_db_id"
+						"tap.organization",
+						"001"
 					]
 				}
 			},
@@ -179,17 +203,24 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org1\",\r\n    \"accountsPlan\": \"cool plan\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods1\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+					"raw": "{\"id\":\"001\",\"mnemo\":\"tap.organization\",\"code\":\"002\",\"title\":\"Тест\",\"accountsPlan\":\"\",\"requisites\":[{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"},{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"ТестТест\"},{\"mnemo\":\"tap.organization.INN\",\"value\":\"34343334\"},{\"mnemo\":\"tap.organization.Biudzhet\",\"value\":\"07008a5d-e45e-4eb3-9013-f3f35adabae2\"},{\"mnemo\":\"tap.organization.KodGlavy\",\"value\":\"3ad146e1-2616-4ea9-b9cb-c8b9b783f65f\"},{\"mnemo\":\"tap.organization.Rukovoditel\",\"value\":\"7c4293e4-951b-4593-8bf5-093604a3903b\"},{\"mnemo\":\"tap.organization.Kassir\",\"value\":\"48b99f6f-2ea2-4a6e-9155-d192af53f051\"},{\"mnemo\":\"tap.organization.OKOPF\",\"value\":\"e57ccd0a-d9eb-455d-a256-9fda08114c9f\"}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -221,15 +252,15 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Title is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"cool org1\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Тест\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -255,13 +286,19 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -269,15 +306,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/organization/testOrg/org_db_id",
+					"raw": "{{hostTest}}/rest/organization/tap.organization/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"organization",
-						"testOrg",
-						"org_db_id"
+						"tap.organization",
+						"001"
 					]
 				}
 			},
@@ -318,17 +355,24 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"testOrg\",\r\n    \"id\": \"org_db_id\",\r\n    \"code\": \"cool org\",\r\n    \"title\": \"cool org\",\r\n    \"accountsPlan\": \"cool plan1\",\r\n    \"requisites\": [\r\n        \r\n             {\r\n                  \"mnemo\" : \"goods11\",\r\n                  \"periodicalDate\" : \"01.12.2020T13:11:40\",\r\n                  \"value\" : \"100\"\r\n             }\r\n             \r\n    ]\r\n\r\n}\r\n\r\n",
+					"raw": "{\"id\":\"001\",\"mnemo\":\"tap.organization\",\"code\":\"002\",\"title\":\"Тест\",\"accountsPlan\":\"cool plan\",\"requisites\":[{\"mnemo\":\"tap.organization.plantype\",\"value\":\"tap.BUDGETNOE\"},{\"mnemo\":\"tap.organization.PolnoeNaimenovanie\",\"value\":\"ТестТест\"},{\"mnemo\":\"tap.organization.INN\",\"value\":\"34343334\"},{\"mnemo\":\"tap.organization.Biudzhet\",\"value\":\"07008a5d-e45e-4eb3-9013-f3f35adabae2\"},{\"mnemo\":\"tap.organization.KodGlavy\",\"value\":\"3ad146e1-2616-4ea9-b9cb-c8b9b783f65f\"},{\"mnemo\":\"tap.organization.Rukovoditel\",\"value\":\"7c4293e4-951b-4593-8bf5-093604a3903b\"},{\"mnemo\":\"tap.organization.Kassir\",\"value\":\"48b99f6f-2ea2-4a6e-9155-d192af53f051\"},{\"mnemo\":\"tap.organization.OKOPF\",\"value\":\"e57ccd0a-d9eb-455d-a256-9fda08114c9f\"}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -361,15 +405,15 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"testOrg\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.organization\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"org_db_id\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Title is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"accountsPlan\", \"cool plan1\");\r",
+							"    pm.response.to.have.jsonBody(\"accountsPlan\", \"cool plan\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -395,13 +439,19 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -409,15 +459,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/organization/testOrg/org_db_id",
+					"raw": "{{hostTest}}/rest/organization/tap.organization/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"organization",
-						"testOrg",
-						"org_db_id"
+						"tap.organization",
+						"001"
 					]
 				}
 			},
@@ -458,13 +508,19 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -472,15 +528,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/organization/testOrg/org_db_id",
+					"raw": "{{hostTest}}/rest/organization/tap.organization/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"organization",
-						"testOrg",
-						"org_db_id"
+						"tap.organization",
+						"001"
 					]
 				}
 			},
@@ -520,13 +576,19 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "Restapp",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Ver",
 						"value": "1.1.3",
 						"type": "text",
 						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -534,15 +596,15 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/organization/testOrg/org_db_id",
+					"raw": "{{hostTest}}/rest/organization/tap.organization/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"organization",
-						"testOrg",
-						"org_db_id"
+						"tap.organization",
+						"001"
 					]
 				}
 			},
