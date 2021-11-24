@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\",  \"appMnemo=tap, id=testgroup\");\r",
+							"    pm.response.to.have.jsonBody(\"id\",  \"Id_PK{appMnemo=tap, id=testgroup}\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -62,6 +62,11 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
 						"type": "text"
 					}
 				],
@@ -94,7 +99,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=test\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=test}\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -139,6 +144,11 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
 						"type": "text"
 					}
 				],
@@ -176,7 +186,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"appMnemo=tap, id=test1\");\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=test1}\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -221,6 +231,11 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
 						"type": "text"
 					}
 				],
@@ -400,8 +415,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is empty\", function () {\r",
@@ -450,6 +465,11 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
 						"type": "text"
 					}
 				],
@@ -477,8 +497,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is empty\", function () {\r",
@@ -527,6 +547,11 @@
 					{
 						"key": "DFE-APP-MNEMO",
 						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
 						"type": "text"
 					}
 				],
@@ -786,8 +811,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is empty\", function () {\r",
@@ -860,8 +885,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is empty\", function () {\r",
