@@ -146,7 +146,8 @@
 					{
 						"key": "DFE-APP-VER",
 						"value": "1.1.2106",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					}
 				],
 				"body": {
@@ -364,7 +365,8 @@
 					{
 						"key": "DFE-APP-VER",
 						"value": "-1.-1.-1",
-						"type": "text"
+						"type": "text",
+						"disabled": true
 					},
 					{
 						"key": "DFE-APP-Mnemo",
@@ -516,8 +518,7 @@
 					{
 						"key": "DFE-APP-Mnemo",
 						"value": "tap",
-						"type": "text",
-						"disabled": true
+						"type": "text"
 					},
 					{
 						"key": "DFE-APP-VER",
@@ -541,6 +542,43 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.2106\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskayaSpravka\"},{\"name\":\"documentDbId\",\"value\":\"0003\"}]}"
+				},
+				"url": {
+					"raw": "{{hostTest}}/script/execute",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"script",
+						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Base on document",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.2730\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"0003\"}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
 					"raw": "{{hostTest}}/script/execute",

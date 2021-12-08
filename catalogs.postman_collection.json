@@ -583,6 +583,96 @@
 			"response": []
 		},
 		{
+			"name": "Sorting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+							"\r",
+							"pm.test(\"Id is true\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.records[0].code).to.eql(\"000000012\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/catalog/list/tap.VidyZatrat?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"list",
+						"tap.VidyZatrat"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "4"
+						},
+						{
+							"key": "sortBy",
+							"value": "[%22catalogCode:0:true%22]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Page reading catalog's records(Filter)",
 			"event": [
 				{
@@ -664,6 +754,94 @@
 						{
 							"key": "filter",
 							"value": "[{\"mnemo\":\"code\",\"restriction\":{\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"0123\"],\"type\":0}},{\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.TipScheta\",\"restriction\":{\"valueType\":\"enums\",\"kindOf\":1,\"values\":[\"В кредитной организации\"],\"type\":0}}, {\"mnemo\":\"tap.BankovskieIKaznacheiiskieScheta.Kaznacheiistvo\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"111\"],\"type\":0}}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Page reading catalog's records(Filter) Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"responseJson = JSON.parse(responseBody);\r",
+							"var list = responseJson.records.length;\r",
+							"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "Restapp",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/catalog/list/tap.BlankiStrogoiiOtchetnosti?filter=[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"1\"],\"type\":0}}]",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"catalog",
+						"list",
+						"tap.BlankiStrogoiiOtchetnosti"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"restriction\":{\"valueType\":\"catalogs\",\"kindOf\":1,\"values\":[\"1\"],\"type\":0}}]"
 						}
 					]
 				}
