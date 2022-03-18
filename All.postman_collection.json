@@ -3283,7 +3283,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"00000000000000000030241000\",\"creditAccount\":\"00000000000000000030241000\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
+							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"30241\",\"creditAccount\":\"30241\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -3515,7 +3515,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"Test1\",\"number\":\"5555\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"00000000000000000030241000\",\"creditAccount\":\"00000000000000000030241000\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
+							"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test1\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"30241\",\"creditAccount\":\"30241\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document/",
@@ -3555,7 +3555,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"Test1\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"test1\");\r",
 									"});\r",
 									""
 								],
