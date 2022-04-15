@@ -420,7 +420,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
@@ -474,7 +474,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -501,7 +501,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
@@ -555,7 +555,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}"
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -582,7 +582,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
@@ -635,14 +635,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"001"
 							]
 						}
@@ -661,7 +661,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
@@ -715,14 +715,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"002"
 							]
 						}
@@ -787,7 +787,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/list/tap.BlankiStrogoiiOtchetnosti?start=0&limit=3",
+							"raw": "{{host}}/rest/catalog/list/tap.TestovyiiSpravochnik?start=0&limit=3",
 							"host": [
 								"{{host}}"
 							],
@@ -795,7 +795,7 @@
 								"rest",
 								"catalog",
 								"list",
-								"tap.BlankiStrogoiiOtchetnosti"
+								"tap.TestovyiiSpravochnik"
 							],
 							"query": [
 								{
@@ -824,7 +824,7 @@
 									"\r",
 									"pm.test(\"Id is true\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.records[0].code).to.eql(\"05\");\r",
+									"    pm.expect(jsonData.records[0].code).to.eql(\"123\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -873,7 +873,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/list/tap.VidyObespecheniya?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
+							"raw": "{{host}}/rest/catalog/list/tap.TestovyiiSpravochnik?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
 							"host": [
 								"{{host}}"
 							],
@@ -881,7 +881,7 @@
 								"rest",
 								"catalog",
 								"list",
-								"tap.VidyObespecheniya"
+								"tap.TestovyiiSpravochnik"
 							],
 							"query": [
 								{
@@ -958,7 +958,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"001\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция1\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}\r\n",
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция1\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1035,7 +1035,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"002\", \"mnemo\":\"tap.BlankiStrogoiiOtchetnosti\",\"code\":\"001\",\"title\":\"Квитанция2\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"parentMnemo\" : \"tap.BlankiStrogoiiOtchetnosti\",\r\n         \"parentId\" : \"001\",\"requisites\":[{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.DlinaNomera\",\"value\":\"45\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.Edinica\",\"value\":\"b5c04785-411b-4d84-bee2-88d6174accf5\"},{\"mnemo\":\"tap.BlankiStrogoiiOtchetnosti.SeriiBlankovStrogoiiOtchetnosti\",\"value\":\"d04d578b-ec81-4e4b-9e65-929a72355bd7\"}]}",
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция2\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1067,7 +1067,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
@@ -1130,14 +1130,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"001"
 							]
 						}
@@ -1156,7 +1156,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BlankiStrogoiiOtchetnosti\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
@@ -1213,14 +1213,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"002"
 							]
 						}
@@ -1278,14 +1278,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"001"
 							]
 						}
@@ -1343,14 +1343,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"002"
 							]
 						}
@@ -1415,14 +1415,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/001",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"001"
 							]
 						}
@@ -1487,14 +1487,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/catalog/tap.BlankiStrogoiiOtchetnosti/002",
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiSpravochnik/002",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"catalog",
-								"tap.BlankiStrogoiiOtchetnosti",
+								"tap.TestovyiiSpravochnik",
 								"002"
 							]
 						}
