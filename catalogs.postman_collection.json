@@ -17,7 +17,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
@@ -71,7 +71,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}"
+					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/catalog",
@@ -98,7 +98,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
@@ -152,7 +152,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}"
+					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
 				},
 				"url": {
 					"raw": "{{hostTest}}/rest/catalog",
@@ -341,7 +341,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
@@ -398,14 +398,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/001",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"001"
 					]
 				}
@@ -424,7 +424,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
@@ -482,14 +482,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/002",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"002"
 					]
 				}
@@ -509,7 +509,7 @@
 							"\r",
 							"pm.test(\"Id is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].id).to.eql(\"001\");\r",
+							"    pm.expect(jsonData.records[0].code).to.eql(\"01\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -558,7 +558,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiSpravochnik?start=0&limit=3",
+					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiDlyaResta?start=0&limit=5",
 					"host": [
 						"{{hostTest}}"
 					],
@@ -566,7 +566,7 @@
 						"rest",
 						"catalog",
 						"list",
-						"tap.TestovyiiSpravochnik"
+						"tap.TestovyiiDlyaResta"
 					],
 					"query": [
 						{
@@ -575,7 +575,7 @@
 						},
 						{
 							"key": "limit",
-							"value": "3"
+							"value": "5"
 						}
 					]
 				}
@@ -595,7 +595,7 @@
 							"\r",
 							"pm.test(\"Id is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].code).to.eql(\"123\");\r",
+							"    pm.expect(jsonData.records[0].code).to.eql(\"2\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -644,7 +644,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiSpravochnik?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
+					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiDlyaResta?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
 					"host": [
 						"{{hostTest}}"
 					],
@@ -652,7 +652,7 @@
 						"rest",
 						"catalog",
 						"list",
-						"tap.TestovyiiSpravochnik"
+						"tap.TestovyiiDlyaResta"
 					],
 					"query": [
 						{
@@ -905,7 +905,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция1\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция1\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -982,7 +982,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiSpravochnik\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"001\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция2\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiSpravochnik.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_1\",\r\n          \"value\": \"3e1ace56-7831-437c-848b-ed6fc1c5a0e7\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_2\",\r\n          \"value\": \"89f83eb0-385e-4c45-892b-e21929a0597f\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiSpravochnik.Schet_analytics_0\",\r\n          \"value\": \"7a79b410-9b84-4bf2-b76f-4927284f99ce\"\r\n        }\r\n      ],\r\n      \"value\": \"0110\",\r\n      \"lebel\": \"ca3537a9-c099-4ac4-b8ac-4a220927a8c0\"\r\n    }\r\n  ]\r\n}",
+					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция2\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1014,7 +1014,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
@@ -1079,14 +1079,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/001",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"001"
 					]
 				}
@@ -1105,7 +1105,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiSpravochnik\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
@@ -1166,14 +1166,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/002",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"002"
 					]
 				}
@@ -1231,14 +1231,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/001",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"001"
 					]
 				}
@@ -1296,14 +1296,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/002",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"002"
 					]
 				}
@@ -1498,14 +1498,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/001",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"001"
 					]
 				}
@@ -1570,14 +1570,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiSpravochnik/002",
+					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
-						"tap.TestovyiiSpravochnik",
+						"tap.TestovyiiDlyaResta",
 						"002"
 					]
 				}
