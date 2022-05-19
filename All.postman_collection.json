@@ -409,7 +409,7 @@
 			"name": "Catalogs",
 			"item": [
 				{
-					"name": "Creating a catalog's record",
+					"name": "Creating a catalog's record 001",
 					"event": [
 						{
 							"listen": "test",
@@ -474,7 +474,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"0d9c0e0a-c494-4d20-9ff9-27aa76ac50de\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"2c254391-3ce1-488b-ae03-455efd589c3d\"\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -490,7 +490,7 @@
 					"response": []
 				},
 				{
-					"name": "Creating a  catalog's record with-parent",
+					"name": "Creating a  catalog's record 002",
 					"event": [
 						{
 							"listen": "test",
@@ -555,7 +555,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": \"001\",\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -571,7 +571,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading  the catalog's record",
+					"name": "Reading  the catalog's record 001",
 					"event": [
 						{
 							"listen": "test",
@@ -650,7 +650,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the catalog's record with-parent",
+					"name": "Reading the catalog's record 002",
 					"event": [
 						{
 							"listen": "test",
@@ -906,7 +906,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating  the catalog's record",
+					"name": "Updating  the catalog's record 001",
 					"event": [
 						{
 							"listen": "test",
@@ -962,7 +962,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"001\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция1\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\r\n            \"mnemo\": \"tap.Valiuty\",\r\n            \"id\": \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"001\"\r\n        }\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"002\"\r\n        }\r\n    ],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n    \"title\": \"Квитанция1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"3bcc026f-5cb6-4f14-9c86-47cd196184a5\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"aec340ae-72a9-4865-b7c5-09d4cdd2b0ed\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -983,7 +983,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating  the catalog's record with parent",
+					"name": "Updating  the catalog's record 002",
 					"event": [
 						{
 							"listen": "test",
@@ -1039,7 +1039,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parentMnemo\": null,\r\n  \"parentId\": null,\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n  \"title\": \"Квитанция2\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}",
+							"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"002\",\r\n    \"parents\": [\r\n        {\r\n            \"mnemo\": \"tap.Valiuty\",\r\n            \"id\": \"e6d4a44e-246c-4ba9-93d9-76999aadfb9e\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"002\"\r\n        }\r\n    ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"01046b78-8016-4c2f-87f8-6332df1411b5\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"0350986b-c3d8-4174-8333-0ed24df0cbf9\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1060,7 +1060,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the catalog's record after update",
+					"name": "Reading the catalog's record 001 after update",
 					"event": [
 						{
 							"listen": "test",
@@ -1149,7 +1149,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the catalog's record with parent after update",
+					"name": "Reading the catalog's record 002 after update",
 					"event": [
 						{
 							"listen": "test",
@@ -1232,7 +1232,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete the catalog's record",
+					"name": "Delete the catalog's record 001",
 					"event": [
 						{
 							"listen": "test",
@@ -1297,7 +1297,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete the catalog's record with-parent",
+					"name": "Delete the catalog's record 002",
 					"event": [
 						{
 							"listen": "test",
@@ -1362,7 +1362,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the catalog's record after delete",
+					"name": "Reading the catalog's record 001 after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -1434,7 +1434,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading the catalog's record with parent after delete",
+					"name": "Reading the catalog's record 002 after delete",
 					"event": [
 						{
 							"listen": "test",
