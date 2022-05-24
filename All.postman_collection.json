@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "ca063705-a4e0-47bc-8743-63884efac679",
 		"name": "All",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -474,7 +475,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"0d9c0e0a-c494-4d20-9ff9-27aa76ac50de\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"2c254391-3ce1-488b-ae03-455efd589c3d\"\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"0d9c0e0a-c494-4d20-9ff9-27aa76ac50de\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"2c254391-3ce1-488b-ae03-455efd589c3d\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
 						},
 						"url": {
 							"raw": "{{host}}/rest/catalog",
@@ -571,6 +572,168 @@
 					"response": []
 				},
 				{
+					"name": "Creating a  catalog's record 003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"003\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"003\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a  catalog's record 004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Mnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"004\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"004\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/catalog",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Reading  the catalog's record 001",
 					"event": [
 						{
@@ -587,6 +750,10 @@
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -666,6 +833,10 @@
 									"\r",
 									"pm.test(\"Body is correct\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"Квитанция\");\r",
 									"});\r",
 									""
 								],
@@ -1078,13 +1249,15 @@
 									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
+									"pm.test(\"Organization is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
+									"});\r",
+									"\r",
 									"pm.test(\"Name is true\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"title\", \"Квитанция1\");\r",
 									"});\r",
 									"\r",
-									" pm.test(\"Organization is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
-									"});\r",
+									"\r",
 									"\r",
 									""
 								],
@@ -1169,7 +1342,11 @@
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
 									"    pm.response.to.have.jsonBody(\"title\", \"Квитанция2\");\r",
-									"});"
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1362,6 +1539,90 @@
 					"response": []
 				},
 				{
+					"name": "Delete the catalog's record 003 and 004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is correct\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog?ids=[{mnemo:tap.TestovyiiDlyaResta,id:003},{mnemo:tap.TestovyiiDlyaResta,id:004}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "[{mnemo:tap.TestovyiiDlyaResta,id:003},{mnemo:tap.TestovyiiDlyaResta,id:004}]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Reading the catalog's record 001 after delete",
 					"event": [
 						{
@@ -1500,6 +1761,150 @@
 								"catalog",
 								"tap.TestovyiiDlyaResta",
 								"002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record 003 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiDlyaResta/003",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"tap.TestovyiiDlyaResta",
+								"003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading the catalog's record 004 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Charset",
+								"value": "utf-8",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/catalog/tap.TestovyiiDlyaResta/004",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"catalog",
+								"tap.TestovyiiDlyaResta",
+								"004"
 							]
 						}
 					},
@@ -3757,7 +4162,7 @@
 			"name": "Documents",
 			"item": [
 				{
-					"name": "Creating a document 0003 (Filter)",
+					"name": "Creating a document 001",
 					"event": [
 						{
 							"listen": "test",
@@ -3768,7 +4173,82 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"0003\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"appMnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"001\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1653298377679\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"111\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.RasshifrovkaOperacii\",\"value\":\"Аванс\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.NDS\",\"value\":\"18/118\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.EdinicaIzmereniya\",\"value\":\"1e23a4ba-fa36-4e4e-acf9-df84e52b7d08\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"2. Приносящая доход деятельность\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"0122\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_0\",\"value\":\"89a68d16-7afd-423e-b755-8fc59c2370bc\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_2\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"0120\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"de173bba-4d15-4879-8e44-56da15e90adf\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Cena\",\"value\":\"2230\",\"documentTableRequisiteProps\":[]}]}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a document 002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"appMnemo is correct\", function () {\r",
@@ -3815,7 +4295,7 @@
 								"disabled": true
 							},
 							{
-								"key": "DFE-APP-Mnemo",
+								"key": "DFE-APP-MNEMO",
 								"value": "tap",
 								"type": "text"
 							},
@@ -3828,7 +4308,94 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":\"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"0003\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\", \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\", \"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
+							"raw": "{\"id\":\"002\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1653298377679\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"111\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.RasshifrovkaOperacii\",\"value\":\"Аванс\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.NDS\",\"value\":\"18/118\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.EdinicaIzmereniya\",\"value\":\"1e23a4ba-fa36-4e4e-acf9-df84e52b7d08\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"2. Приносящая доход деятельность\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"0122\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_0\",\"value\":\"89a68d16-7afd-423e-b755-8fc59c2370bc\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_2\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"0120\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"de173bba-4d15-4879-8e44-56da15e90adf\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Cena\",\"value\":\"2230\",\"documentTableRequisiteProps\":[]}]}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/document",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a document 003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"003\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"appMnemo is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.2106",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"003\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1653298377679\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"111\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.RasshifrovkaOperacii\",\"value\":\"Аванс\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.NDS\",\"value\":\"18/118\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.EdinicaIzmereniya\",\"value\":\"1e23a4ba-fa36-4e4e-acf9-df84e52b7d08\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"2. Приносящая доход деятельность\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"0122\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_0\",\"value\":\"89a68d16-7afd-423e-b755-8fc59c2370bc\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_2\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"0120\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"de173bba-4d15-4879-8e44-56da15e90adf\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Cena\",\"value\":\"2230\",\"documentTableRequisiteProps\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -3855,11 +4422,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"0003\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskayaSpravka\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskieSpravki\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -3903,14 +4470,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/0003",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"0003"
+								"001"
 							]
 						}
 					},
@@ -4040,7 +4607,7 @@
 							},
 							{
 								"key": "DFE-APP-VER",
-								"value": "1.1.2106",
+								"value": "-1.-1.-1",
 								"type": "text",
 								"disabled": true
 							},
@@ -4052,7 +4619,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{ \"id\": \"0003\",\"mnemo\":\"tap.BuhgalterskayaSpravka\",\"number\":\"00022\",\"date\":\"1628065010380\",\"transactionTemplateId\":\"tap.BuhgalterskayaSpravka.Standartnyii\", \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\", \"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskayaSpravka.hr.Opisanie\",\"value\":\"55\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NaimenovanieIOpisanieOperacii\",\"value\":\"5\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoDebitu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.NomerSchetaPoKreditu\",\"value\":\"00000000000000000030241000\",\"documentTableRequisiteProps\":[]},{\"recId\":\"f89a4bb8-5c69-49c2-88bd-fd833c55&1\",\"name\":\"tap.BuhgalterskayaSpravka.tr.Summa\",\"value\":55,\"documentTableRequisiteProps\":[]}]}"
+							"raw": "{\"id\":\"001\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"0011\",\"date\":\"1653298377679\",\"parentId\":null,\"organizationRecId\":\"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"111\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.RasshifrovkaOperacii\",\"value\":\"Аванс\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.NDS\",\"value\":\"18/118\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.EdinicaIzmereniya\",\"value\":\"1e23a4ba-fa36-4e4e-acf9-df84e52b7d08\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"2. Приносящая доход деятельность\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"0122\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_0\",\"value\":\"89a68d16-7afd-423e-b755-8fc59c2370bc\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_2\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"0120\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"de173bba-4d15-4879-8e44-56da15e90adf\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Cena\",\"value\":\"2230\",\"documentTableRequisiteProps\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document/",
@@ -4080,21 +4647,20 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Id is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"0003\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Mnemo is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskayaSpravka\");\r",
+									"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskieSpravki\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Number is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"number\", \"00022\");\r",
+									"    pm.response.to.have.jsonBody(\"number\", \"0011\");\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Organization is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"25889c4a-27af-4ef3-9346-7535adc5259e\");\r",
-									"});\r",
-									""
+									"    pm.response.to.have.jsonBody(\"organizationRecId\", \"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -4137,21 +4703,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/0003",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"0003"
+								"001"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Executing document (Filter)",
+					"name": "Executing the document 001",
 					"event": [
 						{
 							"listen": "test",
@@ -4161,9 +4727,9 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"//pm.test(\"Id is correct\", function () {\r",
-									"    //pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
-									"//});"
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -4199,7 +4765,7 @@
 							},
 							{
 								"key": "DFE-APP-VER",
-								"value": "1.1.3",
+								"value": "1.1.1122",
 								"type": "text",
 								"disabled": true
 							},
@@ -4218,7 +4784,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.2106\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskayaSpravka\"},{\"name\":\"documentDbId\",\"value\":\"0003\"}]}"
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3461\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}"
 						},
 						"url": {
 							"raw": "{{host}}/script/execute",
@@ -4234,7 +4800,198 @@
 					"response": []
 				},
 				{
-					"name": "Base on document",
+					"name": "Executing the document 002 and 003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.1122",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/script/execute/activate?ids=[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"script",
+								"execute",
+								"activate"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivating the document 002 and 003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "content-type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.1122",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/script/execute/deactivate?ids=[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"script",
+								"execute",
+								"deactivate"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Base on document 001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -4250,7 +5007,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.2730\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"0003\"}]}",
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3461\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4271,7 +5028,82 @@
 					"response": []
 				},
 				{
-					"name": "Delete the document 0003 (Filter)",
+					"name": "Delete the document 001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.1122",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/001",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete the document 002 and 003",
 					"event": [
 						{
 							"listen": "test",
@@ -4322,8 +5154,7 @@
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.2106",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							},
 							{
 								"key": "DFE-APP-Mnemo",
@@ -4332,21 +5163,26 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/0003",
+							"raw": "{{host}}/rest/document?ids=[{mnemo:tap.BuhgalterskayaSpravka,id:002},{mnemo:tap.BuhgalterskayaSpravka,id:003}]",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
-								"document",
-								"0003"
+								"document"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "[{mnemo:tap.BuhgalterskayaSpravka,id:002},{mnemo:tap.BuhgalterskayaSpravka,id:003}]"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Getting the document after delete",
+					"name": "Getting the document 001 after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -4381,30 +5217,139 @@
 							{
 								"key": "DFE-APP-Mnemo",
 								"value": "Restapp",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							},
 							{
 								"key": "DFE-APP-VER",
 								"value": "1.1.3",
-								"type": "text",
-								"disabled": true
-							},
-							{
-								"key": "DFE-APP-Mnemo",
-								"value": "tap",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{host}}/rest/document/1",
+							"raw": "{{host}}/rest/document/001",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"rest",
 								"document",
-								"1"
+								"001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the document 002 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/002",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the document 003 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text"
+							},
+							{
+								"key": "DFE-APP-VER",
+								"value": "1.1.3",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/document/003",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"document",
+								"003"
 							]
 						}
 					},
@@ -4416,7 +5361,7 @@
 			"name": "Posting records",
 			"item": [
 				{
-					"name": "Creating a posting record",
+					"name": "Creating a posting record 1",
 					"event": [
 						{
 							"listen": "test",
@@ -4499,7 +5444,171 @@
 					"response": []
 				},
 				{
-					"name": "Getting the posting record",
+					"name": "Creating a posting record 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=2}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Ver",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":\"2\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/posting",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Creating a posting record 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Id is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=3}\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Ver",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\":\"3\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}/rest/posting",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record 1",
 					"event": [
 						{
 							"listen": "test",
@@ -4645,7 +5754,7 @@
 					"response": []
 				},
 				{
-					"name": "Updating the posting record",
+					"name": "Updating the posting record 1",
 					"event": [
 						{
 							"listen": "test",
@@ -4727,7 +5836,7 @@
 					"response": []
 				},
 				{
-					"name": "Getting the posting record after updating",
+					"name": "Getting the posting record 1 after updating",
 					"event": [
 						{
 							"listen": "test",
@@ -4809,7 +5918,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete the posting record",
+					"name": "Delete the posting record 1",
 					"event": [
 						{
 							"listen": "test",
@@ -4873,7 +5982,81 @@
 					"response": []
 				},
 				{
-					"name": "Getting the posting record after delete",
+					"name": "Delete the posting record 2 and 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Ver",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting?ids=[{mnemo:tap,id:2},{mnemo:tap,id:3}]",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "[{mnemo:tap,id:2},{mnemo:tap,id:3}]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record 1 after delete",
 					"event": [
 						{
 							"listen": "test",
@@ -4938,6 +6121,148 @@
 								"rest",
 								"posting",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record 2 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Ver",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the posting record 3 after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "content-type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "Restapp",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Ver",
+								"value": "1.1.3",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/rest/posting/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"rest",
+								"posting",
+								"3"
 							]
 						}
 					},

@@ -2,11 +2,12 @@
 	"info": {
 		"_postman_id": "db8f671e-25c7-4c89-a47a-4d2b925a300f",
 		"name": "Posting records",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
-			"name": "Creating a posting record",
+			"name": "Creating a posting record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -88,7 +89,171 @@
 			"response": []
 		},
 		{
-			"name": "Getting the posting record",
+			"name": "Creating a posting record 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=2}\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":\"2\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/posting",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creating a posting record 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=3}\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":\"3\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
+				},
+				"url": {
+					"raw": "{{hostTest}}/rest/posting",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"posting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the posting record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -238,7 +403,7 @@
 			"response": []
 		},
 		{
-			"name": "Updating the posting record",
+			"name": "Updating the posting record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -320,7 +485,7 @@
 			"response": []
 		},
 		{
-			"name": "Getting the posting record after updating",
+			"name": "Getting the posting record 1 after updating",
 			"event": [
 				{
 					"listen": "test",
@@ -402,7 +567,7 @@
 			"response": []
 		},
 		{
-			"name": "Delete the posting record",
+			"name": "Delete the posting record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -471,7 +636,81 @@
 			"response": []
 		},
 		{
-			"name": "Getting the posting record after delete",
+			"name": "Delete the posting record 2 and 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body is empty\", function () {\r",
+							"    pm.response.to.have.body(\"\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/posting?ids=[{mnemo:tap,id:2},{mnemo:tap,id:3}]",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"posting"
+					],
+					"query": [
+						{
+							"key": "ids",
+							"value": "[{mnemo:tap,id:2},{mnemo:tap,id:3}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the posting record 1 after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -536,6 +775,148 @@
 						"rest",
 						"posting",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the posting record 2 after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/posting/2",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"posting",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the posting record 3 after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "content-type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/rest/posting/3",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"rest",
+						"posting",
+						"3"
 					]
 				}
 			},
