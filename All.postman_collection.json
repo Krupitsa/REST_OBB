@@ -4784,7 +4784,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3461\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}"
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3497\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}"
 						},
 						"url": {
 							"raw": "{{host}}/script/execute",
@@ -5007,7 +5007,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3461\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3450\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
