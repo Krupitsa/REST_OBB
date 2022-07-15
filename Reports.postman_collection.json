@@ -17,9 +17,12 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body contains string\", () => {\r",
-							"    pm.expect(pm.response.text()).to.include(\"%PDF-1.5\");\r",
-							"});"
+							"pm.test(\"Status is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"reportStatus\", \"REGISTERED\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"requestId\", jsonData.requestId);"
 						],
 						"type": "text/javascript"
 					}
@@ -51,7 +54,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"tap\",\r\n    \"inputData\": [{\"key\": \"inputValue\", \"value\": \"value15656\" }],\r\n    \"outputFormat\": \"pdf\",\r\n    \"reportId\": \"tap.OtchetRest\",\r\n    \"parameters\" : [{\"key\": \"REPORT_ORIENTATION\", \"value\": \"landscape\" }]\r\n}\r\n",
+					"raw": "{\r\n    \"inputData\": [{\"key\": \"inputValue\", \"value\": \"value15656\" }],\r\n    \"outputFormat\": \"pdf\",\r\n    \"reportId\": \"tap.OtchetRest\",\r\n    \"parameters\" : [{\"key\": \"REPORT_ORIENTATION\", \"value\": \"landscape\" }]\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -66,6 +69,122 @@
 					"path": [
 						"reports",
 						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a report's status",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"content\", null);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/reports/status/{{requestId}}",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"reports",
+						"status",
+						"{{requestId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the report",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body contains string\", () => {\r",
+							"    pm.expect(pm.response.text()).to.include(\"%PDF-1.5\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTest}}/reports/get/{{requestId}}",
+					"host": [
+						"{{hostTest}}"
+					],
+					"path": [
+						"reports",
+						"get",
+						"{{requestId}}"
 					]
 				}
 			},
