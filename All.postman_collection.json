@@ -4784,7 +4784,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3498\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}"
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3520\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}"
 						},
 						"url": {
 							"raw": "{{host}}/script/execute",
@@ -5007,7 +5007,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3450\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3520\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -6322,6 +6322,207 @@
 			]
 		},
 		{
+			"name": "Forms",
+			"item": [
+				{
+					"name": "Creating a  form",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"reportStatus\", \"REGISTERED\");\r",
+									"});\r",
+									"\r",
+									"var jsonData = JSON.parse(responseBody);\r",
+									"postman.setEnvironmentVariable (\"requestId\", jsonData.requestId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"inputData\": [{\"key\": \"inputValue\", \"value\": \"value15656\" }],\r\n    \"outputFormat\": \"pdf\",\r\n    \"reportId\": \"tap.FormyRest\",\r\n    \"parameters\" : [{\"key\": \"REPORT_ORIENTATION\", \"value\": \"landscape\" }]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/reports/executeForm",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"reports",
+								"executeForm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting a form's status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status is correct\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"content\", null);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/reports/status/{{requestId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"reports",
+								"status",
+								"{{requestId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting the form",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body contains string\", () => {\r",
+									"    pm.expect(pm.response.text()).to.include(\"%PDF-1.5\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"setTimeout(function(){ \r",
+									"\r",
+									"        console.log('sleep');\r",
+									"    }, 3000);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "DFE-APP-MNEMO",
+								"value": "tap",
+								"type": "text"
+							},
+							{
+								"key": "DFE-ORG-ID",
+								"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/reports/get/{{requestId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"reports",
+								"get",
+								"{{requestId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Organizations",
 			"item": [
 				{
@@ -7291,6 +7492,18 @@
 									"pm.test(\"Body contains string\", () => {\r",
 									"    pm.expect(pm.response.text()).to.include(\"%PDF-1.5\");\r",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"setTimeout(function(){ \r",
+									"\r",
+									"        console.log('sleep');\r",
+									"    }, 10000);"
 								],
 								"type": "text/javascript"
 							}
