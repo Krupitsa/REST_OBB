@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "ca14fada-daf7-4ed7-939f-2f2612dd11e1",
 		"name": "Constants",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -89,9 +90,9 @@
 					"raw": "{\"id\":\"1970-01-01 00:00:00\",\"mnemo\":\"tap.test\",\"periodicalDate\":null,\"value\":\"1\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}\r\n\r\n"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/constant",
+					"raw": "{{hostTestNew}}/rest/constant",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -164,9 +165,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/list",
+					"raw": "{{hostTestNew}}/rest/constant/list",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -245,7 +246,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/tap.KodOKOPF/1970-01-01 00:00:00",
+					"raw": "{{hostTest}}/rest/constant/tap.KodOKOPF/1970-01-01 00 00 00",
 					"host": [
 						"{{hostTest}}"
 					],
@@ -253,7 +254,7 @@
 						"rest",
 						"constant",
 						"tap.KodOKOPF",
-						"1970-01-01 00:00:00"
+						"1970-01-01 00 00 00"
 					]
 				}
 			},
@@ -322,7 +323,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"1970-01-01 00:00:00\",\"mnemo\":\"tap.KodOKOPF\",\"periodicalDate\":null,\"value\":\"75104\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\"}",
+					"raw": "{\"id\":\"1970-01-01 00 00 00\",\"mnemo\":\"tap.Rest\",\"periodicalDate\":null,\"value\":\"75104\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\"}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -330,9 +331,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/constant",
+					"raw": "{{hostTestNew}}/rest/constant",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -650,14 +651,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/sklad.proizvodstva.noDate1",
+					"raw": "{{hostTestNew}}/rest/constant/buh.calendar/2020-12-01 10:11:40",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"sklad.proizvodstva.noDate1"
+						"buh.calendar",
+						"2020-12-01 10:11:40"
 					]
 				}
 			},

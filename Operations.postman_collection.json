@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "366ceead-cbc6-483d-874a-79d202abb0a5",
 		"name": "Operations",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -76,7 +77,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"30241\",\"creditAccount\":\"30241\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
+					"raw": "{\"mnemo\":\"Operation\",\"title\":\"test\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"30241\",\"creditAccount\":\"30241\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 				},
 				"url": {
 					"raw": "{{hostTestNew}}/rest/document",
@@ -155,9 +156,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTestNew}}/rest/document/001",
+					"raw": "{{hostTest}}/rest/document/001",
 					"host": [
-						"{{hostTestNew}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -229,9 +230,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTestNew}}/rest/document/list",
+					"raw": "{{hostTest}}/rest/document/list",
 					"host": [
-						"{{hostTestNew}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -307,9 +308,9 @@
 					"raw": "{\"id\":\"001\",\"mnemo\":\"Operation\",\"title\":\"test1\",\"number\":\"5\",\"date\":\"1632406751298\",\"executedDate\":null,\"executed\":false,\"operation\":true,\"comment\":\"55\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"body\":null,\"summa\":\"55\",\"transactionTemplateId\":null,\"childDocsCollections\":null,\"postingCollection\":[{\"id\":\"8189bcc6-c1b6-44c1-91fc-16323b4f&1\",\"debitAccount\":\"30241\",\"creditAccount\":\"30241\",\"value\":\"66\",\"date\":\"1632471190240\",\"comment\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"postingPropsCollection\":[{\"name\":\"posting_number\",\"value\":\"55\"}],\"postingAnalyticsCollection\":[],\"posting_number\":\"55\"}],\"documentPropsCollection\":null,\"documentHeadDetailsCollection\":null,\"documentTableDetailsCollection\":null,\"common_organization\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}"
 				},
 				"url": {
-					"raw": "{{hostTestNew}}/rest/document/",
+					"raw": "{{hostTest}}/rest/document/",
 					"host": [
-						"{{hostTestNew}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
@@ -389,9 +390,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTestNew}}/rest/document/001",
+					"raw": "{{hostTest}}/rest/document/001",
 					"host": [
-						"{{hostTestNew}}"
+						"{{hostTest}}"
 					],
 					"path": [
 						"rest",

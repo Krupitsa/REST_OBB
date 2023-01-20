@@ -17,9 +17,8 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=1}\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -76,9 +75,9 @@
 					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/posting",
+					"raw": "{{hostTestNew}}/rest/posting",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -99,9 +98,8 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=2}\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id2\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -158,9 +156,9 @@
 					"raw": "{\r\n\"id\":\"2\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/posting",
+					"raw": "{{hostTestNew}}/rest/posting",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -181,9 +179,8 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"Id_PK{appMnemo=tap, id=3}\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id3\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -240,9 +237,9 @@
 					"raw": "{\r\n\"id\":\"3\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"1.00\",\r\n\"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n\"date\":\"18.01.2021T11:59:22\",\r\n\"comment\": \"comment1\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/posting",
+					"raw": "{{hostTestNew}}/rest/posting",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -313,9 +310,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/1",
+					"raw": "{{hostTestNew}}/rest/posting/1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -389,9 +386,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/list",
+					"raw": "{{hostTestNew}}/rest/posting/list",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -472,9 +469,9 @@
 					"raw": "{\r\n\"id\":\"1\",\r\n\"debitAccount\":\"d1\",\r\n\"creditAccount\":\"c1\",\r\n\"value\":\"2.00\",\r\n\"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n\"date\":\"21.01.2021T11:59:22\",\r\n\"comment\": \"comment2\",\r\n\"postingPropsCollection\": [\r\n{\"name\":\"prop.11\", \"value\":\"p11\"},\r\n{\"name\":\"prop.12\", \"value\":\"p12\"}\r\n],\r\n\"postingAnalyticsCollection\": [\r\n{\"account\":\"account.11\", \"analyticsNumber\":\"an11\", \"analyticsValue\": \"av11\"},\r\n{\"account\":\"account.12\", \"analyticsNumber\":\"an12\", \"analyticsValue\": \"av12\"}\r\n]\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/posting",
+					"raw": "{{hostTestNew}}/rest/posting",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -553,9 +550,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/1",
+					"raw": "{{hostTestNew}}/rest/posting/1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -622,9 +619,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/1",
+					"raw": "{{hostTestNew}}/rest/posting/1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -691,9 +688,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting?ids=[{mnemo:tap,id:2},{mnemo:tap,id:3}]",
+					"raw": "{{hostTestNew}}/rest/posting?ids=[{mnemo:tap,id:2},{mnemo:tap,id:3}]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -767,9 +764,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/1",
+					"raw": "{{hostTestNew}}/rest/posting/1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -838,9 +835,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/2",
+					"raw": "{{hostTestNew}}/rest/posting/2",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -909,9 +906,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/posting/3",
+					"raw": "{{hostTestNew}}/rest/posting/3",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",

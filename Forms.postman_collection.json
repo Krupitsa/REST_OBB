@@ -18,7 +18,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"reportStatus\", \"REGISTERED\");\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"REGISTERED\");\r",
 							"});\r",
 							"\r",
 							"var jsonData = JSON.parse(responseBody);\r",
@@ -86,7 +86,9 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"content\", null);\r",
+							"    pm.response.to.have.jsonBody(\"parameters\", {\r",
+							"        \"REPORT_OUTPUT_FORMAT\": \"pdf\"\r",
+							"    });\r",
 							"});\r",
 							"\r",
 							""
@@ -120,12 +122,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTestNew}}/reports/status/{{requestId}}",
+					"raw": "{{hostTestNew}}/script/execute/status/{{requestId}}",
 					"host": [
 						"{{hostTestNew}}"
 					],
 					"path": [
-						"reports",
+						"script",
+						"execute",
 						"status",
 						"{{requestId}}"
 					]

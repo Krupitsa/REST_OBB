@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "73927b54-2c73-4734-a8ee-88e4efbc27dc",
 		"name": "Token session",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{

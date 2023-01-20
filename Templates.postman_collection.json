@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "6001f2bf-a789-456d-84af-6f4dc38a3b74",
 		"name": "Templates",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -75,9 +76,9 @@
 					"raw": "{\"templateId\":\"testgroup\",\"appMnemo\":\"unknown\",\"title\":\"Новая группа\",\"templateGroup\":true,\"body\":\"\",\"parentId\":\"\"}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/template",
+					"raw": "{{hostTestNew}}/rest/template",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -162,9 +163,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/template",
+					"raw": "{{hostTestNew}}/rest/template",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -244,9 +245,9 @@
 					"raw": " {\r\n    \"templateId\": \"test1\",\r\n    \"title\": \"test1\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": \"testgroup\"\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/template",
+					"raw": "{{hostTestNew}}/rest/template",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -317,9 +318,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/test",
+					"raw": "{{hostTestNew}}/rest/template/test",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -395,9 +396,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/testgroup",
+					"raw": "{{hostTestNew}}/rest/template/testgroup",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -478,9 +479,9 @@
 					"raw": " {\r\n    \"templateId\": \"test\",\r\n    \"title\": \"test2\",\r\n    \"templateGroup\": false,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": \r\n    [ ]\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/template",
+					"raw": "{{hostTestNew}}/rest/template",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -560,9 +561,9 @@
 					"raw": " {\r\n    \"templateId\": \"testgroup\",\r\n    \"title\": \"testgroup1\",\r\n    \"templateGroup\": true,\r\n    \"body\": null,\r\n    \"parentId\": null,\r\n    \"childIdsCollection\": []\r\n}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/template/rename",
+					"raw": "{{hostTestNew}}/rest/template/rename",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -639,9 +640,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/test",
+					"raw": "{{hostTestNew}}/rest/template/test",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -717,9 +718,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/testgroup",
+					"raw": "{{hostTestNew}}/rest/template/testgroup",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -791,9 +792,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/list",
+					"raw": "{{hostTestNew}}/rest/template/list",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -865,9 +866,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/test",
+					"raw": "{{hostTestNew}}/rest/template/test",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -939,9 +940,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/testgroup",
+					"raw": "{{hostTestNew}}/rest/template/testgroup",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1010,9 +1011,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/test",
+					"raw": "{{hostTestNew}}/rest/template/test",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1080,9 +1081,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/testgroup",
+					"raw": "{{hostTestNew}}/rest/template/testgroup",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1150,9 +1151,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/template/test1",
+					"raw": "{{hostTestNew}}/rest/template/test1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",

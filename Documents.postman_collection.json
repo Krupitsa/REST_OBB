@@ -17,13 +17,12 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"appMnemo is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"id\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -66,12 +65,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"001\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1655731786428\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Primechanie\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"10133\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"3. Средства во временном распоряжении\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"10132\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"294f1b4c-33f0-4be7-a40e-c1067ac6ebfa\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"547f301b-ed64-44f7-9d9b-9791ce3c21fe\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"7b24e8f9-f7e5-4e73-ad89-91ff58024cd0\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"4440\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":40,\"documentTableRequisiteProps\":[]}]}"
+					"raw": "{\"id\": null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"001\",\"date\":\"1671062400000\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"32\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"23\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0120\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"33\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"232\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"332\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"22\",\"props\":[]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/document",
+					"raw": "{{hostTestNew}}/rest/document",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -92,13 +91,12 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"appMnemo is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"id2\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -153,12 +151,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"002\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1655731786428\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Primechanie\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"10133\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"3. Средства во временном распоряжении\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"10132\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"294f1b4c-33f0-4be7-a40e-c1067ac6ebfa\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"547f301b-ed64-44f7-9d9b-9791ce3c21fe\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"7b24e8f9-f7e5-4e73-ad89-91ff58024cd0\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"4440\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":40,\"documentTableRequisiteProps\":[]}]}"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"002\",\"date\":\"1672164529892\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Внутреннее потребление\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":111,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/document",
+					"raw": "{{hostTestNew}}/rest/document",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -179,13 +177,12 @@
 							"    pm.response.to.have.status(201);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"003\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"appMnemo is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"appMnemo\", \"tap\");\r",
-							"});"
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"id3\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -240,12 +237,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"003\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"001\",\"date\":\"1655731786428\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Primechanie\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"тест\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"10133\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"3. Средства во временном распоряжении\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"10132\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"294f1b4c-33f0-4be7-a40e-c1067ac6ebfa\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"547f301b-ed64-44f7-9d9b-9791ce3c21fe\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"7b24e8f9-f7e5-4e73-ad89-91ff58024cd0\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"4440\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"5232dab2-8c56-402e-ac1a-a517c688534a\",\"documentTableRequisiteProps\":[]},{\"recId\":\"bfda378f-732b-49b4-b6bd-d0fd5a43&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":40,\"documentTableRequisiteProps\":[]}]}"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"003\",\"date\":\"1672165273470\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Внутреннее потребление\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":121,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"024\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"7ec4c720-b5b3-446b-83ed-5b3243e1f2e9\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/document",
+					"raw": "{{hostTestNew}}/rest/document",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -266,12 +263,12 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskieSpravki\");\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"number\", \"001\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -315,14 +312,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/001",
+					"raw": "{{hostTestNew}}/rest/document/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
@@ -389,9 +386,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/list",
+					"raw": "{{hostTestNew}}/rest/document/list",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -464,17 +461,16 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"001\",\"mnemo\":\"tap.BuhgalterskieSpravki\",\"number\":\"0011\",\"date\":\"1653298377679\",\"parentId\":null,\"organizationRecId\":\"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\",\"transactionTemplateId\":\"tap.BuhgalterskieSpravki.UchetBuhgalterskoiiSpravki\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.BuhgalterskieSpravki.hr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.BuhgalterskieSpravki.hr.PervichnyiiDokument\",\"value\":\"111\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.RasshifrovkaOperacii\",\"value\":\"Аванс\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSKr\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUDb\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Operaciya\",\"value\":\"2b576243-e8c4-4e29-b4af-c49a5a6d2072\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KOSGUKr\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.NDS\",\"value\":\"18/118\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.EdinicaIzmereniya\",\"value\":\"1e23a4ba-fa36-4e4e-acf9-df84e52b7d08\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.KVFO\",\"value\":\"2. Приносящая доход деятельность\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit\",\"value\":\"0122\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_0\",\"value\":\"89a68d16-7afd-423e-b755-8fc59c2370bc\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Kredit_analytics_2\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Summa\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Kolichestvo\",\"value\":\"2220\",\"documentTableRequisiteProps\":[]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Debet\",\"value\":\"0120\",\"documentTableRequisiteProps\":[{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_0\",\"value\":\"de173bba-4d15-4879-8e44-56da15e90adf\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.BuhgalterskieSpravki.tr.Debet_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"recId\":\"a08a9def-5a20-4c88-b09b-3b9f32b4&2\",\"name\":\"tap.BuhgalterskieSpravki.tr.Cena\",\"value\":\"2230\",\"documentTableRequisiteProps\":[]}]}"
+					"raw": "{\"id\": {{id}},\"mnemo\":\"tap.SchetFaktura\",\"number\":\"0011\",\"date\":\"1671062400000\",\"parentId\":null,\"organizationRecId\":\"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"32\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"23\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0120\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"33\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"232\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"332\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"22\",\"props\":[]}]}\r\n"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/document/",
+					"raw": "{{hostTest}}/rest/document",
 					"host": [
 						"{{hostTest}}"
 					],
 					"path": [
 						"rest",
-						"document",
-						""
+						"document"
 					]
 				}
 			},
@@ -491,12 +487,8 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Mnemo is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.BuhgalterskieSpravki\");\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Number is correct\", function () {\r",
@@ -548,14 +540,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/001",
+					"raw": "{{hostTestNew}}/rest/document/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
@@ -573,8 +565,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
-							"});"
+							"    pm.response.to.have.jsonBody(\"status\", \"REGISTERED\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"requestId\", jsonData.requestId);"
 						],
 						"type": "text/javascript"
 					}
@@ -592,10 +587,21 @@
 					]
 				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "DFE-APP-MNEMO",
+						"value": "tap",
+						"type": "text"
+					},
+					{
+						"key": "DFE-ORG-ID",
+						"value": "a9fc4c98-24f7-4a05-9356-25f0acf17e4c",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3498\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.BuhgalterskieSpravki\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
+					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3692\",\"operationTitle\":\"activate\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.SchetFaktura\"},{\"name\":\"documentDbId\",\"value\":{{id}}}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -603,13 +609,84 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/script/execute",
+					"raw": "{{hostTestNew}}/script/execute",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"script",
 						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status the document 001",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){ \r",
+							"\r",
+							"        console.log('sleep');\r",
+							"    }, 5000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTestNew}}/script/execute/status/{{requestId}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"script",
+						"execute",
+						"status",
+						"{{requestId}}"
 					]
 				}
 			},
@@ -660,10 +737,9 @@
 						"type": "text"
 					},
 					{
-						"key": "DFE-APP-VER",
-						"value": "1.1.1122",
-						"type": "text",
-						"disabled": true
+						"key": "DFE-ORG-ID",
+						"value": "7a6ca676-3ce7-41d2-b924-d15cdf93a143",
+						"type": "text"
 					},
 					{
 						"key": "DFE-APP-Mnemo",
@@ -683,9 +759,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/script/execute/activate?ids=[{\"mnemo\":\"tap.BuhgalterskieSpravki\",\"id\":\"002\"},{\"mnemo\":\"tap.BuhgalterskieSpravki\",\"id\":\"003\"}]",
+					"raw": "{{hostTestNew}}/script/execute/activate?ids=[{\"mnemo\":\"tap.SchetFaktura\",\"id\":{{id2}}},{\"mnemo\":\"tap.SchetFaktura\",\"id\":{{id3}}}]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"script",
@@ -695,8 +771,174 @@
 					"query": [
 						{
 							"key": "ids",
-							"value": "[{\"mnemo\":\"tap.BuhgalterskieSpravki\",\"id\":\"002\"},{\"mnemo\":\"tap.BuhgalterskieSpravki\",\"id\":\"003\"}]"
+							"value": "[{\"mnemo\":\"tap.SchetFaktura\",\"id\":{{id2}}},{\"mnemo\":\"tap.SchetFaktura\",\"id\":{{id3}}}]"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the document 002 activate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"number\", \"002\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Executed is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"executed\", true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){ \r",
+							"\r",
+							"        console.log('sleep');\r",
+							"    }, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTestNew}}/rest/document/{{id2}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"rest",
+						"document",
+						"{{id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the document 003 activate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"number\", \"003\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Executed is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"executed\", true);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTestNew}}/rest/document/{{id3}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"rest",
+						"document",
+						"{{id3}}"
 					]
 				}
 			},
@@ -770,9 +1012,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{hostTest}}/script/execute/deactivate?ids=[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]",
+					"raw": "{{hostTestNew}}/script/execute/deactivate?ids=[{mnemo:tap.SchetFaktura,id:{{id2}}},{mnemo:tap.SchetFaktura,id:{{id3}}}]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"script",
@@ -782,8 +1024,174 @@
 					"query": [
 						{
 							"key": "ids",
-							"value": "[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]"
+							"value": "[{mnemo:tap.SchetFaktura,id:{{id2}}},{mnemo:tap.SchetFaktura,id:{{id3}}}]"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the document 002 deactivate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"number\", \"002\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Executed is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"executed\", false);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){ \r",
+							"\r",
+							"        console.log('sleep');\r",
+							"    }, 3000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTestNew}}/rest/document/{{id2}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"rest",
+						"document",
+						"{{id2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting the document 003 deactivate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.SchetFaktura\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"number\", \"003\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Executed is true\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"executed\", false);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-VER",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{hostTestNew}}/rest/document/{{id3}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"rest",
+						"document",
+						"{{id3}}"
 					]
 				}
 			},
@@ -801,8 +1209,11 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
-							"});"
+							"    pm.response.to.have.jsonBody(\"status\", \"REGISTERED\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"requestId\", jsonData.requestId);"
 						],
 						"type": "text/javascript"
 					}
@@ -823,7 +1234,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3461\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":\"001\"}]}",
+					"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3692\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":{{id}}}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -831,13 +1242,84 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/script/execute",
+					"raw": "{{hostTestNew}}/script/execute",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"script",
 						"execute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Status base on",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Id is correct\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){ \r",
+							"\r",
+							"        console.log('sleep');\r",
+							"    }, 5000);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{hostTestNew}}/script/execute/status/{{requestId}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"script",
+						"execute",
+						"status",
+						"{{requestId}}"
 					]
 				}
 			},
@@ -996,14 +1478,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/001",
+					"raw": "{{hostTestNew}}/rest/document/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
@@ -1070,9 +1552,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document?ids=[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]",
+					"raw": "{{hostTestNew}}/rest/document?ids=[{mnemo:tap.SchetFaktura,id:{{id2}}},{mnemo:tap.SchetFaktura,id:{{id3}}}]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1081,7 +1563,7 @@
 					"query": [
 						{
 							"key": "ids",
-							"value": "[{mnemo:tap.BuhgalterskieSpravki,id:002},{mnemo:tap.BuhgalterskieSpravki,id:003}]"
+							"value": "[{mnemo:tap.SchetFaktura,id:{{id2}}},{mnemo:tap.SchetFaktura,id:{{id3}}}]"
 						}
 					]
 				}
@@ -1133,14 +1615,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/001",
+					"raw": "{{hostTestNew}}/rest/document/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
@@ -1191,14 +1673,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/002",
+					"raw": "{{hostTestNew}}/rest/document/{{id2}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"002"
+						"{{id2}}"
 					]
 				}
 			},
@@ -1249,14 +1731,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/document/003",
+					"raw": "{{hostTestNew}}/rest/document/{{id3}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"document",
-						"003"
+						"{{id3}}"
 					]
 				}
 			},

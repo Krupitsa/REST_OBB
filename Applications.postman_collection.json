@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "8c410d48-7c3c-4a31-a70b-bd3653dbbcdf",
 		"name": "Applications",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -57,9 +58,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/app/list",
+					"raw": "{{hostTestNew}}/rest/app/list",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -116,9 +117,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/app/Restapp/1.1.3",
+					"raw": "{{hostTestNew}}/rest/app/Restapp/1.1.3",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -173,9 +174,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/app/version?mnemo=Restapp",
+					"raw": "{{hostTestNew}}/rest/app/version?mnemo=Restapp",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",

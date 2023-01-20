@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Creating a catalog's record 001",
+			"name": "Creating a catalog's record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -21,9 +21,8 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -72,12 +71,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"0d9c0e0a-c494-4d20-9ff9-27aa76ac50de\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"2c254391-3ce1-488b-ae03-455efd589c3d\"\r\n        }\r\n    ]\r\n}\r\n\r\n\r\n\r\n"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"1\",\"title\":\"1\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"parents\":[],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -88,7 +87,7 @@
 			"response": []
 		},
 		{
-			"name": "Creating a  catalog's record 002",
+			"name": "Creating a  catalog's record 2",
 			"event": [
 				{
 					"listen": "test",
@@ -102,9 +101,8 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id2\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -153,12 +151,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"002\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"},\r\n        {\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":\"001\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"2\",\"title\":\"2\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"parents\":[{\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":{{id}}}],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -169,7 +167,7 @@
 			"response": []
 		},
 		{
-			"name": "Creating a  catalog's record 003",
+			"name": "Creating a  catalog's record 3",
 			"event": [
 				{
 					"listen": "test",
@@ -183,9 +181,8 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"003\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id3\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -234,12 +231,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"003\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"3\",\"title\":\"3\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"parents\":[],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -250,7 +247,7 @@
 			"response": []
 		},
 		{
-			"name": "Creating a  catalog's record 004",
+			"name": "Creating a  catalog's record 4",
 			"event": [
 				{
 					"listen": "test",
@@ -264,9 +261,8 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"004\");\r",
-							"});"
+							"var jsonData = JSON.parse(responseBody); \r",
+							"postman.setEnvironmentVariable (\"id4\", jsonData.id);"
 						],
 						"type": "text/javascript"
 					}
@@ -315,12 +311,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n  \"id\": \"004\",\r\n  \"parents\": [\r\n        {\"mnemo\" : \"tap.Valiuty\", \"id\" : \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"}\r\n        ],\r\n    \"children\": [],\r\n  \"code\": \"2\",\r\n  \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n  \"title\": \"Квитанция\",\r\n  \"requisites\": [\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n      \"periodicalDate\": null,\r\n      \"props\": [\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n          \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n          \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n        },\r\n        {\r\n          \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n          \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n        }\r\n      ],\r\n      \"value\": \"0111\",\r\n      \"lebel\": \"93bd1918-dad9-447e-90f7-5210c6d825c9\"\r\n    },\r\n    {\r\n      \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n      \"periodicalDate\": null,\r\n      \"props\": null,\r\n      \"value\": \"2\",\r\n      \"lebel\": \"d261581a-7af4-48cf-89da-1f7cdf82a348\"\r\n    }\r\n  ]\r\n}"
+					"raw": "{\"id\":null,\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"4\",\"title\":\"4\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"parents\":[],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -331,7 +327,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading  the catalog's record 001",
+			"name": "Reading  the catalog's record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -341,12 +337,12 @@
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Body is correct\", function () {\r",
+							"pm.test(\"Mnemo is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"1\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Organization is correct\", function () {\r",
@@ -399,22 +395,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 002",
+			"name": "Reading the catalog's record 2",
 			"event": [
 				{
 					"listen": "test",
@@ -429,11 +425,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Body is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"2\");\r",
 							"});\r",
 							""
 						],
@@ -483,15 +475,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id2}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"002"
+						"{{id2}}"
 					]
 				}
 			},
@@ -559,9 +551,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiDlyaResta?start=0&limit=5",
+					"raw": "{{hostTestNew}}/rest/catalog/list/tap.TestovyiiDlyaResta?start=0&limit=5",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -596,7 +588,7 @@
 							"\r",
 							"pm.test(\"Id is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.records[0].code).to.eql(\"2\");\r",
+							"    pm.expect(jsonData.records[0].code).to.eql(\"4\");\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -645,9 +637,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiDlyaResta?start=0&limit=4&sortBy=[%22catalogCode:0:true%22]",
+					"raw": "{{hostTestNew}}/rest/catalog/list/tap.TestovyiiDlyaResta?filter={\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogOrganizationRecId\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\\\"],\\\"type\\\":0}\"}]}&start=0&limit=46&sortBy=[\"catalogCode:0:true:false:primitive.text\",\"catalogPk.recId:0:false:true:primitive.text\"]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -657,16 +649,20 @@
 					],
 					"query": [
 						{
+							"key": "filter",
+							"value": "{\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogOrganizationRecId\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\\\"],\\\"type\\\":0}\"}]}"
+						},
+						{
 							"key": "start",
 							"value": "0"
 						},
 						{
 							"key": "limit",
-							"value": "4"
+							"value": "46"
 						},
 						{
 							"key": "sortBy",
-							"value": "[%22catalogCode:0:true%22]"
+							"value": "[\"catalogCode:0:true:false:primitive.text\",\"catalogPk.recId:0:false:true:primitive.text\"]"
 						}
 					]
 				}
@@ -741,9 +737,9 @@
 					"raw": "{\"version\":1,\r\n\"restrictions\":\r\n{\"type\":1,\"restriction\":[{\"mnemo\":\"catalogCode\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"01\"],\"type\":4}]},\r\n{\"type\":1,\"restriction\":[{\"mnemo\":\"catalogCode\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"],\"type\":2}]}\r\n}&start=0&limit=30&sortBy=[\"catalogCode:0:false\"]\r\n\r\n\r\n[\r\n    [\r\n            ],\r\n    {\"type\":1,\"restriction\":[\r\n            {\"mnemo\":\"catalogOrganizationRecId\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values:[\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"type\":2}]\r\n        }\r\n        ]\r\n        }\r\n        &start=0&limit=30&sortBy=[\"catalogCode:0:false\"]"
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/list/tap.TestovyiiDlyaResta?filter={\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\"mnemo\":\"catalogCode\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"01\"],\"type\":4}\"},{\"type\":1,\"restriction\":\"{\"mnemo\":\"catalogOrganizationRecId\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"],\"type\":2}\"}]}&start=0&limit=30&sortBy=[\"catalogCode:0:false\"]",
+					"raw": "{{hostTestNew}}/rest/catalog/list/tap.TestovyiiDlyaResta?filter={\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogCode\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"%1%\\\"],\\\"type\\\":4}\"},{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogOrganizationRecId\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\\\"],\\\"type\\\":0}\"}]}&start=0&limit=46&sortBy=[\"catalogCode:0:false:false:primitive.text\",\"catalogPk.recId:0:false:true:primitive.text\"]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -754,7 +750,7 @@
 					"query": [
 						{
 							"key": "filter",
-							"value": "{\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\"mnemo\":\"catalogCode\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"01\"],\"type\":4}\"},{\"type\":1,\"restriction\":\"{\"mnemo\":\"catalogOrganizationRecId\",\"valueType\":\"primitive.text\",\"kindOf\":0,\"values\":[\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"],\"type\":2}\"}]}"
+							"value": "{\"version\":1,\"restrictions\":[{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogCode\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"%1%\\\"],\\\"type\\\":4}\"},{\"type\":1,\"restriction\":\"{\\\"mnemo\\\":\\\"catalogOrganizationRecId\\\",\\\"valueType\\\":\\\"primitive.text\\\",\\\"kindOf\\\":0,\\\"values\\\":[\\\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\\\"],\\\"type\\\":0}\"}]}"
 						},
 						{
 							"key": "start",
@@ -762,11 +758,11 @@
 						},
 						{
 							"key": "limit",
-							"value": "30"
+							"value": "46"
 						},
 						{
 							"key": "sortBy",
-							"value": "[\"catalogCode:0:false\"]"
+							"value": "[\"catalogCode:0:false:false:primitive.text\",\"catalogPk.recId:0:false:true:primitive.text\"]"
 						}
 					]
 				}
@@ -862,7 +858,7 @@
 			"response": []
 		},
 		{
-			"name": "Updating  the catalog's record 001",
+			"name": "Updating  the catalog's record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -918,7 +914,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"001\",\r\n    \"parents\": [\r\n        {\r\n            \"mnemo\": \"tap.Valiuty\",\r\n            \"id\": \"0887323a-ebf4-41b4-a9f6-a2034c6e3838\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"001\"\r\n        }\r\n    ],\r\n    \"children\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"002\"\r\n        }\r\n    ],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"25889c4a-27af-4ef3-9346-7535adc5259e\",\r\n    \"title\": \"Квитанция1\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"3bcc026f-5cb6-4f14-9c86-47cd196184a5\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"aec340ae-72a9-4865-b7c5-09d4cdd2b0ed\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\"id\":{{id}},\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"1\",\"title\":\"11\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\",\"parents\":[],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -926,9 +922,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -939,7 +935,7 @@
 			"response": []
 		},
 		{
-			"name": "Updating  the catalog's record 002",
+			"name": "Updating  the catalog's record 2",
 			"event": [
 				{
 					"listen": "test",
@@ -995,7 +991,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n    \"id\": \"002\",\r\n    \"parents\": [\r\n        {\r\n            \"mnemo\": \"tap.Valiuty\",\r\n            \"id\": \"e6d4a44e-246c-4ba9-93d9-76999aadfb9e\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta\",\r\n            \"id\": \"002\"\r\n        }\r\n    ],\r\n    \"children\": [],\r\n    \"code\": \"2\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\r\n    \"title\": \"Квитанция2\",\r\n    \"requisites\": [\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Schet\",\r\n            \"periodicalDate\": null,\r\n            \"props\": [\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_0\",\r\n                    \"value\": \"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_1\",\r\n                    \"value\": \"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"\r\n                },\r\n                {\r\n                    \"name\": \"tap.TestovyiiDlyaResta.Schet_analytics_2\",\r\n                    \"value\": \"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"\r\n                }\r\n            ],\r\n            \"value\": \"0111\",\r\n            \"lebel\": \"01046b78-8016-4c2f-87f8-6332df1411b5\"\r\n        },\r\n        {\r\n            \"mnemo\": \"tap.TestovyiiDlyaResta.Tekstovyii\",\r\n            \"periodicalDate\": null,\r\n            \"props\": null,\r\n            \"value\": \"2\",\r\n            \"lebel\": \"0350986b-c3d8-4174-8333-0ed24df0cbf9\"\r\n        }\r\n    ]\r\n}",
+					"raw": "{\"id\":{{id2}},\"mnemo\":\"tap.TestovyiiDlyaResta\",\"code\":\"2\",\"title\":\"22\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"parents\":[{\"mnemo\": \"tap.TestovyiiDlyaResta\", \"id\":{{id}}}],\"children\":[],\"requisites\":[{\"mnemo\":\"tap.TestovyiiDlyaResta.Tekstovyii\",\"periodicalDate\":null,\"value\":\"1\",\"props\":[]},{\"mnemo\":\"tap.TestovyiiDlyaResta.Schet\",\"periodicalDate\":null,\"value\":\"0131\",\"props\":[{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_1\",\"value\":\"78cf2dc4-a3f6-4a33-a046-a73ac9e0c6f9\"},{\"name\":\"tap.TestovyiiDlyaResta.Schet_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]}]}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -1003,9 +999,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog",
+					"raw": "{{hostTestNew}}/rest/catalog",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1016,7 +1012,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 001 after update",
+			"name": "Reading the catalog's record 1 after update",
 			"event": [
 				{
 					"listen": "test",
@@ -1028,10 +1024,6 @@
 							"\r",
 							"pm.test(\"Body is correct\", function () {\r",
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"001\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Organization is correct\", function () {\r",
@@ -1039,7 +1031,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Name is true\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция1\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"11\");\r",
 							"});\r",
 							"\r",
 							"\r",
@@ -1092,22 +1084,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 002 after update",
+			"name": "Reading the catalog's record 2 after update",
 			"event": [
 				{
 					"listen": "test",
@@ -1121,12 +1113,8 @@
 							"    pm.response.to.have.jsonBody(\"mnemo\", \"tap.TestovyiiDlyaResta\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Id is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"id\", \"002\");\r",
-							"});\r",
-							"\r",
 							"pm.test(\"Name is true\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"title\", \"Квитанция2\");\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"22\");\r",
 							"});\r",
 							"\r",
 							"\r",
@@ -1179,22 +1167,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id2}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"002"
+						"{{id2}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete the catalog's record 001",
+			"name": "Delete the catalog's record 1",
 			"event": [
 				{
 					"listen": "test",
@@ -1244,22 +1232,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete the catalog's record 002",
+			"name": "Delete the catalog's record 2",
 			"event": [
 				{
 					"listen": "test",
@@ -1309,22 +1297,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id2}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"002"
+						"{{id2}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Delete the catalog's record 003 and 004",
+			"name": "Delete the catalog's record 3 and 4",
 			"event": [
 				{
 					"listen": "test",
@@ -1389,9 +1377,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog?ids=[{mnemo:tap.TestovyiiDlyaResta,id:003},{mnemo:tap.TestovyiiDlyaResta,id:004}]",
+					"raw": "{{hostTestNew}}/rest/catalog?ids=[{mnemo:tap.TestovyiiDlyaResta,id:{{id3}}},{mnemo:tap.TestovyiiDlyaResta,id:{{id4}}}]",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
@@ -1400,7 +1388,7 @@
 					"query": [
 						{
 							"key": "ids",
-							"value": "[{mnemo:tap.TestovyiiDlyaResta,id:003},{mnemo:tap.TestovyiiDlyaResta,id:004}]"
+							"value": "[{mnemo:tap.TestovyiiDlyaResta,id:{{id3}}},{mnemo:tap.TestovyiiDlyaResta,id:{{id4}}}]"
 						}
 					]
 				}
@@ -1408,7 +1396,7 @@
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 001 after delete",
+			"name": "Reading the catalog's record 1 after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -1465,22 +1453,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/001",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"001"
+						"{{id}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 002 after delete",
+			"name": "Reading the catalog's record 2 after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -1537,22 +1525,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/002",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id2}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"002"
+						"{{id2}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 003 after delete",
+			"name": "Reading the catalog's record 3 after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -1609,22 +1597,22 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/003",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id3}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"003"
+						"{{id3}}"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Reading the catalog's record 004 after delete",
+			"name": "Reading the catalog's record 4 after delete",
 			"event": [
 				{
 					"listen": "test",
@@ -1681,15 +1669,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/catalog/tap.TestovyiiDlyaResta/004",
+					"raw": "{{hostTestNew}}/rest/catalog/tap.TestovyiiDlyaResta/{{id4}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"catalog",
 						"tap.TestovyiiDlyaResta",
-						"004"
+						"{{id4}}"
 					]
 				}
 			},

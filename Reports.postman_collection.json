@@ -18,7 +18,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"reportStatus\", \"REGISTERED\");\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"REGISTERED\");\r",
 							"});\r",
 							"\r",
 							"var jsonData = JSON.parse(responseBody);\r",
@@ -62,9 +62,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/reports/create",
+					"raw": "{{hostTestNew}}/reports/create",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"reports",
@@ -86,7 +86,9 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"content\", null);\r",
+							"    pm.response.to.have.jsonBody(\"parameters\", {\r",
+							"        \"REPORT_OUTPUT_FORMAT\": \"pdf\"\r",
+							"    });\r",
 							"});\r",
 							"\r",
 							""
@@ -120,12 +122,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/reports/status/{{requestId}}",
+					"raw": "{{hostTestNew}}/script/execute/status/{{requestId}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
-						"reports",
+						"script",
+						"execute",
 						"status",
 						"{{requestId}}"
 					]
@@ -147,6 +150,18 @@
 							"pm.test(\"Body contains string\", () => {\r",
 							"    pm.expect(pm.response.text()).to.include(\"%PDF-1.5\");\r",
 							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function(){ \r",
+							"\r",
+							"        console.log('sleep');\r",
+							"    }, 5000);"
 						],
 						"type": "text/javascript"
 					}
@@ -177,9 +192,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/reports/get/{{requestId}}",
+					"raw": "{{hostTestNew}}/reports/get/{{requestId}}",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"reports",

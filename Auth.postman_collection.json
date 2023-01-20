@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "0545982e-b25f-4407-97b4-d45a471877ef",
 		"name": "Auth",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -24,103 +25,34 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Token include correct string\", function () {\r",
-							"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+							"    pm.expect(jsonData.token).to.include(\"eyJhbGciOiJSUzI1NiJ9\");\r",
 							"});"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
-			"protocolProfileBehavior": {
-				"disabledSystemHeaders": {}
-			},
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "accept",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"type": "text"
-					},
-					{
-						"key": "DFE-APP-MNEMO",
-						"value": "Restapp",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "DFE_APP_VER",
-						"value": "1.1.3",
-						"type": "text",
-						"disabled": true
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}"
+					"raw": "{\"username\":\"tushkanova\", \"password\":\"123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
 				},
 				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth",
+					"raw": "{{hostTestNew}}/authentication-web/api/auth",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authentication-web",
 						"api",
 						"auth"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Token validation",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"var jsonData = pm.response.json();\r",
-							"pm.test(\"Username is true\", function () {\r",
-							"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
-							"});\r",
-							"pm.test(\"Role is true\", function () {\r",
-							"    pm.expect(jsonData.roles).to.eql([\"User\"]);\r",
-							"});\r",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth/validate?token={{token}}",
-					"host": [
-						"{{hostTest}}"
-					],
-					"path": [
-						"authentication-web",
-						"api",
-						"auth",
-						"validate"
-					],
-					"query": [
-						{
-							"key": "token",
-							"value": "{{token}}"
-						}
 					]
 				}
 			},
@@ -160,15 +92,63 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth/certificate",
+					"raw": "{{hostTestNew}}/authentication-web/api/auth/certificate",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authentication-web",
 						"api",
 						"auth",
 						"certificate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token validation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"Username is true\", function () {\r",
+							"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
+							"});\r",
+							"pm.test(\"Role is true\", function () {\r",
+							"    pm.expect(jsonData.roles).to.eql([\"User\"]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostTestNew}}/authentication-web/api/auth/validate?token={{token}}",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"authentication-web",
+						"api",
+						"auth",
+						"validate"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{token}}"
+						}
 					]
 				}
 			},
@@ -186,7 +166,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Body include correct string\", function () {\r",
-							"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJSUzI1NiIsInppcCI6IkRFRiJ9\");\r",
+							"    pm.expect(pm.response.text()).to.include(\"eyJhbGciOiJSUzI1NiJ9\");\r",
 							"}); "
 						],
 						"type": "text/javascript"
@@ -207,9 +187,9 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{hostTest}}/authentication-web/api/auth",
+					"raw": "{{hostTestNew}}/authentication-web/api/auth",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authentication-web",
