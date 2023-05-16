@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "94e6d4c0-1314-475f-85bf-ffadb74a00a4",
+		"name": "Role-set",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13727833"
+	},
+	"item": [
+		{
+			"name": "creating role-set",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"34000000-0000-0000-0000-000000000000\",\r\n  \"title\": \"MINE\",\r\n  \"application\": \"tap\",\r\n  \"default\": true,\r\n  \"roles\": [\r\n    \"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"\r\n  ]\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting created role-set",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable (\"role-set-id\", jsonData[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets?application=tap&withRoles=true&search=MINE",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets"
+					],
+					"query": [
+						{
+							"key": "application",
+							"value": "tap"
+						},
+						{
+							"key": "withRoles",
+							"value": "true"
+						},
+						{
+							"key": "search",
+							"value": "MINE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read role-set",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is developer\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"MINE\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets",
+						"{{role-set-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update role-set",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"139775fc-97ba-4248-8bfb-269dae20d369\",\r\n  \"title\": \"Черная черная Бухгалтерия\",\r\n  \"application\": \"tap\",\r\n  \"default\": true,\r\n  \"roles\": [\r\n    \"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"\r\n  ]\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets",
+						"{{role-set-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting role-set after updating",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is developer\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"title\", \"Черная черная Бухгалтерия\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets",
+						"{{role-set-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete role-set",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets",
+						"{{role-set-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get role-set after delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"role-sets",
+						"{{role-set-id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

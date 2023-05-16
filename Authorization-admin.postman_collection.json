@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "9a402354-714c-4333-bda1-5b5b08fba475",
+		"name": "Authorization/admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13727833"
+	},
+	"item": [
+		{
+			"name": "Creating admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"active\": true,\r\n  \"admin\": true,\r\n  \"applications\": [\r\n    {\r\n      \"mnemo\": \"tap\",\r\n      \"roles\": [\"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"],\r\n      \"appointedRoleSets\": []\r\n    }\r\n  ],\r\n  \"developer\": true,\r\n  \"id\": \"a817e37d-f46c-4da5-9dfb-a4718bd64206\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users",
+						"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getting admins",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users?application=tap",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users"
+					],
+					"query": [
+						{
+							"key": "application",
+							"value": "tap"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reading user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is developer\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"developer\", true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is user 1\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"a817e37d-f46c-4da5-9dfb-a4718bd64206\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users",
+						"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deactivate user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206/deactivate",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users",
+						"a817e37d-f46c-4da5-9dfb-a4718bd64206",
+						"deactivate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activate user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206/activate",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users",
+						"a817e37d-f46c-4da5-9dfb-a4718bd64206",
+						"activate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get activater user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is developer\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"active\", true);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Is user 1\", function () {\r",
+							"    pm.response.to.have.jsonBody(\"id\", \"a817e37d-f46c-4da5-9dfb-a4718bd64206\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"authorization",
+						"admin",
+						"users",
+						"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
