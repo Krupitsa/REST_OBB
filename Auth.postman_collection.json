@@ -33,6 +33,16 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
@@ -82,6 +92,16 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [
 					{
@@ -122,7 +142,7 @@
 							"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
 							"});\r",
 							"pm.test(\"Role is true\", function () {\r",
-							"    pm.expect(jsonData.roles).to.eql([\"User\"]);\r",
+							"    pm.expect(jsonData.roles).to.eql([\"Admin\",\"Developer\",\"User\"]);\r",
 							"});\r",
 							""
 						],
@@ -131,6 +151,16 @@
 				}
 			],
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {

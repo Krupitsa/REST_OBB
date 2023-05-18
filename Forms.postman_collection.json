@@ -86,9 +86,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"Status is correct\", function () {\r",
-							"    pm.response.to.have.jsonBody(\"parameters\", {\r",
-							"        \"REPORT_OUTPUT_FORMAT\": \"pdf\"\r",
-							"    });\r",
+							"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
 							"});\r",
 							"\r",
 							""
