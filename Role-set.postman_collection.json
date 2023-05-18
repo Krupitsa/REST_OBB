@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "94e6d4c0-1314-475f-85bf-ffadb74a00a4",
+		"_postman_id": "cba8b398-0cc6-44a9-bbde-c3b344cff9b8",
 		"name": "Role-set",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13727833"
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
-			"name": "creating role-set",
+			"name": "Сreating role-set",
 			"event": [
 				{
 					"listen": "test",
@@ -15,7 +15,8 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -44,9 +45,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -101,9 +102,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets?application=tap&withRoles=true&search=MINE",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets?application=tap&withRoles=true&search=MINE",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -173,9 +174,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets/{{role-set-id}}",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -218,7 +219,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"id\": \"139775fc-97ba-4248-8bfb-269dae20d369\",\r\n  \"title\": \"Черная черная Бухгалтерия\",\r\n  \"application\": \"tap\",\r\n  \"default\": true,\r\n  \"roles\": [\r\n    \"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"\r\n  ]\r\n}\r\n\r\n",
+					"raw": "{\r\n  \"id\": null,\r\n  \"title\": \"Черная черная Бухгалтерия\",\r\n  \"application\": \"tap\",\r\n  \"default\": true,\r\n  \"roles\": [\r\n    \"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"\r\n  ]\r\n}\r\n\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -226,9 +227,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets/{{role-set-id}}",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -285,9 +286,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets/{{role-set-id}}",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -337,9 +338,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets/{{role-set-id}}",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",
@@ -392,9 +393,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/authorization/admin/role-sets/{{role-set-id}}",
+					"raw": "{{hostTestNew}}/authorization/admin/role-sets/{{role-set-id}}",
 					"host": [
-						"{{host}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"authorization",

@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "214e0eaa-04dd-417c-9b27-81e38bb69f07",
+		"_postman_id": "0b2c7fea-2922-42c7-8138-fc34919bed6f",
 		"name": "All",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "13727833"
+		"_exporter_id": "13693544"
 	},
 	"item": [
 		{
@@ -86,7 +86,7 @@
 									"    pm.expect(jsonData.subject).to.eql(\"tushkanova\");\r",
 									"});\r",
 									"pm.test(\"Role is true\", function () {\r",
-									"    pm.expect(jsonData.roles).to.eql(['User', 'Admin', 'Developer']);\r",
+									"    pm.expect(jsonData.roles).to.eql([\"Admin\",\"Developer\",\"User\"]);\r",
 									"});\r",
 									""
 								],
@@ -238,6 +238,126 @@
 			"name": "Authorization/admin",
 			"item": [
 				{
+					"name": "Activate user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83/activate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authorization",
+								"admin",
+								"users",
+								"0d7052ee-4312-4513-9562-09a91b476f83",
+								"activate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get activater user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Is developer\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"active\", true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Is user 1\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"0d7052ee-4312-4513-9562-09a91b476f83\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authorization",
+								"admin",
+								"users",
+								"0d7052ee-4312-4513-9562-09a91b476f83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Creating admin",
 					"event": [
 						{
@@ -246,6 +366,10 @@
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -275,7 +399,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
 							"host": [
 								"{{host}}"
 							],
@@ -283,14 +407,14 @@
 								"authorization",
 								"admin",
 								"users",
-								"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+								"0d7052ee-4312-4513-9562-09a91b476f83"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "getting admins",
+					"name": "Reading user",
 					"event": [
 						{
 							"listen": "test",
@@ -299,6 +423,125 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
+									"\r",
+									"pm.test(\"Is developer\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"developer\", true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Is admin\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"admin\", true);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Is user 1\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"0d7052ee-4312-4513-9562-09a91b476f83\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authorization",
+								"admin",
+								"users",
+								"0d7052ee-4312-4513-9562-09a91b476f83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting user roles",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "DFE-APP-Mnemo",
+								"value": "tap",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/authorization/users/0d7052ee-4312-4513-9562-09a91b476f83/roles",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authorization",
+								"users",
+								"0d7052ee-4312-4513-9562-09a91b476f83",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Getting admins",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
 									""
 								],
 								"type": "text/javascript"
@@ -351,7 +594,7 @@
 					"response": []
 				},
 				{
-					"name": "Reading user",
+					"name": "Delete admin",
 					"event": [
 						{
 							"listen": "test",
@@ -361,12 +604,72 @@
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Is developer\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"developer\", true);\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"active\": true,\r\n  \"admin\": false,\r\n  \"applications\": [ \r\n        {\r\n      \"mnemo\": \"tap\",\r\n      \"roles\": [\"913af7c7-df99-40f1-8d31-ff9bf2b87c1b\"],\r\n      \"appointedRoleSets\": []\r\n    }\r\n  ],\r\n  \"developer\": false,\r\n  \"id\": \"a817e37d-f46c-4da5-9dfb-a4718bd64206\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"authorization",
+								"admin",
+								"users",
+								"0d7052ee-4312-4513-9562-09a91b476f83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reading user after delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
 									"});\r",
 									"\r",
-									"pm.test(\"Is user 1\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"a817e37d-f46c-4da5-9dfb-a4718bd64206\");\r",
+									"pm.test(\"Developer is false\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"developer\", false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Admin is false\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"admin\", false);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"User is regress\", function () {\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"0d7052ee-4312-4513-9562-09a91b476f83\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -399,7 +702,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
 							"host": [
 								"{{host}}"
 							],
@@ -407,7 +710,7 @@
 								"authorization",
 								"admin",
 								"users",
-								"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+								"0d7052ee-4312-4513-9562-09a91b476f83"
 							]
 						}
 					},
@@ -423,59 +726,9 @@
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
 									"});\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206/deactivate",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"authorization",
-								"admin",
-								"users",
-								"a817e37d-f46c-4da5-9dfb-a4718bd64206",
-								"deactivate"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Activate user",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
+									"\r",
+									"pm.test(\"Body is empty\", function () {\r",
+									"    pm.response.to.have.body(\"\");\r",
 									"});\r",
 									""
 								],
@@ -506,7 +759,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206/activate",
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83/deactivate",
 							"host": [
 								"{{host}}"
 							],
@@ -514,15 +767,15 @@
 								"authorization",
 								"admin",
 								"users",
-								"a817e37d-f46c-4da5-9dfb-a4718bd64206",
-								"activate"
+								"0d7052ee-4312-4513-9562-09a91b476f83",
+								"deactivate"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Get activater user",
+					"name": "Get deactivated user",
 					"event": [
 						{
 							"listen": "test",
@@ -533,11 +786,11 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Is developer\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"active\", true);\r",
+									"    pm.response.to.have.jsonBody(\"active\", false);\r",
 									"});\r",
 									"\r",
 									"pm.test(\"Is user 1\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"id\", \"a817e37d-f46c-4da5-9dfb-a4718bd64206\");\r",
+									"    pm.response.to.have.jsonBody(\"id\", \"0d7052ee-4312-4513-9562-09a91b476f83\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -570,7 +823,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/authorization/admin/users/a817e37d-f46c-4da5-9dfb-a4718bd64206",
+							"raw": "{{host}}/authorization/admin/users/0d7052ee-4312-4513-9562-09a91b476f83",
 							"host": [
 								"{{host}}"
 							],
@@ -578,7 +831,7 @@
 								"authorization",
 								"admin",
 								"users",
-								"a817e37d-f46c-4da5-9dfb-a4718bd64206"
+								"0d7052ee-4312-4513-9562-09a91b476f83"
 							]
 						}
 					},
@@ -590,7 +843,7 @@
 			"name": "Role-set",
 			"item": [
 				{
-					"name": "creating role-set",
+					"name": "Creating role-set",
 					"event": [
 						{
 							"listen": "test",
@@ -2227,7 +2480,7 @@
 									"\r",
 									"pm.test(\"Id is true\", function () {\r",
 									"    var jsonData = pm.response.json();\r",
-									"    pm.expect(jsonData.records[0].code).to.eql(\"01\");\r",
+									"    pm.expect(jsonData.records[0].code).to.eql(\"1\");\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2651,7 +2904,7 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Name is true\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"title\", \"2\");\r",
+									"    pm.response.to.have.jsonBody(\"title\", \"22\");\r",
 									"});\r",
 									"\r",
 									"\r",
@@ -3284,7 +3537,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\": null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"001\",\"date\":\"1671062400000\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"32\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"23\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0120\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"33\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"232\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"332\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"22\",\"props\":[]}]}"
+							"raw": "{\"id\": null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"001\",\"date\":\"1675123200000\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.SchetNaOplatu\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.GlavnyiiBuhgalter\",\"value\":\"ac456787-a7bc-4961-bda0-12f53f7f2bd0\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PlatezhnyeDokumenty\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"000000010\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kommentariii\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.SchetfakturaVystavlen\",\"value\":\"true\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DataRegistracii\",\"value\":\"1672693200000\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DokumentOsnovanie\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.VidCennosti\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Gruzootpravitel\",\"value\":\"00dd8b4c-7d51-419f-98b0-6be307e0781c\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.IdentifikatorGoskontrakta\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Налоговый агент - аренда, покупка ФИ (п.3, ст.161)\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.ItogoSummaBezNDS\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Realizaciya0\",\"value\":\"true\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"927bcc87-c73b-4b05-89da-d33faf8b5d16\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Gruzopoluchatel\",\"value\":\"000000010\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KodVidaOperacii\",\"value\":\"f1fe8e95-302e-4fea-99ea-5d17ffd5b067\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Rukovoditel\",\"value\":\"1132812e-7944-44ee-a35f-99b150a008fa\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.MestoRegistracii\",\"value\":\"Книга продаж\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.ItogoVsego\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.SposobVystavleniya\",\"value\":\"На бумажном носителе\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.ItogoNDS\",\"value\":\"8\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DataVystavleniya\",\"value\":\"1672779600000\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetRaschetov\",\"value\":\"56\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0120\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"a0dc3a37-fcc8-4aa8-9bd3-0da033a6ede1\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"e7a84bde-000d-4a38-8888-5ae139e41dde\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"0%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"8\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"b9045385-8f76-4ea2-9e9e-c77d5efccfdf\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"21a0b28d-7fcc-4e42-9963-908d81e2da15\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"7571cf4a-ea08-4bec-a077-c3ffde8f0610\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":434,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":222,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":23,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":434,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":3,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0132\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"00000001\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"e7fbfb15-efff-4673-bc54-2867b11b1acb\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ecaf7624-538c-4d9b-93a4-5659ee33eaa3\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"21a0b28d-7fcc-4e42-9963-908d81e2da15\",\"props\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -3370,7 +3623,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"002\",\"date\":\"1672164529892\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Внутреннее потребление\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":111,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"f9831c1d-fcca-4fc7-a330-ac423f3b810d\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"981f085c-eb35-4967-b81a-d9e9ece11bee\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]}]}"
+							"raw": "{\"id\": null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"002\",\"date\":\"1681430400000\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.ItogoNDS\",\"value\":\"232\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Realizaciya0\",\"value\":\"true\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DataVystavleniya\",\"value\":\"1683147600000\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"e5ced667-fe7e-4658-a65e-f3503edecb80\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DokumentOsnovanie\",\"value\":\"222\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.VidCennosti\",\"value\":\"цуцу\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Gruzootpravitel\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.SchetfakturaVystavlen\",\"value\":\"true\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Rukovoditel\",\"value\":\"1132812e-7944-44ee-a35f-99b150a008fa\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kommentariii\",\"value\":\"цуцу\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.IdentifikatorGoskontrakta\",\"value\":\"ууу\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.ItogoSummaBezNDS\",\"value\":\"232\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.DataRegistracii\",\"value\":\"1681333200000\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.GlavnyiiBuhgalter\",\"value\":\"fd7f7f25-0812-40b1-a08d-d9803a52327a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.SposobVystavleniya\",\"value\":\"На бумажном носителе\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KodVidaOperacii\",\"value\":\"f1fe8e95-302e-4fea-99ea-5d17ffd5b067\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.MestoRegistracii\",\"value\":\"Книга продаж\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PlatezhnyeDokumenty\",\"value\":\"2323\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.ItogoVsego\",\"value\":\"232\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.SchetNaOplatu\",\"value\":\"цуц\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Gruzopoluchatel\",\"value\":\"15da2266-6325-4077-8803-12d96a186bd9\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt\",\"value\":\"0210\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"1312\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"111\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"111\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0210\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"185744f3-90b6-4d65-8a3b-d4b84b3785af\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"8958375a-3555-49b5-9059-1c5ea8981488\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"111\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt\",\"value\":\"0122\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt_analytics_0\",\"value\":\"00000001\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetKt_analytics_2\",\"value\":\"78e5b8c3-4ee1-4368-8aa8-52187fcef591\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"222\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"22\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"222\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"21a0b28d-7fcc-4e42-9963-908d81e2da15\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"21a0b28d-7fcc-4e42-9963-908d81e2da15\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"7571cf4a-ea08-4bec-a077-c3ffde8f0610\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"10113\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"4c4e51dc-c973-4a78-88c1-79f87a504480\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"18%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"ba47394f-abf9-4395-bb3a-79fd8f6051b6\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"1233\",\"props\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -3456,7 +3709,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\":null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"003\",\"date\":\"1672165273470\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Внутреннее потребление\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":121,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"024\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"7ec4c720-b5b3-446b-83ed-5b3243e1f2e9\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"881b0ff5-bf23-4d2c-abb0-c2e8ebb40ad1\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"331daf65-96e6-4565-ac36-3fadf8ac4fe5\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]}]}"
+							"raw": "{\"id\": null,\"mnemo\":\"tap.SchetFaktura\",\"number\":\"003\",\"date\":\"1684343034099\",\"parentId\":null,\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":333,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"4c4e51dc-c973-4a78-88c1-79f87a504480\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"02\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"cee50280-984e-4467-b794-1f39dedc21b1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"fecab41e-68d3-4a6d-8d6b-bb60346d7230\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"cee50280-984e-4467-b794-1f39dedc21b1\",\"props\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -3680,7 +3933,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"id\": {{id}},\"mnemo\":\"tap.SchetFaktura\",\"number\":\"0011\",\"date\":\"1671062400000\",\"parentId\":null,\"organizationRecId\":\"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"026c5804-478f-4d46-917e-b7f1a273ca51\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10/110\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"32\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"23\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"1\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"db23642c-cd56-45d5-be7a-9d1066a309b0\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"4f00e846-2d85-4cbf-980d-3eb5e2ec1a77\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"0120\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"d964392b-aaf9-4712-85f0-19eabc4b4f92\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_2\",\"value\":\"a3f1fb38-780f-494d-8bdd-5832c1827731\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"000000012\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"5db68717-666f-4e2e-a481-a03fb584ae6e\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"33\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"232\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"332\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"1ece92d9-7cef-4fee-a67f-5d8c2ea6fbcd\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"22\",\"props\":[]}]}\r\n"
+							"raw": "{\"id\":{{id}},\"mnemo\":\"tap.SchetFaktura\",\"number\":\"0011\",\"date\":\"1671062400000\",\"parentId\":null,\"organizationRecId\":\"a9fc4c98-24f7-4a05-9356-25f0acf17e4c\",\"transactionTemplateId\":\"tap.SchetFaktura.Standartnyii\",\"childDocsCollections\":[],\"postingCollection\":[],\"documentPropsCollection\":[],\"documentHeadDetailsCollection\":[{\"name\":\"tap.SchetFaktura.hr.Dogovor\",\"value\":\"96741f75-aa29-408f-8185-c4148c2bb414\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.Kontragent\",\"value\":\"00000001\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.PrichinaNalogooblozheniya\",\"value\":\"Аванс полученный\",\"documentHeadRequisiteProps\":[]},{\"name\":\"tap.SchetFaktura.hr.KFO\",\"value\":\"1367aa5d-bc2b-4b9e-ae68-77e543d12e5a\",\"documentHeadRequisiteProps\":[]}],\"documentTableDetailsCollection\":[{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"10%\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":\"332\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":\"232\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"2\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":\"22\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"06\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"d4ac0d1b-d8bb-457d-95f6-5bd097332ec2\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"38ce98a3-f0aa-4a32-a91e-cc2814327bd4\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":\"33\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"1a2ebde1-cccf-4bab-858d-0ea4b35e5d4e\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"a7641f7a-3909-4558-86ea-246a67bb4b7f\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.TovarRabotaUsluga\",\"value\":\"3\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.EdinicaIzmereniya\",\"value\":\"49047ba7-1843-465a-aa54-23d007213d99\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Kolichestvo\",\"value\":34,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.CenaBezNDS\",\"value\":34,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SummaBezNDS\",\"value\":343,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Stavka\",\"value\":\"18/118\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.NDS\",\"value\":34,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Vsego\",\"value\":323,\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPSDb\",\"value\":\"a7641f7a-3909-4558-86ea-246a67bb4b7f\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt\",\"value\":\"04\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_0\",\"value\":\"d4ac0d1b-d8bb-457d-95f6-5bd097332ec2\"},{\"name\":\"tap.SchetFaktura.TablichnayaCHast.SchetDt_analytics_1\",\"value\":\"4de6a37c-5b66-4f5e-a6d3-cd2b816435b9\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGUDb\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KPS334\",\"value\":\"38ce98a3-f0aa-4a32-a91e-cc2814327bd4\",\"props\":[]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304\",\"value\":\"30304\",\"props\":[{\"name\":\"tap.SchetFaktura.TablichnayaCHast.Schet30304_analytics_0\",\"value\":\"1bb8c4be-8fbf-471e-97b1-028d04c579a3\"}]},{\"tablepartMnemo\":\"tap.SchetFaktura.TablichnayaCHast\",\"recId\":\"15f416d3-819b-4e27-bcfc-f0c3ce72f4a9\",\"mnemo\":\"tap.SchetFaktura.TablichnayaCHast.KOSGU334\",\"value\":\"a4b68ca2-018b-4c7c-be49-12e63841e070\",\"props\":[]}]}"
 						},
 						"url": {
 							"raw": "{{host}}/rest/document",
@@ -4453,7 +4706,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.3692\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":{{id}}}]}",
+							"raw": "{\"appId\":\"tap\",\"appVersion\":\"1.1.4005\",\"operationTitle\":\"baseOn\",\"operationParameters\":[{\"name\":\"entityId\",\"value\":\"tap.KorrektirovochnyiiSchetfakturaVydannyii\"},{\"name\":\"documentDbId\",\"value\":{{id}}},{\"name\":\"sourceEntityId\",\"value\":\"tap.SchetFaktura\"}]}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5007,10 +5260,22 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Status is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"parameters\", {});\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
 									"});\r",
 									"\r",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"setTimeout(function(){ \r",
+									"\r",
+									"        console.log('sleep');\r",
+									"    }, 20000);"
 								],
 								"type": "text/javascript"
 							}
@@ -6184,10 +6449,22 @@
 									"});\r",
 									"\r",
 									"pm.test(\"Status is correct\", function () {\r",
-									"    pm.response.to.have.jsonBody(\"parameters\", {});\r",
+									"    pm.response.to.have.jsonBody(\"status\", \"COMPLETED\");\r",
 									"});\r",
 									"\r",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"setTimeout(function(){ \r",
+									"\r",
+									"        console.log('sleep');\r",
+									"    }, 20000);"
 								],
 								"type": "text/javascript"
 							}
