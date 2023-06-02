@@ -323,7 +323,7 @@
 			"response": []
 		},
 		{
-			"name": "Getting a list of organizations",
+			"name": "Getting a list of organizations UserContext",
 			"event": [
 				{
 					"listen": "test",
@@ -388,6 +388,78 @@
 						"rest",
 						"app",
 						"userContext"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting a list of organizations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "Restapp",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Ver",
+						"value": "1.1.3",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "DFE-APP-Mnemo",
+						"value": "tap",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{hostTestNew}}/rest/organization/list/ecbd1e80-db73-4e17-9d50-1401a8a25f0c",
+					"host": [
+						"{{hostTestNew}}"
+					],
+					"path": [
+						"rest",
+						"organization",
+						"list",
+						"ecbd1e80-db73-4e17-9d50-1401a8a25f0c"
 					]
 				}
 			},

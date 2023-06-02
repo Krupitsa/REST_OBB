@@ -87,12 +87,12 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"1970-01-01 00:00:00\",\"mnemo\":\"tap.test\",\"periodicalDate\":null,\"value\":\"1\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}\r\n\r\n"
+					"raw": "{\"id\":\"1970-01-01 00:00:00\",\"mnemo\":\"tap.KodOKPO\",\"periodicalDate\":null,\"value\":\"1\",\"organizationRecId\":\"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"}\r\n\r\n"
 				},
 				"url": {
-					"raw": "{{hostTestNew}}/rest/constant",
+					"raw": "{{host}}/rest/constant",
 					"host": [
-						"{{hostTestNew}}"
+						"{{host}}"
 					],
 					"path": [
 						"rest",
@@ -115,7 +115,7 @@
 							"\r",
 							"responseJson = JSON.parse(responseBody);\r",
 							"var list = responseJson.length;\r",
-							"tests[\"Validate service retuns 3 records\"] = list >= 3\r",
+							"tests[\"Validate service retuns 1 records\"] = list >= 1\r",
 							"\r",
 							""
 						],
@@ -191,12 +191,12 @@
 							"\r",
 							"pm.test(\"Mnemo is true\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.mnemo).to.eql(\"tap.KodOKOPF\");\r",
+							"    pm.expect(jsonData.mnemo).to.eql(\"tap.KodOKPO\");\r",
 							"});\r",
 							"\r",
 							"pm.test(\"Value is correct\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.value).to.eql(\"75103\");\r",
+							"    pm.expect(jsonData.value).to.eql(\"343\");\r",
 							"});\r",
 							""
 						],
@@ -246,15 +246,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTest}}/rest/constant/tap.KodOKOPF/1970-01-01 00 00 00",
+					"raw": "{{hostTestNew}}/rest/constant/tap.KodOKPO/13690d8a-b2c8-42b8-b834-d4b22ce7cda1",
 					"host": [
-						"{{hostTest}}"
+						"{{hostTestNew}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"tap.KodOKOPF",
-						"1970-01-01 00 00 00"
+						"tap.KodOKPO",
+						"13690d8a-b2c8-42b8-b834-d4b22ce7cda1"
 					]
 				}
 			},
@@ -323,7 +323,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"id\":\"1970-01-01 00 00 00\",\"mnemo\":\"tap.Rest\",\"periodicalDate\":null,\"value\":\"75104\",\"organizationRecId\":\"25889c4a-27af-4ef3-9346-7535adc5259e\"}",
+					"raw": "{\r\n    \"mnemo\": \"tap.KodOKPO\",\r\n    \"id\": \"a5b5c9a4-c923-4952-ac1a-42da05c412dd\",\r\n    \"periodicalDate\": null,\r\n    \"value\": \"12345\",\r\n    \"organizationRecId\": \"7a6ca676-3ce7-41d2-b924-d15cdf93a143\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -331,9 +331,9 @@
 					}
 				},
 				"url": {
-					"raw": "{{hostTestNew}}/rest/constant",
+					"raw": "{{host}}/rest/constant",
 					"host": [
-						"{{hostTestNew}}"
+						"{{host}}"
 					],
 					"path": [
 						"rest",
@@ -651,15 +651,15 @@
 					}
 				],
 				"url": {
-					"raw": "{{hostTestNew}}/rest/constant/buh.calendar/2020-12-01 10:11:40",
+					"raw": "{{host}}/rest/constant/tap.KodOKPO/a5b5c9a4-c923-4952-ac1a-42da05c412dd",
 					"host": [
-						"{{hostTestNew}}"
+						"{{host}}"
 					],
 					"path": [
 						"rest",
 						"constant",
-						"buh.calendar",
-						"2020-12-01 10:11:40"
+						"tap.KodOKPO",
+						"a5b5c9a4-c923-4952-ac1a-42da05c412dd"
 					]
 				}
 			},
